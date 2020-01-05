@@ -34,6 +34,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 #include "HW.h"
+#include "GPIO.h"
 
 /************************************port***********************************
  *                               description                               *
@@ -41,22 +42,45 @@
  * please change the configuration if you change board 3                   *                             *
  ***************************************************************************/
 
-//LED NUMBER 1
-#define  LED_1_PORT GPIO_PORTB_DATA
-#define  LED_1_DIR  GPIO_PORTB_DIR
-#define  LED_1_PIN  PIN_0
-//LED NUMBER 2
-#define  LED_2_PORT GPIO_PORTB_DATA
-#define  LED_2_DIR  GPIO_PORTB_DIR
-#define  LED_2_PIN  PIN_1
-//LED NUMBER 3
-#define  LED_3_PORT GPIO_PORTB_DATA
-#define  LED_3_DIR  GPIO_PORTB_DIR
-#define  LED_3_PIN  PIN_2
-//LED NUMBER 4
+//sw NUMBER 1
+#define  SW_P_PORT GPIO_PORTB_DATA
+#define  SW_P_DIR  GPIO_PORTB_DIR
+#define  SW_P_PIN  PIN_0
+//sw NUMBER 2
+#define  SW_M_PORT GPIO_PORTB_DATA
+#define  SW_M_DIR  GPIO_PORTB_DIR
+#define  SW_M_PIN  PIN_1
+//sw NUMBER 3
+#define  SW_S_PORT GPIO_PORTB_DATA
+#define  SW_S_DIR  GPIO_PORTB_DIR
+#define  SW_S_PIN  PIN_2
+//sw NUMBER 4
 #define  LED_4_PORT GPIO_PORTB_DATA
 #define  LED_4_DIR  GPIO_PORTB_DIR
 #define  LED_4_PIN  PIN_3
+
+
+// SSD
+#define SSD_DATA_PORT   GPIO_PORTD_DATA
+#define SSD_DATA_DIR    GPIO_PORTD_DIR
+// SSD MINUTES UNITS
+#define SSD_MINUTES_UNITS_PORT  GPIO_PORTB_DATA
+#define SSD_MINUTES_UNITS_DIR   GPIO_PORTB_DIR
+#define SSD_MINUTES_UNITS_PIN   PIN_4
+// SSD MINUTES TENS
+#define SSD_MINUTES_TENS_PORT GPIO_PORTB_DATA
+#define SSD_MINUTES_TENS_DIR  GPIO_PORTB_DIR
+#define SSD_MINUTES_TENS_PIN  PIN_5
+// SSD HOURS UNITS
+#define SSD_HOURS_UNITS_PORT  GPIO_PORTB_DATA
+#define SSD_HOURS_UNITS_DIR   GPIO_PORTB_DIR
+#define SSD_HOURS_UNITS_PIN   PIN_6
+// SSD HOURS TENS
+#define SSD_HOURS_TENS_PORT  GPIO_PORTB_DATA
+#define SSD_HOURS_TENS_DIR   GPIO_PORTB_DIR
+#define SSD_HOURS_TENS_PIN   PIN_7
+
+
 
 
 

@@ -78,11 +78,6 @@
 #define GPIO_OUT                (0)
 #define GPIO_IN                 (1)
 
-/* define number of iteration of for loop to delay 1 ms
- * according to my compiler for take almost 30 instruction
- * n = 300
- */
- #define FOR_N_CYCLES            (300)
 
 
 /* define some standard types does not depend on the machine */

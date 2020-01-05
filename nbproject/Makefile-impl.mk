@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Digital_Clock.X
+PROJECTNAME=Digital_Clock
 
 # Active Configuration
 DEFAULTCONF=default
