@@ -9,13 +9,28 @@
 #include <xc.h>
 #include "Port.h"
 #include"GPIO.h"
+#include"SSD.h"
 
 void main(void) {
     //Initialization
-    GPIO_Init_Port(&SSD_DATA_DIR,GPIO_OUT);
-    GPIO_Init_Pin(&SSD_MINUTES_TENS_DIR,SSD_MINUTES_TENS_PIN,GPIO_OUT);
-    GPIO_Write_Port(SSD_DATA_PORT,0xff);
-    GPIO_Write_Pin(SSD_MINUTES_TENS_PORT,SSD_MINUTES_TENS_PIN,1);
+    SSD_Init();
+    // GPIO_Write_Port(SSD_DATA_PORT)
+    // set symbols
+    SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+    SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+    SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+    SSD_Set_Symbol(4,SSD_HOURS_TENS);
+    //call update 
+    SSD_Update();
+    __delay_ms(1000);
+    SSD_Update();
+    __delay_ms(1000);
+    SSD_Update();
+    __delay_ms(1000);
+    SSD_Update();
+    __delay_ms(1000);
+    SSD_Update();
+    __delay_ms(1000);
     //super loop
     while(1);
     return;

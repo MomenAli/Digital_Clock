@@ -1,23 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"61 ./GPIO.h
-[; ;./GPIO.h: 61: u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
-[v _GPIO_Init_Port `(uc ~T0 @X0 0 ef2`*uc`uc ]
-"1499 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"62 ./GPIO.h
-[; ;./GPIO.h: 62: u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
-[v _GPIO_Init_Pin `(uc ~T0 @X0 0 ef3`*uc`uc`uc ]
-"1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"340
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"216
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"84 ./SSD.h
+[; ;./SSD.h: 84: void SSD_Init(void);
+[v _SSD_Init `(v ~T0 @X0 0 ef ]
+"19 Digital_Clock.c
+[; ;Digital_Clock.c: 19:     SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+[c E859 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E859 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
+[c E872 0 1 2 3 .. ]
+[n E872 . SSD_MINUTES_UNITS SSD_MINUTES_TENS SSD_HOURS_UNITS SSD_HOURS_TENS  ]
+"85 ./SSD.h
+[; ;./SSD.h: 85: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+[v _SSD_Set_Symbol `(v ~T0 @X0 0 ef2`E859`E872 ]
+"86
+[; ;./SSD.h: 86: void SSD_Update(void);
+[v _SSD_Update `(v ~T0 @X0 0 ef ]
+[v F842 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
+[v __delay `JF842 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -215,34 +216,67 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44
 [p x CP = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"13 Digital_Clock.c
-[; ;Digital_Clock.c: 13: void main(void) {
+"14 Digital_Clock.c
+[; ;Digital_Clock.c: 14: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"15
-[; ;Digital_Clock.c: 15:     GPIO_Init_Port(&(TRISD),(0));
-[e ( _GPIO_Init_Port (2 , -> &U _TRISD `*uc -> -> 0 `i `uc ]
 "16
-[; ;Digital_Clock.c: 16:     GPIO_Init_Pin(&(TRISB),(5),(0));
-[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 5 `i `uc -> -> 0 `i `uc ]
-"17
-[; ;Digital_Clock.c: 17:     (((PORTD))=(0xff));
-[e = _PORTD -> -> 255 `i `uc ]
-"18
-[; ;Digital_Clock.c: 18:     (((PORTB))=((PORTB) & ~(1<<(5)))|(1<<(5)));
-[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 5 `i << -> 1 `i -> 5 `i `uc ]
+[; ;Digital_Clock.c: 16:     SSD_Init();
+[e ( _SSD_Init ..  ]
+"19
+[; ;Digital_Clock.c: 19:     SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> -> 1 `i `E859 . `E872 0 ]
 "20
-[; ;Digital_Clock.c: 20:     while(1);
+[; ;Digital_Clock.c: 20:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> -> 2 `i `E859 . `E872 1 ]
+"21
+[; ;Digital_Clock.c: 21:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> -> 3 `i `E859 . `E872 2 ]
+"22
+[; ;Digital_Clock.c: 22:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> -> 4 `i `E859 . `E872 3 ]
+"24
+[; ;Digital_Clock.c: 24:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"25
+[; ;Digital_Clock.c: 25:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"26
+[; ;Digital_Clock.c: 26:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"27
+[; ;Digital_Clock.c: 27:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"28
+[; ;Digital_Clock.c: 28:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"29
+[; ;Digital_Clock.c: 29:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"30
+[; ;Digital_Clock.c: 30:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"31
+[; ;Digital_Clock.c: 31:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"32
+[; ;Digital_Clock.c: 32:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"33
+[; ;Digital_Clock.c: 33:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"35
+[; ;Digital_Clock.c: 35:     while(1);
 [e :U 97 ]
 [e :U 96 ]
 [e $U 97  ]
 [e :U 98 ]
-"21
-[; ;Digital_Clock.c: 21:     return;
+"36
+[; ;Digital_Clock.c: 36:     return;
 [e $UE 95  ]
-"22
-[; ;Digital_Clock.c: 22: }
+"37
+[; ;Digital_Clock.c: 37: }
 [e :UE 95 ]
 }

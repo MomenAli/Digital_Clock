@@ -1,8 +1,40 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"16 SSD.c
-[; ;SSD.c: 16: static SSD_Symbol_t Buffer[(4)];
+"24 SSD.c
+[; ;SSD.c: 24: static SSD_Symbol_t Buffer[(4)];
 [c E859 0 1 2 3 4 5 6 7 8 9 10 .. ]
 [n E859 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
+"61 ./GPIO.h
+[; ;./GPIO.h: 61: u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
+[v _GPIO_Init_Port `(uc ~T0 @X0 0 ef2`*uc`uc ]
+"1499 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"62 ./GPIO.h
+[; ;./GPIO.h: 62: u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
+[v _GPIO_Init_Pin `(uc ~T0 @X0 0 ef3`*uc`uc`uc ]
+"1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"216
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"61 SSD.c
+[; ;SSD.c: 61:     (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+[c E878 0 1 .. ]
+[n E878 . SSD_OFF SSD_ON  ]
+"72
+[; ;SSD.c: 72: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
+[c E872 0 1 2 3 .. ]
+[n E872 . SSD_MINUTES_UNITS SSD_MINUTES_TENS SSD_HOURS_UNITS SSD_HOURS_TENS  ]
+"87 ./SSD.h
+[; ;./SSD.h: 87: void SSD_Disable(SSD_t s);
+[v _SSD_Disable `(v ~T0 @X0 0 ef1`E872 ]
+"340 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"88 ./SSD.h
+[; ;./SSD.h: 88: void SSD_Enable(SSD_t s);
+[v _SSD_Enable `(v ~T0 @X0 0 ef1`E872 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -199,17 +231,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x WRT = OFF ]
 "44
 [p x CP = OFF ]
-"16 SSD.c
-[; ;SSD.c: 16: static SSD_Symbol_t Buffer[(4)];
+"24 SSD.c
+[; ;SSD.c: 24: static SSD_Symbol_t Buffer[(4)];
 [v _Buffer `E859 ~T0 @X0 -> 4 `i s ]
-"20
-[; ;SSD.c: 20: static currentSSD = 0;
+"28
+[; ;SSD.c: 28: static currentSSD = 0;
 [v _currentSSD `i ~T0 @X0 1 s ]
 [i _currentSSD
 -> 0 `i
 ]
-"26
-[; ;SSD.c: 26: static u8_t SSD_LOT_ARR[] =
+"34
+[; ;SSD.c: 34: static u8_t SSD_LOT_ARR[] =
 [v _SSD_LOT_ARR `uc ~T0 @X0 -> 11 `i s ]
 [i _SSD_LOT_ARR
 :U ..
@@ -226,45 +258,261 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"42
-[; ;SSD.c: 42: void SSD_Init()
-[v _SSD_Init `(v ~T0 @X0 1 ef ]
-"43
-[; ;SSD.c: 43: {
-{
-[e :U _SSD_Init ]
-[f ]
-"45
-[; ;SSD.c: 45: }
-[e :UE 95 ]
-}
-"46
-[; ;SSD.c: 46: void Set_Symbol(SSD_Symbol_t symbol,u8_t index)
-[v _Set_Symbol `(v ~T0 @X0 1 ef2`E859`uc ]
-"47
-[; ;SSD.c: 47: {
-{
-[e :U _Set_Symbol ]
-"46
-[; ;SSD.c: 46: void Set_Symbol(SSD_Symbol_t symbol,u8_t index)
-[v _symbol `E859 ~T0 @X0 1 r1 ]
-[v _index `uc ~T0 @X0 1 r2 ]
-"47
-[; ;SSD.c: 47: {
-[f ]
-"49
-[; ;SSD.c: 49: }
-[e :UE 96 ]
-}
 "50
-[; ;SSD.c: 50: void update(void)
-[v _update `(v ~T0 @X0 1 ef ]
+[; ;SSD.c: 50: void SSD_Init()
+[v _SSD_Init `(v ~T0 @X0 1 ef ]
 "51
 [; ;SSD.c: 51: {
 {
-[e :U _update ]
+[e :U _SSD_Init ]
 [f ]
-"53
-[; ;SSD.c: 53: }
-[e :UE 97 ]
+"52
+[; ;SSD.c: 52:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"54
+[; ;SSD.c: 54:     GPIO_Init_Port(&(TRISD),(0));
+[e ( _GPIO_Init_Port (2 , -> &U _TRISD `*uc -> -> 0 `i `uc ]
+"55
+[; ;SSD.c: 55:     for(;i<(4);i++)
+{
+[e $ < _i -> 4 `i 96  ]
+[e $U 97  ]
+[e :U 96 ]
+"56
+[; ;SSD.c: 56:     {
+{
+"57
+[; ;SSD.c: 57:         Buffer[i] = SSD_NULL;
+[e = *U + &U _Buffer * -> -> _i `ui `ux -> -> # *U &U _Buffer `ui `ux . `E859 10 ]
+"58
+[; ;SSD.c: 58:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 96  ]
+[e :U 97 ]
+}
+"60
+[; ;SSD.c: 60:     GPIO_Init_Pin(&(TRISB),(4),(0));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 4 `i `uc -> -> 0 `i `uc ]
+"61
+[; ;SSD.c: 61:     (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 4 `i << -> . `E878 0 `i -> 4 `i `uc ]
+"63
+[; ;SSD.c: 63:     GPIO_Init_Pin(&(TRISB),(5),(0));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 5 `i `uc -> -> 0 `i `uc ]
+"64
+[; ;SSD.c: 64:     (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 5 `i << -> . `E878 0 `i -> 5 `i `uc ]
+"66
+[; ;SSD.c: 66:     GPIO_Init_Pin(&(TRISB),(6),(0));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 6 `i `uc -> -> 0 `i `uc ]
+"67
+[; ;SSD.c: 67:     (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 6 `i << -> . `E878 0 `i -> 6 `i `uc ]
+"69
+[; ;SSD.c: 69:     GPIO_Init_Pin(&(TRISB),(7),(0));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 7 `i `uc -> -> 0 `i `uc ]
+"70
+[; ;SSD.c: 70:     (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 7 `i << -> . `E878 0 `i -> 7 `i `uc ]
+"71
+[; ;SSD.c: 71: }
+[e :UE 95 ]
+}
+"72
+[; ;SSD.c: 72: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
+[v _SSD_Set_Symbol `(v ~T0 @X0 1 ef2`E859`E872 ]
+"73
+[; ;SSD.c: 73: {
+{
+[e :U _SSD_Set_Symbol ]
+"72
+[; ;SSD.c: 72: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
+[v _symbol `E859 ~T0 @X0 1 r1 ]
+[v _index `E872 ~T0 @X0 1 r2 ]
+"73
+[; ;SSD.c: 73: {
+[f ]
+"75
+[; ;SSD.c: 75:     Buffer[index] = symbol;
+[e = *U + &U _Buffer * -> _index `ux -> -> # *U &U _Buffer `ui `ux _symbol ]
+"76
+[; ;SSD.c: 76: }
+[e :UE 99 ]
+}
+"77
+[; ;SSD.c: 77: void SSD_Update(void)
+[v _SSD_Update `(v ~T0 @X0 1 ef ]
+"78
+[; ;SSD.c: 78: {
+{
+[e :U _SSD_Update ]
+[f ]
+"82
+[; ;SSD.c: 82:     SSD_Disable(currentSSD);
+[e ( _SSD_Disable (1 -> _currentSSD `E872 ]
+"84
+[; ;SSD.c: 84:     currentSSD++;
+[e ++ _currentSSD -> 1 `i ]
+"85
+[; ;SSD.c: 85:     if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;
+[e $ ! > _currentSSD -> . `E872 3 `i 101  ]
+[e = _currentSSD -> 0 `i ]
+[e :U 101 ]
+"87
+[; ;SSD.c: 87:     (((PORTD))=(SSD_LOT_ARR[currentSSD]));
+[e = _PORTD *U + &U _SSD_LOT_ARR * -> -> _currentSSD `ui `ux -> -> # *U &U _SSD_LOT_ARR `ui `ux ]
+"89
+[; ;SSD.c: 89:     SSD_Enable(currentSSD);
+[e ( _SSD_Enable (1 -> _currentSSD `E872 ]
+"90
+[; ;SSD.c: 90: }
+[e :UE 100 ]
+}
+"92
+[; ;SSD.c: 92: void SSD_Disable(SSD_t s)
+[v _SSD_Disable `(v ~T0 @X0 1 ef1`E872 ]
+"93
+[; ;SSD.c: 93: {
+{
+[e :U _SSD_Disable ]
+"92
+[; ;SSD.c: 92: void SSD_Disable(SSD_t s)
+[v _s `E872 ~T0 @X0 1 r1 ]
+"93
+[; ;SSD.c: 93: {
+[f ]
+"94
+[; ;SSD.c: 94:     switch(s)
+[e $U 104  ]
+"95
+[; ;SSD.c: 95:     {
+{
+"96
+[; ;SSD.c: 96:         case SSD_MINUTES_UNITS:
+[e :U 105 ]
+"97
+[; ;SSD.c: 97:             (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 4 `i << -> . `E878 0 `i -> 4 `i `uc ]
+"98
+[; ;SSD.c: 98:             break;
+[e $U 103  ]
+"99
+[; ;SSD.c: 99:         case SSD_MINUTES_TENS:
+[e :U 106 ]
+"100
+[; ;SSD.c: 100:             (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 5 `i << -> . `E878 0 `i -> 5 `i `uc ]
+"101
+[; ;SSD.c: 101:             break;
+[e $U 103  ]
+"102
+[; ;SSD.c: 102:         case SSD_HOURS_UNITS:
+[e :U 107 ]
+"103
+[; ;SSD.c: 103:             (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 6 `i << -> . `E878 0 `i -> 6 `i `uc ]
+"104
+[; ;SSD.c: 104:             break;
+[e $U 103  ]
+"105
+[; ;SSD.c: 105:         case SSD_HOURS_TENS:
+[e :U 108 ]
+"106
+[; ;SSD.c: 106:             (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 7 `i << -> . `E878 0 `i -> 7 `i `uc ]
+"107
+[; ;SSD.c: 107:             break;
+[e $U 103  ]
+"108
+[; ;SSD.c: 108:         default:
+[e :U 109 ]
+"110
+[; ;SSD.c: 110:     }
+}
+[e $U 103  ]
+[e :U 104 ]
+[e [\ -> _s `ui , $ -> . `E872 0 `ui 105
+ , $ -> . `E872 1 `ui 106
+ , $ -> . `E872 2 `ui 107
+ , $ -> . `E872 3 `ui 108
+ 109 ]
+[e :U 103 ]
+"111
+[; ;SSD.c: 111: }
+[e :UE 102 ]
+}
+"113
+[; ;SSD.c: 113: void SSD_Enable(SSD_t s)
+[v _SSD_Enable `(v ~T0 @X0 1 ef1`E872 ]
+"114
+[; ;SSD.c: 114: {
+{
+[e :U _SSD_Enable ]
+"113
+[; ;SSD.c: 113: void SSD_Enable(SSD_t s)
+[v _s `E872 ~T0 @X0 1 r1 ]
+"114
+[; ;SSD.c: 114: {
+[f ]
+"115
+[; ;SSD.c: 115:     switch(s)
+[e $U 112  ]
+"116
+[; ;SSD.c: 116:     {
+{
+"117
+[; ;SSD.c: 117:         case SSD_MINUTES_UNITS:
+[e :U 113 ]
+"118
+[; ;SSD.c: 118:             (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_ON<<(4)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 4 `i << -> . `E878 1 `i -> 4 `i `uc ]
+"119
+[; ;SSD.c: 119:             break;
+[e $U 111  ]
+"120
+[; ;SSD.c: 120:         case SSD_MINUTES_TENS:
+[e :U 114 ]
+"121
+[; ;SSD.c: 121:             (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_ON<<(5)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 5 `i << -> . `E878 1 `i -> 5 `i `uc ]
+"122
+[; ;SSD.c: 122:             break;
+[e $U 111  ]
+"123
+[; ;SSD.c: 123:         case SSD_HOURS_UNITS:
+[e :U 115 ]
+"124
+[; ;SSD.c: 124:             (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_ON<<(6)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 6 `i << -> . `E878 1 `i -> 6 `i `uc ]
+"125
+[; ;SSD.c: 125:             break;
+[e $U 111  ]
+"126
+[; ;SSD.c: 126:         case SSD_HOURS_TENS:
+[e :U 116 ]
+"127
+[; ;SSD.c: 127:             (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_ON<<(7)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 7 `i << -> . `E878 1 `i -> 7 `i `uc ]
+"128
+[; ;SSD.c: 128:             break;
+[e $U 111  ]
+"129
+[; ;SSD.c: 129:         default:
+[e :U 117 ]
+"131
+[; ;SSD.c: 131:     }
+}
+[e $U 111  ]
+[e :U 112 ]
+[e [\ -> _s `ui , $ -> . `E872 0 `ui 113
+ , $ -> . `E872 1 `ui 114
+ , $ -> . `E872 2 `ui 115
+ , $ -> . `E872 3 `ui 116
+ 117 ]
+[e :U 111 ]
+"132
+[; ;SSD.c: 132: }
+[e :UE 110 ]
 }

@@ -1755,13 +1755,71 @@ u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 10 "Digital_Clock.c" 2
 
 
+# 1 "./SSD.h" 1
+# 49 "./SSD.h"
+typedef enum
+{
+    SSD_0 = 0,
+    SSD_1,
+    SSD_2,
+    SSD_3,
+    SSD_4,
+    SSD_5,
+    SSD_6,
+    SSD_7,
+    SSD_8,
+    SSD_9,
+    SSD_NULL
+}SSD_Symbol_t;
+
+
+
+
+
+
+typedef enum
+{
+    SSD_MINUTES_UNITS,
+    SSD_MINUTES_TENS,
+    SSD_HOURS_UNITS,
+    SSD_HOURS_TENS
+}SSD_t;
+
+
+typedef enum
+{
+    SSD_OFF = 0,
+    SSD_ON = 1
+}tSSD_State;
+
+void SSD_Init(void);
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+void SSD_Update(void);
+void SSD_Disable(SSD_t s);
+void SSD_Enable(SSD_t s);
+# 12 "Digital_Clock.c" 2
+
 
 void main(void) {
 
-    GPIO_Init_Port(&(TRISD),(0));
-    GPIO_Init_Pin(&(TRISB),(5),(0));
-    (((PORTD))=(0xff));
-    (((PORTB))=((PORTB) & ~(1<<(5)))|(1<<(5)));
+    SSD_Init();
+
+
+    SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+    SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+    SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+    SSD_Set_Symbol(4,SSD_HOURS_TENS);
+
+    SSD_Update();
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    SSD_Update();
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    SSD_Update();
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    SSD_Update();
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
+    SSD_Update();
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
 
     while(1);
     return;

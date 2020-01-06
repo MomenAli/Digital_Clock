@@ -1754,7 +1754,7 @@ u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 7 "SSD.c" 2
 
 # 1 "./SSD.h" 1
-# 50 "./SSD.h"
+# 49 "./SSD.h"
 typedef enum
 {
     SSD_0 = 0,
@@ -1772,18 +1772,31 @@ typedef enum
 
 
 
-void SSD_Init();
-void Set_Symbol(SSD_Symbol_t symbol,u8_t index);
-void update(void);
+
+
+
+typedef enum
+{
+    SSD_MINUTES_UNITS,
+    SSD_MINUTES_TENS,
+    SSD_HOURS_UNITS,
+    SSD_HOURS_TENS
+}SSD_t;
+
+
+typedef enum
+{
+    SSD_OFF = 0,
+    SSD_ON = 1
+}tSSD_State;
+
+void SSD_Init(void);
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+void SSD_Update(void);
+void SSD_Disable(SSD_t s);
+void SSD_Enable(SSD_t s);
 # 8 "SSD.c" 2
-
-
-
-
-
-
-
-
+# 24 "SSD.c"
 static SSD_Symbol_t Buffer[(4)];
 
 
@@ -1812,13 +1825,84 @@ static u8_t SSD_LOT_ARR[] =
 
 void SSD_Init()
 {
+    int i = 0;
 
+    GPIO_Init_Port(&(TRISD),(0));
+    for(;i<(4);i++)
+    {
+        Buffer[i] = SSD_NULL;
+    }
+
+    GPIO_Init_Pin(&(TRISB),(4),(0));
+    (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+
+    GPIO_Init_Pin(&(TRISB),(5),(0));
+    (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+
+    GPIO_Init_Pin(&(TRISB),(6),(0));
+    (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+
+    GPIO_Init_Pin(&(TRISB),(7),(0));
+    (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
 }
-void Set_Symbol(SSD_Symbol_t symbol,u8_t index)
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 {
 
+    Buffer[index] = symbol;
 }
-void update(void)
+void SSD_Update(void)
 {
 
+
+
+    SSD_Disable(currentSSD);
+
+    currentSSD++;
+    if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;
+
+    (((PORTD))=(SSD_LOT_ARR[currentSSD]));
+
+    SSD_Enable(currentSSD);
+}
+
+void SSD_Disable(SSD_t s)
+{
+    switch(s)
+    {
+        case SSD_MINUTES_UNITS:
+            (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+            break;
+        case SSD_MINUTES_TENS:
+            (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+            break;
+        case SSD_HOURS_UNITS:
+            (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+            break;
+        case SSD_HOURS_TENS:
+            (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+            break;
+        default:
+                             ;
+    }
+}
+
+void SSD_Enable(SSD_t s)
+{
+    switch(s)
+    {
+        case SSD_MINUTES_UNITS:
+            (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_ON<<(4)));
+            break;
+        case SSD_MINUTES_TENS:
+            (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_ON<<(5)));
+            break;
+        case SSD_HOURS_UNITS:
+            (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_ON<<(6)));
+            break;
+        case SSD_HOURS_TENS:
+            (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_ON<<(7)));
+            break;
+        default:
+                             ;
+    }
 }

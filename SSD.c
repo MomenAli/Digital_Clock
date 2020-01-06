@@ -49,33 +49,84 @@ static u8_t SSD_LOT_ARR[] =
 
 void SSD_Init()
 {
+    int i = 0;
     //initialize to data port
-    
+    GPIO_Init_Port(&SSD_DATA_DIR,GPIO_OUT);
+    for(;i<NUMBER_SSD;i++)
+    {
+        Buffer[i] = SSD_NULL;
+    }
     //initialize MINUTES UNITS enable pin
-    
+    GPIO_Init_Pin(&SSD_MINUTES_UNITS_DIR,SSD_MINUTES_UNITS_PIN,GPIO_OUT);
+    GPIO_Write_Pin(SSD_MINUTES_UNITS_PORT,SSD_MINUTES_UNITS_PIN,SSD_OFF);
     //initialize MINUTES TENS enable pin
-    
+    GPIO_Init_Pin(&SSD_MINUTES_TENS_DIR,SSD_MINUTES_TENS_PIN,GPIO_OUT);
+    GPIO_Write_Pin(SSD_MINUTES_TENS_PORT,SSD_MINUTES_TENS_PIN,SSD_OFF);
     //initialize HOURS UNITS enable pin
-    
+    GPIO_Init_Pin(&SSD_HOURS_UNITS_DIR,SSD_HOURS_UNITS_PIN,GPIO_OUT);
+    GPIO_Write_Pin(SSD_HOURS_UNITS_PORT,SSD_HOURS_UNITS_PIN,SSD_OFF);
     //initialize HOURS TENS enable pin
+    GPIO_Init_Pin(&SSD_HOURS_TENS_DIR,SSD_HOURS_TENS_PIN,GPIO_OUT);
+    GPIO_Write_Pin(SSD_HOURS_TENS_PORT,SSD_HOURS_TENS_PIN,SSD_OFF);
 }
-void Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 {
     // set the passed symbol in the passed index
-    
+    Buffer[index] = symbol;
 }
-void update(void)
+void SSD_Update(void)
 {
     //check if my tick comes
     
-    
-    
-    // disable all the SSDs
-    
+    // disable previous SSD
+    SSD_Disable(currentSSD);
     //increment the current index
-    
+    currentSSD++;
+    if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;     
     // output the symbol in the data port
-    
+    GPIO_Write_Port(SSD_DATA_PORT,SSD_LOT_ARR[currentSSD]);
     //enable the current SSD
-    
+    SSD_Enable(currentSSD);
+}
+
+void SSD_Disable(SSD_t s)
+{
+    switch(s)
+    {
+        case SSD_MINUTES_UNITS:
+            GPIO_Write_Pin(SSD_MINUTES_UNITS_PORT,SSD_MINUTES_UNITS_PIN,SSD_OFF);
+            break;
+        case SSD_MINUTES_TENS:
+            GPIO_Write_Pin(SSD_MINUTES_TENS_PORT,SSD_MINUTES_TENS_PIN,SSD_OFF);
+            break;
+        case SSD_HOURS_UNITS:
+            GPIO_Write_Pin(SSD_HOURS_UNITS_PORT,SSD_HOURS_UNITS_PIN,SSD_OFF);
+            break;
+        case SSD_HOURS_TENS:
+            GPIO_Write_Pin(SSD_HOURS_TENS_PORT,SSD_HOURS_TENS_PIN,SSD_OFF);
+            break;
+        default:
+            /*never go here*/;
+    }
+}
+
+void SSD_Enable(SSD_t s)
+{
+    switch(s)
+    {
+        case SSD_MINUTES_UNITS:
+            GPIO_Write_Pin(SSD_MINUTES_UNITS_PORT,SSD_MINUTES_UNITS_PIN,SSD_ON);
+            break;
+        case SSD_MINUTES_TENS:
+            GPIO_Write_Pin(SSD_MINUTES_TENS_PORT,SSD_MINUTES_TENS_PIN,SSD_ON);
+            break;
+        case SSD_HOURS_UNITS:
+            GPIO_Write_Pin(SSD_HOURS_UNITS_PORT,SSD_HOURS_UNITS_PIN,SSD_ON);
+            break;
+        case SSD_HOURS_TENS:
+            GPIO_Write_Pin(SSD_HOURS_TENS_PORT,SSD_HOURS_TENS_PIN,SSD_ON);
+            break;
+        default:
+            /*never go here*/;
+    }
 }

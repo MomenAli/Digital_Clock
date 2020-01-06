@@ -74,9 +74,17 @@ typedef enum
     SSD_HOURS_TENS
 }SSD_t;
 
+/* SSD states */
+typedef enum
+{
+    SSD_OFF = 0,
+    SSD_ON = 1
+}tSSD_State;
 
-void SSD_Init();
-void Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
-void update(void);
+void SSD_Init(void);
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+void SSD_Update(void);
+void SSD_Disable(SSD_t s);
+void SSD_Enable(SSD_t s);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

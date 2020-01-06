@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Sun Jan 05 13:23:58 2020
+                                                                                               Mon Jan 06 09:36:34 2020
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	16F877A
@@ -9,845 +9,1601 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
      3                           	opt	flic
      4                           	psect	idataBANK0,global,class=CODE,delta=2
      5                           	psect	cinit,global,class=CODE,merge=1,delta=2
-     6                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
-     7                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
-     8                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
-     9                           	psect	inittext,global,class=CODE,delta=2
-    10                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
-    11                           	psect	maintext,global,class=CODE,split=1,delta=2
-    12                           	psect	text1,local,class=CODE,merge=1,delta=2
-    13                           	psect	text2,local,class=CODE,merge=1,delta=2
-    14                           	dabs	1,0x7E,2
-    15  0000                     
-    16                           ; Version 2.10
-    17                           ; Generated 31/07/2019 GMT
-    18                           ; 
-    19                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    20                           ; All rights reserved.
-    21                           ; 
-    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+     8                           	psect	inittext,global,class=CODE,delta=2
+     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    10                           	psect	maintext,global,class=CODE,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,merge=1,delta=2
+    15                           	psect	text5,local,class=CODE,merge=1,delta=2
+    16                           	psect	text6,local,class=CODE,merge=1,delta=2
+    17                           	psect	text7,local,class=CODE,merge=1,delta=2
+    18                           	dabs	1,0x7E,2
+    19  0000                     
+    20                           ; Version 2.10
+    21                           ; Generated 31/07/2019 GMT
+    22                           ; 
+    23                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    24                           ; All rights reserved.
+    25                           ; 
+    26                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    23                           ; 
-    24                           ; Redistribution and use in source and binary forms, with or without modification, are
-    25                           ; permitted provided that the following conditions are met:
-    26                           ; 
-    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    27                           ; 
+    28                           ; Redistribution and use in source and binary forms, with or without modification, are
+    29                           ; permitted provided that the following conditions are met:
+    30                           ; 
+    31                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    28                           ;        conditions and the following disclaimer.
-    29                           ; 
-    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
-      +                          list
-    31                           ;        of conditions and the following disclaimer in the documentation and/or other
-    32                           ;        materials provided with the distribution.
+    32                           ;        conditions and the following disclaimer.
     33                           ; 
-    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    34                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    35                           ;        of conditions and the following disclaimer in the documentation and/or other
+    36                           ;        materials provided with the distribution.
+    37                           ; 
+    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    35                           ;        software without specific prior written permission.
-    36                           ; 
-    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    39                           ;        software without specific prior written permission.
+    40                           ; 
+    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    45                           ; 
-    46                           ; 
-    47                           ; Code-generator required, PIC16F877A Definitions
-    48                           ; 
-    49                           ; SFR Addresses
-    50  0000                     	;# 
-    51  0001                     	;# 
-    52  0002                     	;# 
-    53  0003                     	;# 
-    54  0004                     	;# 
-    55  0005                     	;# 
-    56  0006                     	;# 
-    57  0007                     	;# 
-    58  0008                     	;# 
-    59  0009                     	;# 
-    60  000A                     	;# 
-    61  000B                     	;# 
-    62  000C                     	;# 
-    63  000D                     	;# 
-    64  000E                     	;# 
-    65  000E                     	;# 
-    66  000F                     	;# 
-    67  0010                     	;# 
-    68  0011                     	;# 
-    69  0012                     	;# 
-    70  0013                     	;# 
-    71  0014                     	;# 
-    72  0015                     	;# 
-    73  0015                     	;# 
-    74  0016                     	;# 
-    75  0017                     	;# 
-    76  0018                     	;# 
-    77  0019                     	;# 
-    78  001A                     	;# 
-    79  001B                     	;# 
-    80  001B                     	;# 
-    81  001C                     	;# 
-    82  001D                     	;# 
-    83  001E                     	;# 
-    84  001F                     	;# 
-    85  0081                     	;# 
-    86  0085                     	;# 
-    87  0086                     	;# 
-    88  0087                     	;# 
-    89  0088                     	;# 
-    90  0089                     	;# 
-    91  008C                     	;# 
-    92  008D                     	;# 
-    93  008E                     	;# 
-    94  0091                     	;# 
-    95  0092                     	;# 
-    96  0093                     	;# 
-    97  0094                     	;# 
-    98  0098                     	;# 
-    99  0099                     	;# 
-   100  009C                     	;# 
-   101  009D                     	;# 
-   102  009E                     	;# 
-   103  009F                     	;# 
-   104  010C                     	;# 
-   105  010D                     	;# 
-   106  010E                     	;# 
-   107  010F                     	;# 
-   108  018C                     	;# 
-   109  018D                     	;# 
-   110  0000                     	;# 
-   111  0001                     	;# 
-   112  0002                     	;# 
-   113  0003                     	;# 
-   114  0004                     	;# 
-   115  0005                     	;# 
-   116  0006                     	;# 
-   117  0007                     	;# 
-   118  0008                     	;# 
-   119  0009                     	;# 
-   120  000A                     	;# 
-   121  000B                     	;# 
-   122  000C                     	;# 
-   123  000D                     	;# 
-   124  000E                     	;# 
-   125  000E                     	;# 
-   126  000F                     	;# 
-   127  0010                     	;# 
-   128  0011                     	;# 
-   129  0012                     	;# 
-   130  0013                     	;# 
-   131  0014                     	;# 
-   132  0015                     	;# 
-   133  0015                     	;# 
-   134  0016                     	;# 
-   135  0017                     	;# 
-   136  0018                     	;# 
-   137  0019                     	;# 
-   138  001A                     	;# 
-   139  001B                     	;# 
-   140  001B                     	;# 
-   141  001C                     	;# 
-   142  001D                     	;# 
-   143  001E                     	;# 
-   144  001F                     	;# 
-   145  0081                     	;# 
-   146  0085                     	;# 
-   147  0086                     	;# 
-   148  0087                     	;# 
-   149  0088                     	;# 
-   150  0089                     	;# 
-   151  008C                     	;# 
-   152  008D                     	;# 
-   153  008E                     	;# 
-   154  0091                     	;# 
-   155  0092                     	;# 
-   156  0093                     	;# 
-   157  0094                     	;# 
-   158  0098                     	;# 
-   159  0099                     	;# 
-   160  009C                     	;# 
-   161  009D                     	;# 
-   162  009E                     	;# 
-   163  009F                     	;# 
-   164  010C                     	;# 
-   165  010D                     	;# 
-   166  010E                     	;# 
-   167  010F                     	;# 
-   168  018C                     	;# 
-   169  018D                     	;# 
-   170  0000                     	;# 
-   171  0001                     	;# 
-   172  0002                     	;# 
-   173  0003                     	;# 
-   174  0004                     	;# 
-   175  0005                     	;# 
-   176  0006                     	;# 
-   177  0007                     	;# 
-   178  0008                     	;# 
-   179  0009                     	;# 
-   180  000A                     	;# 
-   181  000B                     	;# 
-   182  000C                     	;# 
-   183  000D                     	;# 
-   184  000E                     	;# 
-   185  000E                     	;# 
-   186  000F                     	;# 
-   187  0010                     	;# 
-   188  0011                     	;# 
-   189  0012                     	;# 
-   190  0013                     	;# 
-   191  0014                     	;# 
-   192  0015                     	;# 
-   193  0015                     	;# 
-   194  0016                     	;# 
-   195  0017                     	;# 
-   196  0018                     	;# 
-   197  0019                     	;# 
-   198  001A                     	;# 
-   199  001B                     	;# 
-   200  001B                     	;# 
-   201  001C                     	;# 
-   202  001D                     	;# 
-   203  001E                     	;# 
-   204  001F                     	;# 
-   205  0081                     	;# 
-   206  0085                     	;# 
-   207  0086                     	;# 
-   208  0087                     	;# 
-   209  0088                     	;# 
-   210  0089                     	;# 
-   211  008C                     	;# 
-   212  008D                     	;# 
-   213  008E                     	;# 
-   214  0091                     	;# 
-   215  0092                     	;# 
-   216  0093                     	;# 
-   217  0094                     	;# 
-   218  0098                     	;# 
-   219  0099                     	;# 
-   220  009C                     	;# 
-   221  009D                     	;# 
-   222  009E                     	;# 
-   223  009F                     	;# 
-   224  010C                     	;# 
-   225  010D                     	;# 
-   226  010E                     	;# 
-   227  010F                     	;# 
-   228  018C                     	;# 
-   229  018D                     	;# 
-   230  0000                     	;# 
-   231  0001                     	;# 
-   232  0002                     	;# 
-   233  0003                     	;# 
-   234  0004                     	;# 
-   235  0005                     	;# 
-   236  0006                     	;# 
-   237  0007                     	;# 
-   238  0008                     	;# 
-   239  0009                     	;# 
-   240  000A                     	;# 
-   241  000B                     	;# 
-   242  000C                     	;# 
-   243  000D                     	;# 
-   244  000E                     	;# 
-   245  000E                     	;# 
-   246  000F                     	;# 
-   247  0010                     	;# 
-   248  0011                     	;# 
-   249  0012                     	;# 
-   250  0013                     	;# 
-   251  0014                     	;# 
-   252  0015                     	;# 
-   253  0015                     	;# 
-   254  0016                     	;# 
-   255  0017                     	;# 
-   256  0018                     	;# 
-   257  0019                     	;# 
-   258  001A                     	;# 
-   259  001B                     	;# 
-   260  001B                     	;# 
-   261  001C                     	;# 
-   262  001D                     	;# 
-   263  001E                     	;# 
-   264  001F                     	;# 
-   265  0081                     	;# 
-   266  0085                     	;# 
-   267  0086                     	;# 
-   268  0087                     	;# 
-   269  0088                     	;# 
-   270  0089                     	;# 
-   271  008C                     	;# 
-   272  008D                     	;# 
-   273  008E                     	;# 
-   274  0091                     	;# 
-   275  0092                     	;# 
-   276  0093                     	;# 
-   277  0094                     	;# 
-   278  0098                     	;# 
-   279  0099                     	;# 
-   280  009C                     	;# 
-   281  009D                     	;# 
-   282  009E                     	;# 
-   283  009F                     	;# 
-   284  010C                     	;# 
-   285  010D                     	;# 
-   286  010E                     	;# 
-   287  010F                     	;# 
-   288  018C                     	;# 
-   289  018D                     	;# 
-   290                           
-   291                           	psect	idataBANK0
-   292  06F8                     __pidataBANK0:	
-   293                           
-   294                           ;initializer for _SSD_LOT_ARR
-   295  06F8  343F               	retlw	63
-   296  06F9  3406               	retlw	6
-   297  06FA  345B               	retlw	91
-   298  06FB  344F               	retlw	79
-   299  06FC  3466               	retlw	102
-   300  06FD  346D               	retlw	109
-   301  06FE  347D               	retlw	125
-   302  06FF  3407               	retlw	7
-   303  0700  347F               	retlw	127
-   304  0701  346F               	retlw	111
-   305  0702  3400               	retlw	0
-   306  0006                     _PORTB	set	6
-   307  0008                     _PORTD	set	8
-   308  0089                     _TRISE	set	137
-   309  0087                     _TRISC	set	135
-   310  0085                     _TRISA	set	133
-   311  0088                     _TRISD	set	136
-   312  0086                     _TRISB	set	134
-   313                           
-   314                           ; #config settings
-   315  0000                     
-   316                           	psect	cinit
-   317  07E8                     start_initialization:	
-   318  07E8                     __initialization:	
-   319                           
-   320                           ; Initialize objects allocated to BANK0
-   321  07E8  1383               	bcf	3,7	;select IRP bank0
-   322  07E9  302B               	movlw	low (__pdataBANK0+11)
-   323  07EA  00FD               	movwf	btemp+-1
-   324  07EB  3006               	movlw	high __pidataBANK0
-   325  07EC  00FE               	movwf	btemp
-   326  07ED  30F8               	movlw	low __pidataBANK0
-   327  07EE  00FF               	movwf	btemp+1
-   328  07EF  3020               	movlw	low __pdataBANK0
-   329  07F0  0084               	movwf	4
-   330  07F1  120A  118A  2707  120A  118A  	fcall	init_ram0
-   331                           
-   332                           ; Clear objects allocated to BANK0
-   333  07F6  01AB               	clrf	__pbssBANK0& (0+127)
-   334  07F7  01AC               	clrf	(__pbssBANK0+1)& (0+127)
-   335  07F8  01AD               	clrf	(__pbssBANK0+2)& (0+127)
-   336  07F9  01AE               	clrf	(__pbssBANK0+3)& (0+127)
-   337                           
-   338                           ; Clear objects allocated to COMMON
-   339  07FA  01F9               	clrf	__pbssCOMMON& (0+127)
-   340  07FB  01FA               	clrf	(__pbssCOMMON+1)& (0+127)
-   341  07FC                     end_of_initialization:	
-   342                           ;End of C runtime variable initialization code
-   343                           
-   344  07FC                     __end_of__initialization:	
-   345  07FC  0183               	clrf	3
-   346  07FD  120A  118A  2F16   	ljmp	_main	;jump to C main() function
-   347                           
-   348                           	psect	bssCOMMON
-   349  0079                     __pbssCOMMON:	
-   350  0079                     _currentSSD:	
-   351  0079                     	ds	2
-   352                           
-   353                           	psect	bssBANK0
-   354  002B                     __pbssBANK0:	
-   355  002B                     _Buffer:	
-   356  002B                     	ds	4
-   357                           
-   358                           	psect	dataBANK0
-   359  0020                     __pdataBANK0:	
-   360  0020                     _SSD_LOT_ARR:	
-   361  0020                     	ds	11
-   362                           
-   363                           	psect	inittext
-   364  0703                     init_fetch0:	
-   365                           ;	Called with low address in FSR and high address in W
-   366                           
-   367  0703  087E               	movf	btemp,w
-   368  0704  008A               	movwf	10
-   369  0705  087F               	movf	btemp+1,w
-   370  0706  0082               	movwf	2
-   371  0707                     init_ram0:	
-   372                           ;Called with:
-   373                           ;	high address of idata address in btemp 
-   374                           ;	low address of idata address in btemp+1 
-   375                           ;	low address of data in FSR
-   376                           ;	high address + 1 of data in btemp-1
-   377                           
-   378  0707  120A  118A  2703  120A  118A  	fcall	init_fetch0
-   379  070C  0080               	movwf	0
-   380  070D  0A84               	incf	4,f
-   381  070E  0804               	movf	4,w
-   382  070F  067D               	xorwf	btemp+-1,w
-   383  0710  1903               	btfsc	3,2
-   384  0711  3400               	retlw	0
-   385  0712  0AFF               	incf	btemp+1,f
-   386  0713  1903               	btfsc	3,2
-   387  0714  0AFE               	incf	btemp,f
-   388  0715  2F07               	goto	init_ram0
-   389                           
-   390                           	psect	cstackCOMMON
-   391  0070                     __pcstackCOMMON:	
-   392  0070                     ?_GPIO_Init_Port:	
-   393  0070                     ?_GPIO_Init_Pin:	
-   394                           ; 1 bytes @ 0x0
-   395                           
-   396  0070                     ?_main:	
-   397                           ; 1 bytes @ 0x0
-   398                           
-   399  0070                     GPIO_Init_Port@DirRegAddress:	
-   400                           ; 1 bytes @ 0x0
-   401                           
-   402  0070                     GPIO_Init_Pin@DirRegAddress:	
-   403                           ; 2 bytes @ 0x0
-   404                           
-   405                           
-   406                           ; 2 bytes @ 0x0
-   407  0070                     	ds	2
-   408  0072                     GPIO_Init_Port@dir:	
-   409  0072                     GPIO_Init_Pin@pin_number:	
-   410                           ; 1 bytes @ 0x2
-   411                           
+    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    49                           ; 
+    50                           ; 
+    51                           ; Code-generator required, PIC16F877A Definitions
+    52                           ; 
+    53                           ; SFR Addresses
+    54  0000                     	;# 
+    55  0001                     	;# 
+    56  0002                     	;# 
+    57  0003                     	;# 
+    58  0004                     	;# 
+    59  0005                     	;# 
+    60  0006                     	;# 
+    61  0007                     	;# 
+    62  0008                     	;# 
+    63  0009                     	;# 
+    64  000A                     	;# 
+    65  000B                     	;# 
+    66  000C                     	;# 
+    67  000D                     	;# 
+    68  000E                     	;# 
+    69  000E                     	;# 
+    70  000F                     	;# 
+    71  0010                     	;# 
+    72  0011                     	;# 
+    73  0012                     	;# 
+    74  0013                     	;# 
+    75  0014                     	;# 
+    76  0015                     	;# 
+    77  0015                     	;# 
+    78  0016                     	;# 
+    79  0017                     	;# 
+    80  0018                     	;# 
+    81  0019                     	;# 
+    82  001A                     	;# 
+    83  001B                     	;# 
+    84  001B                     	;# 
+    85  001C                     	;# 
+    86  001D                     	;# 
+    87  001E                     	;# 
+    88  001F                     	;# 
+    89  0081                     	;# 
+    90  0085                     	;# 
+    91  0086                     	;# 
+    92  0087                     	;# 
+    93  0088                     	;# 
+    94  0089                     	;# 
+    95  008C                     	;# 
+    96  008D                     	;# 
+    97  008E                     	;# 
+    98  0091                     	;# 
+    99  0092                     	;# 
+   100  0093                     	;# 
+   101  0094                     	;# 
+   102  0098                     	;# 
+   103  0099                     	;# 
+   104  009C                     	;# 
+   105  009D                     	;# 
+   106  009E                     	;# 
+   107  009F                     	;# 
+   108  010C                     	;# 
+   109  010D                     	;# 
+   110  010E                     	;# 
+   111  010F                     	;# 
+   112  018C                     	;# 
+   113  018D                     	;# 
+   114  0000                     	;# 
+   115  0001                     	;# 
+   116  0002                     	;# 
+   117  0003                     	;# 
+   118  0004                     	;# 
+   119  0005                     	;# 
+   120  0006                     	;# 
+   121  0007                     	;# 
+   122  0008                     	;# 
+   123  0009                     	;# 
+   124  000A                     	;# 
+   125  000B                     	;# 
+   126  000C                     	;# 
+   127  000D                     	;# 
+   128  000E                     	;# 
+   129  000E                     	;# 
+   130  000F                     	;# 
+   131  0010                     	;# 
+   132  0011                     	;# 
+   133  0012                     	;# 
+   134  0013                     	;# 
+   135  0014                     	;# 
+   136  0015                     	;# 
+   137  0015                     	;# 
+   138  0016                     	;# 
+   139  0017                     	;# 
+   140  0018                     	;# 
+   141  0019                     	;# 
+   142  001A                     	;# 
+   143  001B                     	;# 
+   144  001B                     	;# 
+   145  001C                     	;# 
+   146  001D                     	;# 
+   147  001E                     	;# 
+   148  001F                     	;# 
+   149  0081                     	;# 
+   150  0085                     	;# 
+   151  0086                     	;# 
+   152  0087                     	;# 
+   153  0088                     	;# 
+   154  0089                     	;# 
+   155  008C                     	;# 
+   156  008D                     	;# 
+   157  008E                     	;# 
+   158  0091                     	;# 
+   159  0092                     	;# 
+   160  0093                     	;# 
+   161  0094                     	;# 
+   162  0098                     	;# 
+   163  0099                     	;# 
+   164  009C                     	;# 
+   165  009D                     	;# 
+   166  009E                     	;# 
+   167  009F                     	;# 
+   168  010C                     	;# 
+   169  010D                     	;# 
+   170  010E                     	;# 
+   171  010F                     	;# 
+   172  018C                     	;# 
+   173  018D                     	;# 
+   174  0000                     	;# 
+   175  0001                     	;# 
+   176  0002                     	;# 
+   177  0003                     	;# 
+   178  0004                     	;# 
+   179  0005                     	;# 
+   180  0006                     	;# 
+   181  0007                     	;# 
+   182  0008                     	;# 
+   183  0009                     	;# 
+   184  000A                     	;# 
+   185  000B                     	;# 
+   186  000C                     	;# 
+   187  000D                     	;# 
+   188  000E                     	;# 
+   189  000E                     	;# 
+   190  000F                     	;# 
+   191  0010                     	;# 
+   192  0011                     	;# 
+   193  0012                     	;# 
+   194  0013                     	;# 
+   195  0014                     	;# 
+   196  0015                     	;# 
+   197  0015                     	;# 
+   198  0016                     	;# 
+   199  0017                     	;# 
+   200  0018                     	;# 
+   201  0019                     	;# 
+   202  001A                     	;# 
+   203  001B                     	;# 
+   204  001B                     	;# 
+   205  001C                     	;# 
+   206  001D                     	;# 
+   207  001E                     	;# 
+   208  001F                     	;# 
+   209  0081                     	;# 
+   210  0085                     	;# 
+   211  0086                     	;# 
+   212  0087                     	;# 
+   213  0088                     	;# 
+   214  0089                     	;# 
+   215  008C                     	;# 
+   216  008D                     	;# 
+   217  008E                     	;# 
+   218  0091                     	;# 
+   219  0092                     	;# 
+   220  0093                     	;# 
+   221  0094                     	;# 
+   222  0098                     	;# 
+   223  0099                     	;# 
+   224  009C                     	;# 
+   225  009D                     	;# 
+   226  009E                     	;# 
+   227  009F                     	;# 
+   228  010C                     	;# 
+   229  010D                     	;# 
+   230  010E                     	;# 
+   231  010F                     	;# 
+   232  018C                     	;# 
+   233  018D                     	;# 
+   234  0000                     	;# 
+   235  0001                     	;# 
+   236  0002                     	;# 
+   237  0003                     	;# 
+   238  0004                     	;# 
+   239  0005                     	;# 
+   240  0006                     	;# 
+   241  0007                     	;# 
+   242  0008                     	;# 
+   243  0009                     	;# 
+   244  000A                     	;# 
+   245  000B                     	;# 
+   246  000C                     	;# 
+   247  000D                     	;# 
+   248  000E                     	;# 
+   249  000E                     	;# 
+   250  000F                     	;# 
+   251  0010                     	;# 
+   252  0011                     	;# 
+   253  0012                     	;# 
+   254  0013                     	;# 
+   255  0014                     	;# 
+   256  0015                     	;# 
+   257  0015                     	;# 
+   258  0016                     	;# 
+   259  0017                     	;# 
+   260  0018                     	;# 
+   261  0019                     	;# 
+   262  001A                     	;# 
+   263  001B                     	;# 
+   264  001B                     	;# 
+   265  001C                     	;# 
+   266  001D                     	;# 
+   267  001E                     	;# 
+   268  001F                     	;# 
+   269  0081                     	;# 
+   270  0085                     	;# 
+   271  0086                     	;# 
+   272  0087                     	;# 
+   273  0088                     	;# 
+   274  0089                     	;# 
+   275  008C                     	;# 
+   276  008D                     	;# 
+   277  008E                     	;# 
+   278  0091                     	;# 
+   279  0092                     	;# 
+   280  0093                     	;# 
+   281  0094                     	;# 
+   282  0098                     	;# 
+   283  0099                     	;# 
+   284  009C                     	;# 
+   285  009D                     	;# 
+   286  009E                     	;# 
+   287  009F                     	;# 
+   288  010C                     	;# 
+   289  010D                     	;# 
+   290  010E                     	;# 
+   291  010F                     	;# 
+   292  018C                     	;# 
+   293  018D                     	;# 
+   294                           
+   295                           	psect	idataBANK0
+   296  058C                     __pidataBANK0:	
+   297                           
+   298                           ;initializer for _SSD_LOT_ARR
+   299  058C  343F               	retlw	63
+   300  058D  3406               	retlw	6
+   301  058E  345B               	retlw	91
+   302  058F  344F               	retlw	79
+   303  0590  3466               	retlw	102
+   304  0591  346D               	retlw	109
+   305  0592  347D               	retlw	125
+   306  0593  3407               	retlw	7
+   307  0594  347F               	retlw	127
+   308  0595  346F               	retlw	111
+   309  0596  3400               	retlw	0
+   310  0008                     _PORTD	set	8
+   311  0006                     _PORTB	set	6
+   312  0089                     _TRISE	set	137
+   313  0087                     _TRISC	set	135
+   314  0085                     _TRISA	set	133
+   315  0088                     _TRISD	set	136
+   316  0086                     _TRISB	set	134
+   317                           
+   318                           ; #config settings
+   319  0000                     
+   320                           	psect	cinit
+   321  07E8                     start_initialization:	
+   322  07E8                     __initialization:	
+   323                           
+   324                           ; Initialize objects allocated to BANK0
+   325  07E8  1383               	bcf	3,7	;select IRP bank0
+   326  07E9  302B               	movlw	low (__pdataBANK0+11)
+   327  07EA  00FD               	movwf	btemp+-1
+   328  07EB  3005               	movlw	high __pidataBANK0
+   329  07EC  00FE               	movwf	btemp
+   330  07ED  308C               	movlw	low __pidataBANK0
+   331  07EE  00FF               	movwf	btemp+1
+   332  07EF  3020               	movlw	low __pdataBANK0
+   333  07F0  0084               	movwf	4
+   334  07F1  120A  118A  259B  120A  118A  	fcall	init_ram0
+   335                           
+   336                           ; Clear objects allocated to BANK0
+   337  07F6  01AB               	clrf	__pbssBANK0& (0+127)
+   338  07F7  01AC               	clrf	(__pbssBANK0+1)& (0+127)
+   339  07F8  01AD               	clrf	(__pbssBANK0+2)& (0+127)
+   340  07F9  01AE               	clrf	(__pbssBANK0+3)& (0+127)
+   341  07FA  01AF               	clrf	(__pbssBANK0+4)& (0+127)
+   342  07FB  01B0               	clrf	(__pbssBANK0+5)& (0+127)
+   343  07FC                     end_of_initialization:	
+   344                           ;End of C runtime variable initialization code
+   345                           
+   346  07FC                     __end_of__initialization:	
+   347  07FC  0183               	clrf	3
+   348  07FD  120A  118A  2F62   	ljmp	_main	;jump to C main() function
+   349                           
+   350                           	psect	bssBANK0
+   351  002B                     __pbssBANK0:	
+   352  002B                     _Buffer:	
+   353  002B                     	ds	4
+   354  002F                     _currentSSD:	
+   355  002F                     	ds	2
+   356                           
+   357                           	psect	dataBANK0
+   358  0020                     __pdataBANK0:	
+   359  0020                     _SSD_LOT_ARR:	
+   360  0020                     	ds	11
+   361                           
+   362                           	psect	inittext
+   363  0597                     init_fetch0:	
+   364                           ;	Called with low address in FSR and high address in W
+   365                           
+   366  0597  087E               	movf	btemp,w
+   367  0598  008A               	movwf	10
+   368  0599  087F               	movf	btemp+1,w
+   369  059A  0082               	movwf	2
+   370  059B                     init_ram0:	
+   371                           ;Called with:
+   372                           ;	high address of idata address in btemp 
+   373                           ;	low address of idata address in btemp+1 
+   374                           ;	low address of data in FSR
+   375                           ;	high address + 1 of data in btemp-1
+   376                           
+   377  059B  120A  118A  2597  120A  118A  	fcall	init_fetch0
+   378  05A0  0080               	movwf	0
+   379  05A1  0A84               	incf	4,f
+   380  05A2  0804               	movf	4,w
+   381  05A3  067D               	xorwf	btemp+-1,w
+   382  05A4  1903               	btfsc	3,2
+   383  05A5  3400               	retlw	0
+   384  05A6  0AFF               	incf	btemp+1,f
+   385  05A7  1903               	btfsc	3,2
+   386  05A8  0AFE               	incf	btemp,f
+   387  05A9  2D9B               	goto	init_ram0
+   388                           
+   389                           	psect	cstackCOMMON
+   390  0070                     __pcstackCOMMON:	
+   391  0070                     ?_SSD_Init:	
+   392  0070                     ?_SSD_Set_Symbol:	
+   393                           ; 1 bytes @ 0x0
+   394                           
+   395  0070                     ?_SSD_Update:	
+   396                           ; 1 bytes @ 0x0
+   397                           
+   398  0070                     ?_SSD_Disable:	
+   399                           ; 1 bytes @ 0x0
+   400                           
+   401  0070                     ??_SSD_Disable:	
+   402                           ; 1 bytes @ 0x0
+   403                           
+   404  0070                     ?_SSD_Enable:	
+   405                           ; 1 bytes @ 0x0
+   406                           
+   407  0070                     ??_SSD_Enable:	
+   408                           ; 1 bytes @ 0x0
+   409                           
+   410  0070                     ?_GPIO_Init_Port:	
+   411                           ; 1 bytes @ 0x0
    412                           
-   413                           ; 1 bytes @ 0x2
-   414  0072                     	ds	1
-   415  0073                     ??_GPIO_Init_Port:	
-   416  0073                     GPIO_Init_Pin@dir:	
-   417                           ; 1 bytes @ 0x3
+   413  0070                     ?_GPIO_Init_Pin:	
+   414                           ; 1 bytes @ 0x0
+   415                           
+   416  0070                     ?_main:	
+   417                           ; 1 bytes @ 0x0
    418                           
-   419                           
-   420                           ; 1 bytes @ 0x3
-   421  0073                     	ds	1
-   422  0074                     ??_GPIO_Init_Pin:	
-   423                           
-   424                           ; 1 bytes @ 0x4
-   425  0074                     	ds	1
-   426  0075                     _GPIO_Init_Port$31:	
+   419  0070                     SSD_Set_Symbol@index:	
+   420                           ; 1 bytes @ 0x0
+   421                           
+   422  0070                     GPIO_Init_Port@DirRegAddress:	
+   423                           ; 1 bytes @ 0x0
+   424                           
+   425  0070                     GPIO_Init_Pin@DirRegAddress:	
+   426                           ; 2 bytes @ 0x0
    427                           
-   428                           ; 2 bytes @ 0x5
-   429  0075                     	ds	3
-   430  0078                     ??_main:	
-   431                           
-   432                           ; 1 bytes @ 0x8
-   433  0078                     	ds	1
-   434                           
-   435                           	psect	maintext
-   436  0716                     __pmaintext:	
-   437 ;;
-   438 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
-   439 ;;
-   440 ;; *************** function _main *****************
-   441 ;; Defined at:
-   442 ;;		line 13 in file "Digital_Clock.c"
-   443 ;; Parameters:    Size  Location     Type
-   444 ;;		None
-   445 ;; Auto vars:     Size  Location     Type
-   446 ;;		None
-   447 ;; Return value:  Size  Location     Type
-   448 ;;                  1    wreg      void 
-   449 ;; Registers used:
-   450 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   451 ;; Tracked objects:
-   452 ;;		On entry : B00/0
-   453 ;;		On exit  : 0/0
-   454 ;;		Unchanged: 0/0
-   455 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   456 ;;      Params:         0       0       0       0       0
-   457 ;;      Locals:         0       0       0       0       0
-   458 ;;      Temps:          1       0       0       0       0
-   459 ;;      Totals:         1       0       0       0       0
-   460 ;;Total ram usage:        1 bytes
-   461 ;; Hardware stack levels required when called:    1
-   462 ;; This function calls:
-   463 ;;		_GPIO_Init_Pin
-   464 ;;		_GPIO_Init_Port
-   465 ;; This function is called by:
-   466 ;;		Startup code after reset
-   467 ;; This function uses a non-reentrant model
-   468 ;;
-   469                           
+   428                           
+   429                           ; 2 bytes @ 0x0
+   430  0070                     	ds	1
+   431  0071                     ??_SSD_Set_Symbol:	
+   432                           
+   433                           ; 1 bytes @ 0x1
+   434  0071                     	ds	1
+   435  0072                     GPIO_Init_Port@dir:	
+   436  0072                     GPIO_Init_Pin@pin_number:	
+   437                           ; 1 bytes @ 0x2
+   438                           
+   439  0072                     SSD_Set_Symbol@symbol:	
+   440                           ; 1 bytes @ 0x2
+   441                           
+   442  0072                     SSD_Disable@s:	
+   443                           ; 1 bytes @ 0x2
+   444                           
+   445  0072                     SSD_Enable@s:	
+   446                           ; 1 bytes @ 0x2
+   447                           
+   448                           
+   449                           ; 1 bytes @ 0x2
+   450  0072                     	ds	1
+   451  0073                     ??_SSD_Update:	
+   452  0073                     ??_GPIO_Init_Port:	
+   453                           ; 1 bytes @ 0x3
+   454                           
+   455  0073                     GPIO_Init_Pin@dir:	
+   456                           ; 1 bytes @ 0x3
+   457                           
+   458                           
+   459                           ; 1 bytes @ 0x3
+   460  0073                     	ds	1
+   461  0074                     ??_GPIO_Init_Pin:	
+   462                           
+   463                           ; 1 bytes @ 0x4
+   464  0074                     	ds	1
+   465  0075                     _GPIO_Init_Port$31:	
+   466                           
+   467                           ; 2 bytes @ 0x5
+   468  0075                     	ds	3
+   469  0078                     ??_SSD_Init:	
    470                           
-   471                           ;psect for function _main
-   472  0716                     _main:	
-   473  0716                     l741:	
-   474                           ;incstack = 0
-   475                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   476                           
-   477                           
-   478                           ;Digital_Clock.c: 15:     GPIO_Init_Port(&(TRISD),(0));
-   479  0716  3088               	movlw	136
-   480  0717  00F0               	movwf	GPIO_Init_Port@DirRegAddress
-   481  0718  3000               	movlw	0
-   482  0719  00F1               	movwf	GPIO_Init_Port@DirRegAddress+1
-   483  071A  01F2               	clrf	GPIO_Init_Port@dir
-   484  071B  120A  118A  273A  120A  118A  	fcall	_GPIO_Init_Port
-   485                           
-   486                           ;Digital_Clock.c: 16:     GPIO_Init_Pin(&(TRISB),(5),(0));
-   487  0720  3086               	movlw	134
-   488  0721  00F0               	movwf	GPIO_Init_Pin@DirRegAddress
-   489  0722  3000               	movlw	0
-   490  0723  00F1               	movwf	GPIO_Init_Pin@DirRegAddress+1
-   491  0724  3005               	movlw	5
-   492  0725  00F8               	movwf	??_main
-   493  0726  0878               	movf	??_main,w
-   494  0727  00F2               	movwf	GPIO_Init_Pin@pin_number
-   495  0728  01F3               	clrf	GPIO_Init_Pin@dir
-   496  0729  120A  118A  278A  120A  118A  	fcall	_GPIO_Init_Pin
-   497  072E                     l743:	
-   498                           
-   499                           ;Digital_Clock.c: 17:     (((PORTD))=(0xff));
-   500  072E  30FF               	movlw	255
-   501  072F  1283               	bcf	3,5	;RP0=0, select bank0
-   502  0730  1303               	bcf	3,6	;RP1=0, select bank0
-   503  0731  0088               	movwf	8	;volatile
-   504  0732                     l745:	
-   505                           
-   506                           ;Digital_Clock.c: 18:     (((PORTB))=((PORTB) & ~(1<<(5)))|(1<<(5)));
-   507  0732  0806               	movf	6,w	;volatile
-   508  0733  39DF               	andlw	223
-   509  0734  3820               	iorlw	32
-   510  0735  0086               	movwf	6	;volatile
-   511  0736                     l41:	
-   512                           ;Digital_Clock.c: 20:     while(1);
-   513                           
-   514  0736                     l42:	
-   515  0736  2F36               	goto	l41
-   516  0737  120A  118A  2800   	ljmp	start
-   517  073A                     __end_of_main:	
+   471                           ; 1 bytes @ 0x8
+   472  0078                     	ds	1
+   473  0079                     SSD_Init@i:	
+   474                           
+   475                           ; 2 bytes @ 0x9
+   476  0079                     	ds	2
+   477  007B                     ??_main:	
+   478                           
+   479                           ; 1 bytes @ 0xB
+   480  007B                     	ds	3
+   481                           
+   482                           	psect	maintext
+   483  0762                     __pmaintext:	
+   484 ;;
+   485 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   486 ;;
+   487 ;; *************** function _main *****************
+   488 ;; Defined at:
+   489 ;;		line 14 in file "Digital_Clock.c"
+   490 ;; Parameters:    Size  Location     Type
+   491 ;;		None
+   492 ;; Auto vars:     Size  Location     Type
+   493 ;;		None
+   494 ;; Return value:  Size  Location     Type
+   495 ;;                  1    wreg      void 
+   496 ;; Registers used:
+   497 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   498 ;; Tracked objects:
+   499 ;;		On entry : B00/0
+   500 ;;		On exit  : 0/0
+   501 ;;		Unchanged: 0/0
+   502 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   503 ;;      Params:         0       0       0       0       0
+   504 ;;      Locals:         0       0       0       0       0
+   505 ;;      Temps:          3       0       0       0       0
+   506 ;;      Totals:         3       0       0       0       0
+   507 ;;Total ram usage:        3 bytes
+   508 ;; Hardware stack levels required when called:    2
+   509 ;; This function calls:
+   510 ;;		_SSD_Init
+   511 ;;		_SSD_Set_Symbol
+   512 ;;		_SSD_Update
+   513 ;; This function is called by:
+   514 ;;		Startup code after reset
+   515 ;; This function uses a non-reentrant model
+   516 ;;
+   517                           
    518                           
-   519                           	psect	text1
-   520  073A                     __ptext1:	
-   521 ;; *************** function _GPIO_Init_Port *****************
-   522 ;; Defined at:
-   523 ;;		line 14 in file "GPIO.c"
-   524 ;; Parameters:    Size  Location     Type
-   525 ;;  DirRegAddres    2    0[COMMON] PTR unsigned char 
-   526 ;;		 -> TRISD(1), 
-   527 ;;  dir             1    2[COMMON] unsigned char 
-   528 ;; Auto vars:     Size  Location     Type
-   529 ;;  ret             1    0        unsigned char 
-   530 ;; Return value:  Size  Location     Type
-   531 ;;                  1    wreg      unsigned char 
-   532 ;; Registers used:
-   533 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   534 ;; Tracked objects:
-   535 ;;		On entry : 0/0
-   536 ;;		On exit  : 0/0
-   537 ;;		Unchanged: 0/0
-   538 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   539 ;;      Params:         3       0       0       0       0
-   540 ;;      Locals:         3       0       0       0       0
-   541 ;;      Temps:          1       0       0       0       0
-   542 ;;      Totals:         7       0       0       0       0
-   543 ;;Total ram usage:        7 bytes
-   544 ;; Hardware stack levels used:    1
-   545 ;; This function calls:
-   546 ;;		Nothing
-   547 ;; This function is called by:
-   548 ;;		_main
-   549 ;; This function uses a non-reentrant model
-   550 ;;
+   519                           ;psect for function _main
+   520  0762                     _main:	
+   521  0762                     l976:	
+   522                           ;incstack = 0
+   523                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   524                           
+   525                           
+   526                           ;Digital_Clock.c: 16:     SSD_Init();
+   527  0762  120A  118A  26EE  120A  118A  	fcall	_SSD_Init
+   528  0767                     l978:	
+   529                           
+   530                           ;Digital_Clock.c: 19:     SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+   531  0767  01F0               	clrf	SSD_Set_Symbol@index
+   532  0768  3001               	movlw	1
+   533  0769  120A  118A  2582  120A  118A  	fcall	_SSD_Set_Symbol
+   534  076E                     l980:	
+   535                           
+   536                           ;Digital_Clock.c: 20:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+   537  076E  01F0               	clrf	SSD_Set_Symbol@index
+   538  076F  0AF0               	incf	SSD_Set_Symbol@index,f
+   539  0770  3002               	movlw	2
+   540  0771  120A  118A  2582  120A  118A  	fcall	_SSD_Set_Symbol
+   541  0776                     l982:	
+   542                           
+   543                           ;Digital_Clock.c: 21:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+   544  0776  3002               	movlw	2
+   545  0777  00FB               	movwf	??_main
+   546  0778  087B               	movf	??_main,w
+   547  0779  00F0               	movwf	SSD_Set_Symbol@index
+   548  077A  3003               	movlw	3
+   549  077B  120A  118A  2582  120A  118A  	fcall	_SSD_Set_Symbol
+   550  0780                     l984:	
    551                           
-   552                           
-   553                           ;psect for function _GPIO_Init_Port
-   554  073A                     _GPIO_Init_Port:	
-   555  073A                     l699:	
-   556                           ;incstack = 0
-   557                           ; Regs used in _GPIO_Init_Port: [wreg-fsr0h+status,2+status,0]
-   558                           
-   559  073A                     l701:	
-   560                           
-   561                           ;GPIO.c: 18:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
-   562  073A  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   563  073B  0084               	movwf	4
-   564  073C  1783               	bsf	3,7
-   565  073D  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   566  073E  1383               	bcf	3,7
-   567  073F  0800               	movf	0,w
-   568  0740  1683               	bsf	3,5	;RP0=1, select bank1
-   569  0741  1303               	bcf	3,6	;RP1=0, select bank1
-   570  0742  0605               	xorwf	5,w	;volatile
-   571  0743  1903               	skipnz
-   572  0744  2F46               	goto	u141
-   573  0745  2F47               	goto	u140
-   574  0746                     u141:	
-   575  0746  2F74               	goto	l713
-   576  0747                     u140:	
-   577  0747                     l703:	
-   578  0747  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   579  0748  0084               	movwf	4
-   580  0749  1783               	bsf	3,7
-   581  074A  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   582  074B  1383               	bcf	3,7
-   583  074C  0800               	movf	0,w
-   584  074D  0606               	xorwf	6,w	;volatile
-   585  074E  1903               	skipnz
-   586  074F  2F51               	goto	u151
-   587  0750  2F52               	goto	u150
-   588  0751                     u151:	
-   589  0751  2F74               	goto	l713
-   590  0752                     u150:	
-   591  0752                     l705:	
-   592  0752  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   593  0753  0084               	movwf	4
-   594  0754  1783               	bsf	3,7
-   595  0755  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   596  0756  1383               	bcf	3,7
-   597  0757  0800               	movf	0,w
-   598  0758  0607               	xorwf	7,w	;volatile
-   599  0759  1903               	skipnz
-   600  075A  2F5C               	goto	u161
-   601  075B  2F5D               	goto	u160
-   602  075C                     u161:	
-   603  075C  2F74               	goto	l713
-   604  075D                     u160:	
-   605  075D                     l707:	
-   606  075D  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   607  075E  0084               	movwf	4
-   608  075F  1783               	bsf	3,7
-   609  0760  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   610  0761  1383               	bcf	3,7
-   611  0762  0800               	movf	0,w
-   612  0763  0608               	xorwf	8,w	;volatile
-   613  0764  1903               	skipnz
-   614  0765  2F67               	goto	u171
-   615  0766  2F68               	goto	u170
-   616  0767                     u171:	
-   617  0767  2F74               	goto	l713
-   618  0768                     u170:	
-   619  0768                     l709:	
-   620  0768  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   621  0769  0084               	movwf	4
-   622  076A  1783               	bsf	3,7
-   623  076B  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   624  076C  1383               	bcf	3,7
-   625  076D  0800               	movf	0,w
-   626  076E  0609               	xorwf	9,w	;volatile
-   627  076F  1903               	skipnz
-   628  0770  2F72               	goto	u181
-   629  0771  2F73               	goto	u180
-   630  0772                     u181:	
-   631  0772  2F74               	goto	l713
-   632  0773                     u180:	
-   633  0773                     l711:	
-   634                           
-   635                           ;GPIO.c: 24:     }
-   636  0773  2F89               	goto	l19
-   637  0774                     l713:	
-   638                           
-   639                           ;GPIO.c: 26:     {;GPIO.c: 27:         ((*DirRegAddress)=(dir)?(~0):(0));
-   640  0774  0872               	movf	GPIO_Init_Port@dir,w
-   641  0775  1D03               	btfss	3,2
-   642  0776  2F78               	goto	u191
-   643  0777  2F79               	goto	u190
-   644  0778                     u191:	
-   645  0778  2F7C               	goto	l717
-   646  0779                     u190:	
-   647  0779                     l715:	
-   648  0779  01F5               	clrf	_GPIO_Init_Port$31
-   649  077A  01F6               	clrf	_GPIO_Init_Port$31+1
-   650  077B  2F80               	goto	l719
-   651  077C                     l717:	
-   652  077C  30FF               	movlw	255
-   653  077D  00F5               	movwf	_GPIO_Init_Port$31
-   654  077E  30FF               	movlw	255
-   655  077F  00F6               	movwf	_GPIO_Init_Port$31+1
-   656  0780                     l719:	
-   657  0780  0875               	movf	_GPIO_Init_Port$31,w
-   658  0781  00F3               	movwf	??_GPIO_Init_Port
-   659  0782  0870               	movf	GPIO_Init_Port@DirRegAddress,w
-   660  0783  0084               	movwf	4
-   661  0784  1783               	bsf	3,7
-   662  0785  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
-   663  0786  1383               	bcf	3,7
-   664  0787  0873               	movf	??_GPIO_Init_Port,w
-   665  0788  0080               	movwf	0
-   666  0789                     l19:	
-   667  0789  0008               	return
-   668  078A                     __end_of_GPIO_Init_Port:	
-   669                           
-   670                           	psect	text2
-   671  078A                     __ptext2:	
-   672 ;; *************** function _GPIO_Init_Pin *****************
-   673 ;; Defined at:
-   674 ;;		line 34 in file "GPIO.c"
-   675 ;; Parameters:    Size  Location     Type
-   676 ;;  DirRegAddres    2    0[COMMON] PTR unsigned char 
-   677 ;;		 -> TRISB(1), 
-   678 ;;  pin_number      1    2[COMMON] unsigned char 
-   679 ;;  dir             1    3[COMMON] unsigned char 
-   680 ;; Auto vars:     Size  Location     Type
-   681 ;;  ret             1    0        unsigned char 
-   682 ;; Return value:  Size  Location     Type
-   683 ;;                  1    wreg      unsigned char 
-   684 ;; Registers used:
-   685 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   686 ;; Tracked objects:
-   687 ;;		On entry : 0/0
-   688 ;;		On exit  : 0/0
-   689 ;;		Unchanged: 0/0
-   690 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   691 ;;      Params:         4       0       0       0       0
-   692 ;;      Locals:         1       0       0       0       0
-   693 ;;      Temps:          3       0       0       0       0
-   694 ;;      Totals:         8       0       0       0       0
-   695 ;;Total ram usage:        8 bytes
-   696 ;; Hardware stack levels used:    1
-   697 ;; This function calls:
-   698 ;;		Nothing
-   699 ;; This function is called by:
-   700 ;;		_main
-   701 ;; This function uses a non-reentrant model
-   702 ;;
-   703                           
-   704                           
-   705                           ;psect for function _GPIO_Init_Pin
-   706  078A                     _GPIO_Init_Pin:	
-   707  078A                     l723:	
-   708                           ;incstack = 0
-   709                           ; Regs used in _GPIO_Init_Pin: [wreg-fsr0h+status,2+status,0]
-   710                           
-   711  078A                     l725:	
-   712                           
-   713                           ;GPIO.c: 38:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
-   714  078A  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   715  078B  0084               	movwf	4
-   716  078C  1783               	bsf	3,7
-   717  078D  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   718  078E  1383               	bcf	3,7
-   719  078F  0800               	movf	0,w
-   720  0790  1683               	bsf	3,5	;RP0=1, select bank1
-   721  0791  1303               	bcf	3,6	;RP1=0, select bank1
-   722  0792  0605               	xorwf	5,w	;volatile
-   723  0793  1903               	skipnz
-   724  0794  2F96               	goto	u201
-   725  0795  2F97               	goto	u200
-   726  0796                     u201:	
-   727  0796  2FC4               	goto	l737
-   728  0797                     u200:	
-   729  0797                     l727:	
-   730  0797  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   731  0798  0084               	movwf	4
-   732  0799  1783               	bsf	3,7
-   733  079A  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   734  079B  1383               	bcf	3,7
-   735  079C  0800               	movf	0,w
-   736  079D  0606               	xorwf	6,w	;volatile
-   737  079E  1903               	skipnz
-   738  079F  2FA1               	goto	u211
-   739  07A0  2FA2               	goto	u210
-   740  07A1                     u211:	
-   741  07A1  2FC4               	goto	l737
-   742  07A2                     u210:	
-   743  07A2                     l729:	
-   744  07A2  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   745  07A3  0084               	movwf	4
-   746  07A4  1783               	bsf	3,7
-   747  07A5  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   748  07A6  1383               	bcf	3,7
-   749  07A7  0800               	movf	0,w
-   750  07A8  0607               	xorwf	7,w	;volatile
-   751  07A9  1903               	skipnz
-   752  07AA  2FAC               	goto	u221
-   753  07AB  2FAD               	goto	u220
-   754  07AC                     u221:	
-   755  07AC  2FC4               	goto	l737
-   756  07AD                     u220:	
-   757  07AD                     l731:	
-   758  07AD  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   759  07AE  0084               	movwf	4
-   760  07AF  1783               	bsf	3,7
-   761  07B0  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   762  07B1  1383               	bcf	3,7
-   763  07B2  0800               	movf	0,w
-   764  07B3  0608               	xorwf	8,w	;volatile
-   765  07B4  1903               	skipnz
-   766  07B5  2FB7               	goto	u231
-   767  07B6  2FB8               	goto	u230
-   768  07B7                     u231:	
-   769  07B7  2FC4               	goto	l737
-   770  07B8                     u230:	
-   771  07B8                     l733:	
-   772  07B8  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   773  07B9  0084               	movwf	4
-   774  07BA  1783               	bsf	3,7
-   775  07BB  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   776  07BC  1383               	bcf	3,7
-   777  07BD  0800               	movf	0,w
-   778  07BE  0609               	xorwf	9,w	;volatile
-   779  07BF  1903               	skipnz
-   780  07C0  2FC2               	goto	u241
-   781  07C1  2FC3               	goto	u240
-   782  07C2                     u241:	
-   783  07C2  2FC4               	goto	l737
-   784  07C3                     u240:	
-   785  07C3                     l735:	
-   786                           
-   787                           ;GPIO.c: 44:     }
-   788  07C3  2FE7               	goto	l24
-   789  07C4                     l737:	
-   790                           
-   791                           ;GPIO.c: 46:     {;GPIO.c: 47:         ((*DirRegAddress)=(*DirRegAddress & ~(1<<pin_numb
+   552                           ;Digital_Clock.c: 22:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
+   553  0780  3003               	movlw	3
+   554  0781  00FB               	movwf	??_main
+   555  0782  087B               	movf	??_main,w
+   556  0783  00F0               	movwf	SSD_Set_Symbol@index
+   557  0784  3004               	movlw	4
+   558  0785  120A  118A  2582  120A  118A  	fcall	_SSD_Set_Symbol
+   559                           
+   560                           ;Digital_Clock.c: 24:     SSD_Update();
+   561  078A  120A  118A  25AA  120A  118A  	fcall	_SSD_Update
+   562  078F                     l986:	
+   563                           
+   564                           ;Digital_Clock.c: 25:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   565  078F  301A               	movlw	26
+   566  0790  00FD               	movwf	??_main+2
+   567  0791  305E               	movlw	94
+   568  0792  00FC               	movwf	??_main+1
+   569  0793  306E               	movlw	110
+   570  0794  00FB               	movwf	??_main
+   571  0795                     u317:	
+   572  0795  0BFB               	decfsz	??_main,f
+   573  0796  2F95               	goto	u317
+   574  0797  0BFC               	decfsz	??_main+1,f
+   575  0798  2F95               	goto	u317
+   576  0799  0BFD               	decfsz	??_main+2,f
+   577  079A  2F95               	goto	u317
+   578  079B  0000               	nop
+   579  079C                     l988:	
+   580                           
+   581                           ;Digital_Clock.c: 26:     SSD_Update();
+   582  079C  120A  118A  25AA  120A  118A  	fcall	_SSD_Update
+   583                           
+   584                           ;Digital_Clock.c: 27:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   585  07A1  301A               	movlw	26
+   586  07A2  00FD               	movwf	??_main+2
+   587  07A3  305E               	movlw	94
+   588  07A4  00FC               	movwf	??_main+1
+   589  07A5  306E               	movlw	110
+   590  07A6  00FB               	movwf	??_main
+   591  07A7                     u327:	
+   592  07A7  0BFB               	decfsz	??_main,f
+   593  07A8  2FA7               	goto	u327
+   594  07A9  0BFC               	decfsz	??_main+1,f
+   595  07AA  2FA7               	goto	u327
+   596  07AB  0BFD               	decfsz	??_main+2,f
+   597  07AC  2FA7               	goto	u327
+   598  07AD  0000               	nop
+   599  07AE                     l990:	
+   600                           
+   601                           ;Digital_Clock.c: 28:     SSD_Update();
+   602  07AE  120A  118A  25AA  120A  118A  	fcall	_SSD_Update
+   603  07B3                     l992:	
+   604                           
+   605                           ;Digital_Clock.c: 29:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   606  07B3  301A               	movlw	26
+   607  07B4  00FD               	movwf	??_main+2
+   608  07B5  305E               	movlw	94
+   609  07B6  00FC               	movwf	??_main+1
+   610  07B7  306E               	movlw	110
+   611  07B8  00FB               	movwf	??_main
+   612  07B9                     u337:	
+   613  07B9  0BFB               	decfsz	??_main,f
+   614  07BA  2FB9               	goto	u337
+   615  07BB  0BFC               	decfsz	??_main+1,f
+   616  07BC  2FB9               	goto	u337
+   617  07BD  0BFD               	decfsz	??_main+2,f
+   618  07BE  2FB9               	goto	u337
+   619  07BF  0000               	nop
+   620                           
+   621                           ;Digital_Clock.c: 30:     SSD_Update();
+   622  07C0  120A  118A  25AA  120A  118A  	fcall	_SSD_Update
+   623  07C5                     l994:	
+   624                           
+   625                           ;Digital_Clock.c: 31:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   626  07C5  301A               	movlw	26
+   627  07C6  00FD               	movwf	??_main+2
+   628  07C7  305E               	movlw	94
+   629  07C8  00FC               	movwf	??_main+1
+   630  07C9  306E               	movlw	110
+   631  07CA  00FB               	movwf	??_main
+   632  07CB                     u347:	
+   633  07CB  0BFB               	decfsz	??_main,f
+   634  07CC  2FCB               	goto	u347
+   635  07CD  0BFC               	decfsz	??_main+1,f
+   636  07CE  2FCB               	goto	u347
+   637  07CF  0BFD               	decfsz	??_main+2,f
+   638  07D0  2FCB               	goto	u347
+   639  07D1  0000               	nop
+   640  07D2                     l996:	
+   641                           
+   642                           ;Digital_Clock.c: 32:     SSD_Update();
+   643  07D2  120A  118A  25AA  120A  118A  	fcall	_SSD_Update
+   644                           
+   645                           ;Digital_Clock.c: 33:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   646  07D7  301A               	movlw	26
+   647  07D8  00FD               	movwf	??_main+2
+   648  07D9  305E               	movlw	94
+   649  07DA  00FC               	movwf	??_main+1
+   650  07DB  306E               	movlw	110
+   651  07DC  00FB               	movwf	??_main
+   652  07DD                     u357:	
+   653  07DD  0BFB               	decfsz	??_main,f
+   654  07DE  2FDD               	goto	u357
+   655  07DF  0BFC               	decfsz	??_main+1,f
+   656  07E0  2FDD               	goto	u357
+   657  07E1  0BFD               	decfsz	??_main+2,f
+   658  07E2  2FDD               	goto	u357
+   659  07E3  0000               	nop
+   660  07E4                     l37:	
+   661                           ;Digital_Clock.c: 35:     while(1);
+   662                           
+   663  07E4                     l38:	
+   664  07E4  2FE4               	goto	l37
+   665  07E5  120A  118A  2800   	ljmp	start
+   666  07E8                     __end_of_main:	
+   667                           
+   668                           	psect	text1
+   669  05AA                     __ptext1:	
+   670 ;; *************** function _SSD_Update *****************
+   671 ;; Defined at:
+   672 ;;		line 77 in file "SSD.c"
+   673 ;; Parameters:    Size  Location     Type
+   674 ;;		None
+   675 ;; Auto vars:     Size  Location     Type
+   676 ;;		None
+   677 ;; Return value:  Size  Location     Type
+   678 ;;                  1    wreg      void 
+   679 ;; Registers used:
+   680 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   681 ;; Tracked objects:
+   682 ;;		On entry : 0/0
+   683 ;;		On exit  : 0/0
+   684 ;;		Unchanged: 0/0
+   685 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   686 ;;      Params:         0       0       0       0       0
+   687 ;;      Locals:         0       0       0       0       0
+   688 ;;      Temps:          0       0       0       0       0
+   689 ;;      Totals:         0       0       0       0       0
+   690 ;;Total ram usage:        0 bytes
+   691 ;; Hardware stack levels used:    1
+   692 ;; Hardware stack levels required when called:    1
+   693 ;; This function calls:
+   694 ;;		_SSD_Disable
+   695 ;;		_SSD_Enable
+   696 ;; This function is called by:
+   697 ;;		_main
+   698 ;; This function uses a non-reentrant model
+   699 ;;
+   700                           
+   701                           
+   702                           ;psect for function _SSD_Update
+   703  05AA                     _SSD_Update:	
+   704  05AA                     l964:	
+   705                           ;incstack = 0
+   706                           ; Regs used in _SSD_Update: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   707                           
+   708                           
+   709                           ;SSD.c: 82:     SSD_Disable(currentSSD);
+   710  05AA  1283               	bcf	3,5	;RP0=0, select bank0
+   711  05AB  1303               	bcf	3,6	;RP1=0, select bank0
+   712  05AC  082F               	movf	_currentSSD,w
+   713  05AD  120A  118A  25DA  120A  118A  	fcall	_SSD_Disable
+   714  05B2                     l966:	
+   715                           
+   716                           ;SSD.c: 84:     currentSSD++;
+   717  05B2  3001               	movlw	1
+   718  05B3  1283               	bcf	3,5	;RP0=0, select bank0
+   719  05B4  1303               	bcf	3,6	;RP1=0, select bank0
+   720  05B5  07AF               	addwf	_currentSSD,f
+   721  05B6  1803               	skipnc
+   722  05B7  0AB0               	incf	_currentSSD+1,f
+   723  05B8  3000               	movlw	0
+   724  05B9  07B0               	addwf	_currentSSD+1,f
+   725  05BA                     l968:	
+   726                           
+   727                           ;SSD.c: 85:     if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;
+   728  05BA  0830               	movf	_currentSSD+1,w
+   729  05BB  3A80               	xorlw	128
+   730  05BC  00FF               	movwf	btemp+1
+   731  05BD  3080               	movlw	128
+   732  05BE  027F               	subwf	btemp+1,w
+   733  05BF  1D03               	skipz
+   734  05C0  2DC3               	goto	u305
+   735  05C1  3004               	movlw	4
+   736  05C2  022F               	subwf	_currentSSD,w
+   737  05C3                     u305:	
+   738  05C3  1C03               	skipc
+   739  05C4  2DC6               	goto	u301
+   740  05C5  2DC7               	goto	u300
+   741  05C6                     u301:	
+   742  05C6  2DCB               	goto	l972
+   743  05C7                     u300:	
+   744  05C7                     l970:	
+   745  05C7  1283               	bcf	3,5	;RP0=0, select bank0
+   746  05C8  1303               	bcf	3,6	;RP1=0, select bank0
+   747  05C9  01AF               	clrf	_currentSSD
+   748  05CA  01B0               	clrf	_currentSSD+1
+   749  05CB                     l972:	
+   750                           
+   751                           ;SSD.c: 87:     (((PORTD))=(SSD_LOT_ARR[currentSSD]));
+   752  05CB  1283               	bcf	3,5	;RP0=0, select bank0
+   753  05CC  1303               	bcf	3,6	;RP1=0, select bank0
+   754  05CD  082F               	movf	_currentSSD,w
+   755  05CE  3E20               	addlw	(low (_SSD_LOT_ARR| 0))& (0+255)
+   756  05CF  0084               	movwf	4
+   757  05D0  1383               	bcf	3,7	;select IRP bank0
+   758  05D1  0800               	movf	0,w
+   759  05D2  0088               	movwf	8	;volatile
+   760  05D3                     l974:	
+   761                           
+   762                           ;SSD.c: 89:     SSD_Enable(currentSSD);
+   763  05D3  082F               	movf	_currentSSD,w
+   764  05D4  120A  118A  260B  120A  118A  	fcall	_SSD_Enable
+   765  05D9                     l74:	
+   766  05D9  0008               	return
+   767  05DA                     __end_of_SSD_Update:	
+   768                           
+   769                           	psect	text2
+   770  060B                     __ptext2:	
+   771 ;; *************** function _SSD_Enable *****************
+   772 ;; Defined at:
+   773 ;;		line 113 in file "SSD.c"
+   774 ;; Parameters:    Size  Location     Type
+   775 ;;  s               1    wreg     enum E872
+   776 ;; Auto vars:     Size  Location     Type
+   777 ;;  s               1    2[COMMON] enum E872
+   778 ;; Return value:  Size  Location     Type
+   779 ;;                  1    wreg      void 
+   780 ;; Registers used:
+   781 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   782 ;; Tracked objects:
+   783 ;;		On entry : 0/0
+   784 ;;		On exit  : 0/0
+   785 ;;		Unchanged: 0/0
+   786 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   787 ;;      Params:         0       0       0       0       0
+   788 ;;      Locals:         1       0       0       0       0
+   789 ;;      Temps:          2       0       0       0       0
+   790 ;;      Totals:         3       0       0       0       0
+   791 ;;Total ram usage:        3 bytes
+   792 ;; Hardware stack levels used:    1
+   793 ;; This function calls:
+   794 ;;		Nothing
+   795 ;; This function is called by:
+   796 ;;		_SSD_Update
+   797 ;; This function uses a non-reentrant model
+   798 ;;
+   799                           
+   800                           
+   801                           ;psect for function _SSD_Enable
+   802  060B                     _SSD_Enable:	
+   803                           
+   804                           ;incstack = 0
+   805                           ; Regs used in _SSD_Enable: [wreg-fsr0h+status,2+status,0]
+   806                           ;SSD_Enable@s stored from wreg
+   807  060B  00F2               	movwf	SSD_Enable@s
+   808  060C                     l920:	
+   809                           
+   810                           ;SSD.c: 113: void SSD_Enable(SSD_t s);SSD.c: 114: {;SSD.c: 115:     switch(s)
+   811  060C  2E29               	goto	l930
+   812  060D                     l922:	
+   813                           
+   814                           ;SSD.c: 118:             (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_ON<<(4)));
+   815  060D  1283               	bcf	3,5	;RP0=0, select bank0
+   816  060E  1303               	bcf	3,6	;RP1=0, select bank0
+   817  060F  0806               	movf	6,w	;volatile
+   818  0610  39EF               	andlw	239
+   819  0611  3810               	iorlw	16
+   820  0612  0086               	movwf	6	;volatile
+   821                           
+   822                           ;SSD.c: 119:             break;
+   823  0613  2E3F               	goto	l94
+   824  0614                     l924:	
+   825                           
+   826                           ;SSD.c: 121:             (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_ON<<(5)));
+   827  0614  1283               	bcf	3,5	;RP0=0, select bank0
+   828  0615  1303               	bcf	3,6	;RP1=0, select bank0
+   829  0616  0806               	movf	6,w	;volatile
+   830  0617  39DF               	andlw	223
+   831  0618  3820               	iorlw	32
+   832  0619  0086               	movwf	6	;volatile
+   833                           
+   834                           ;SSD.c: 122:             break;
+   835  061A  2E3F               	goto	l94
+   836  061B                     l926:	
+   837                           
+   838                           ;SSD.c: 124:             (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_ON<<(6)));
+   839  061B  1283               	bcf	3,5	;RP0=0, select bank0
+   840  061C  1303               	bcf	3,6	;RP1=0, select bank0
+   841  061D  0806               	movf	6,w	;volatile
+   842  061E  39BF               	andlw	191
+   843  061F  3840               	iorlw	64
+   844  0620  0086               	movwf	6	;volatile
+   845                           
+   846                           ;SSD.c: 125:             break;
+   847  0621  2E3F               	goto	l94
+   848  0622                     l928:	
+   849                           
+   850                           ;SSD.c: 127:             (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_ON<<(7)));
+   851  0622  1283               	bcf	3,5	;RP0=0, select bank0
+   852  0623  1303               	bcf	3,6	;RP1=0, select bank0
+   853  0624  0806               	movf	6,w	;volatile
+   854  0625  397F               	andlw	127
+   855  0626  3880               	iorlw	128
+   856  0627  0086               	movwf	6	;volatile
+   857                           
+   858                           ;SSD.c: 128:             break;
+   859  0628  2E3F               	goto	l94
+   860  0629                     l930:	
+   861  0629  0872               	movf	SSD_Enable@s,w
+   862  062A  00F0               	movwf	??_SSD_Enable
+   863  062B  01F1               	clrf	??_SSD_Enable+1
+   864                           
+   865                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   866                           ; Switch size 1, requested type "simple"
+   867                           ; Number of cases is 1, Range of values is 0 to 0
+   868                           ; switch strategies available:
+   869                           ; Name         Instructions Cycles
+   870                           ; simple_byte            4     3 (average)
+   871                           ; direct_byte           11     8 (fixed)
+   872                           ; jumptable            260     6 (fixed)
+   873                           ;	Chosen strategy is simple_byte
+   874  062C  0871               	movf	??_SSD_Enable+1,w
+   875  062D  3A00               	xorlw	0	; case 0
+   876  062E  1903               	skipnz
+   877  062F  2E31               	goto	l1038
+   878  0630  2E3F               	goto	l94
+   879  0631                     l1038:	
+   880                           
+   881                           ; Switch size 1, requested type "simple"
+   882                           ; Number of cases is 4, Range of values is 0 to 3
+   883                           ; switch strategies available:
+   884                           ; Name         Instructions Cycles
+   885                           ; simple_byte           13     7 (average)
+   886                           ; direct_byte           20     8 (fixed)
+   887                           ; jumptable            260     6 (fixed)
+   888                           ;	Chosen strategy is simple_byte
+   889  0631  0870               	movf	??_SSD_Enable,w
+   890  0632  3A00               	xorlw	0	; case 0
+   891  0633  1903               	skipnz
+   892  0634  2E0D               	goto	l922
+   893  0635  3A01               	xorlw	1	; case 1
+   894  0636  1903               	skipnz
+   895  0637  2E14               	goto	l924
+   896  0638  3A03               	xorlw	3	; case 2
+   897  0639  1903               	skipnz
+   898  063A  2E1B               	goto	l926
+   899  063B  3A01               	xorlw	1	; case 3
+   900  063C  1903               	skipnz
+   901  063D  2E22               	goto	l928
+   902  063E  2E3F               	goto	l94
+   903  063F                     l94:	
+   904  063F  0008               	return
+   905  0640                     __end_of_SSD_Enable:	
+   906                           
+   907                           	psect	text3
+   908  05DA                     __ptext3:	
+   909 ;; *************** function _SSD_Disable *****************
+   910 ;; Defined at:
+   911 ;;		line 92 in file "SSD.c"
+   912 ;; Parameters:    Size  Location     Type
+   913 ;;  s               1    wreg     enum E872
+   914 ;; Auto vars:     Size  Location     Type
+   915 ;;  s               1    2[COMMON] enum E872
+   916 ;; Return value:  Size  Location     Type
+   917 ;;                  1    wreg      void 
+   918 ;; Registers used:
+   919 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   920 ;; Tracked objects:
+   921 ;;		On entry : 0/0
+   922 ;;		On exit  : 0/0
+   923 ;;		Unchanged: 0/0
+   924 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   925 ;;      Params:         0       0       0       0       0
+   926 ;;      Locals:         1       0       0       0       0
+   927 ;;      Temps:          2       0       0       0       0
+   928 ;;      Totals:         3       0       0       0       0
+   929 ;;Total ram usage:        3 bytes
+   930 ;; Hardware stack levels used:    1
+   931 ;; This function calls:
+   932 ;;		Nothing
+   933 ;; This function is called by:
+   934 ;;		_SSD_Update
+   935 ;; This function uses a non-reentrant model
+   936 ;;
+   937                           
+   938                           
+   939                           ;psect for function _SSD_Disable
+   940  05DA                     _SSD_Disable:	
+   941                           
+   942                           ;incstack = 0
+   943                           ; Regs used in _SSD_Disable: [wreg-fsr0h+status,2+status,0]
+   944                           ;SSD_Disable@s stored from wreg
+   945  05DA  00F2               	movwf	SSD_Disable@s
+   946  05DB                     l904:	
+   947                           
+   948                           ;SSD.c: 92: void SSD_Disable(SSD_t s);SSD.c: 93: {;SSD.c: 94:     switch(s)
+   949  05DB  2DF4               	goto	l914
+   950  05DC                     l906:	
+   951                           
+   952                           ;SSD.c: 97:             (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+   953  05DC  1283               	bcf	3,5	;RP0=0, select bank0
+   954  05DD  1303               	bcf	3,6	;RP1=0, select bank0
+   955  05DE  0806               	movf	6,w	;volatile
+   956  05DF  39EF               	andlw	239
+   957  05E0  0086               	movwf	6	;volatile
+   958                           
+   959                           ;SSD.c: 98:             break;
+   960  05E1  2E0A               	goto	l84
+   961  05E2                     l908:	
+   962                           
+   963                           ;SSD.c: 100:             (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+   964  05E2  1283               	bcf	3,5	;RP0=0, select bank0
+   965  05E3  1303               	bcf	3,6	;RP1=0, select bank0
+   966  05E4  0806               	movf	6,w	;volatile
+   967  05E5  39DF               	andlw	223
+   968  05E6  0086               	movwf	6	;volatile
+   969                           
+   970                           ;SSD.c: 101:             break;
+   971  05E7  2E0A               	goto	l84
+   972  05E8                     l910:	
+   973                           
+   974                           ;SSD.c: 103:             (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+   975  05E8  1283               	bcf	3,5	;RP0=0, select bank0
+   976  05E9  1303               	bcf	3,6	;RP1=0, select bank0
+   977  05EA  0806               	movf	6,w	;volatile
+   978  05EB  39BF               	andlw	191
+   979  05EC  0086               	movwf	6	;volatile
+   980                           
+   981                           ;SSD.c: 104:             break;
+   982  05ED  2E0A               	goto	l84
+   983  05EE                     l912:	
+   984                           
+   985                           ;SSD.c: 106:             (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+   986  05EE  1283               	bcf	3,5	;RP0=0, select bank0
+   987  05EF  1303               	bcf	3,6	;RP1=0, select bank0
+   988  05F0  0806               	movf	6,w	;volatile
+   989  05F1  397F               	andlw	127
+   990  05F2  0086               	movwf	6	;volatile
+   991                           
+   992                           ;SSD.c: 107:             break;
+   993  05F3  2E0A               	goto	l84
+   994  05F4                     l914:	
+   995  05F4  0872               	movf	SSD_Disable@s,w
+   996  05F5  00F0               	movwf	??_SSD_Disable
+   997  05F6  01F1               	clrf	??_SSD_Disable+1
+   998                           
+   999                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1000                           ; Switch size 1, requested type "simple"
+  1001                           ; Number of cases is 1, Range of values is 0 to 0
+  1002                           ; switch strategies available:
+  1003                           ; Name         Instructions Cycles
+  1004                           ; simple_byte            4     3 (average)
+  1005                           ; direct_byte           11     8 (fixed)
+  1006                           ; jumptable            260     6 (fixed)
+  1007                           ;	Chosen strategy is simple_byte
+  1008  05F7  0871               	movf	??_SSD_Disable+1,w
+  1009  05F8  3A00               	xorlw	0	; case 0
+  1010  05F9  1903               	skipnz
+  1011  05FA  2DFC               	goto	l1040
+  1012  05FB  2E0A               	goto	l84
+  1013  05FC                     l1040:	
+  1014                           
+  1015                           ; Switch size 1, requested type "simple"
+  1016                           ; Number of cases is 4, Range of values is 0 to 3
+  1017                           ; switch strategies available:
+  1018                           ; Name         Instructions Cycles
+  1019                           ; simple_byte           13     7 (average)
+  1020                           ; direct_byte           20     8 (fixed)
+  1021                           ; jumptable            260     6 (fixed)
+  1022                           ;	Chosen strategy is simple_byte
+  1023  05FC  0870               	movf	??_SSD_Disable,w
+  1024  05FD  3A00               	xorlw	0	; case 0
+  1025  05FE  1903               	skipnz
+  1026  05FF  2DDC               	goto	l906
+  1027  0600  3A01               	xorlw	1	; case 1
+  1028  0601  1903               	skipnz
+  1029  0602  2DE2               	goto	l908
+  1030  0603  3A03               	xorlw	3	; case 2
+  1031  0604  1903               	skipnz
+  1032  0605  2DE8               	goto	l910
+  1033  0606  3A01               	xorlw	1	; case 3
+  1034  0607  1903               	skipnz
+  1035  0608  2DEE               	goto	l912
+  1036  0609  2E0A               	goto	l84
+  1037  060A                     l84:	
+  1038  060A  0008               	return
+  1039  060B                     __end_of_SSD_Disable:	
+  1040                           
+  1041                           	psect	text4
+  1042  0582                     __ptext4:	
+  1043 ;; *************** function _SSD_Set_Symbol *****************
+  1044 ;; Defined at:
+  1045 ;;		line 72 in file "SSD.c"
+  1046 ;; Parameters:    Size  Location     Type
+  1047 ;;  symbol          1    wreg     enum E859
+  1048 ;;  index           1    0[COMMON] enum E872
+  1049 ;; Auto vars:     Size  Location     Type
+  1050 ;;  symbol          1    2[COMMON] enum E859
+  1051 ;; Return value:  Size  Location     Type
+  1052 ;;                  1    wreg      void 
+  1053 ;; Registers used:
+  1054 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1055 ;; Tracked objects:
+  1056 ;;		On entry : 0/0
+  1057 ;;		On exit  : 0/0
+  1058 ;;		Unchanged: 0/0
+  1059 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1060 ;;      Params:         1       0       0       0       0
+  1061 ;;      Locals:         1       0       0       0       0
+  1062 ;;      Temps:          1       0       0       0       0
+  1063 ;;      Totals:         3       0       0       0       0
+  1064 ;;Total ram usage:        3 bytes
+  1065 ;; Hardware stack levels used:    1
+  1066 ;; This function calls:
+  1067 ;;		Nothing
+  1068 ;; This function is called by:
+  1069 ;;		_main
+  1070 ;; This function uses a non-reentrant model
+  1071 ;;
+  1072                           
+  1073                           
+  1074                           ;psect for function _SSD_Set_Symbol
+  1075  0582                     _SSD_Set_Symbol:	
+  1076                           
+  1077                           ;incstack = 0
+  1078                           ; Regs used in _SSD_Set_Symbol: [wreg-fsr0h+status,2+status,0]
+  1079                           ;SSD_Set_Symbol@symbol stored from wreg
+  1080  0582  00F2               	movwf	SSD_Set_Symbol@symbol
+  1081  0583                     l962:	
+  1082                           
+  1083                           ;SSD.c: 72: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);SSD.c: 73: {;SSD.c: 75:
+      +                               Buffer[index] = symbol;
+  1084  0583  0872               	movf	SSD_Set_Symbol@symbol,w
+  1085  0584  00F1               	movwf	??_SSD_Set_Symbol
+  1086  0585  0870               	movf	SSD_Set_Symbol@index,w
+  1087  0586  3E2B               	addlw	(low (_Buffer| 0))& (0+255)
+  1088  0587  0084               	movwf	4
+  1089  0588  0871               	movf	??_SSD_Set_Symbol,w
+  1090  0589  1383               	bcf	3,7	;select IRP bank0
+  1091  058A  0080               	movwf	0
+  1092  058B                     l70:	
+  1093  058B  0008               	return
+  1094  058C                     __end_of_SSD_Set_Symbol:	
+  1095                           
+  1096                           	psect	text5
+  1097  06EE                     __ptext5:	
+  1098 ;; *************** function _SSD_Init *****************
+  1099 ;; Defined at:
+  1100 ;;		line 50 in file "SSD.c"
+  1101 ;; Parameters:    Size  Location     Type
+  1102 ;;		None
+  1103 ;; Auto vars:     Size  Location     Type
+  1104 ;;  i               2    9[COMMON] int 
+  1105 ;; Return value:  Size  Location     Type
+  1106 ;;                  1    wreg      void 
+  1107 ;; Registers used:
+  1108 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1109 ;; Tracked objects:
+  1110 ;;		On entry : 0/0
+  1111 ;;		On exit  : 0/0
+  1112 ;;		Unchanged: 0/0
+  1113 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1114 ;;      Params:         0       0       0       0       0
+  1115 ;;      Locals:         2       0       0       0       0
+  1116 ;;      Temps:          1       0       0       0       0
+  1117 ;;      Totals:         3       0       0       0       0
+  1118 ;;Total ram usage:        3 bytes
+  1119 ;; Hardware stack levels used:    1
+  1120 ;; Hardware stack levels required when called:    1
+  1121 ;; This function calls:
+  1122 ;;		_GPIO_Init_Pin
+  1123 ;;		_GPIO_Init_Port
+  1124 ;; This function is called by:
+  1125 ;;		_main
+  1126 ;; This function uses a non-reentrant model
+  1127 ;;
+  1128                           
+  1129                           
+  1130                           ;psect for function _SSD_Init
+  1131  06EE                     _SSD_Init:	
+  1132  06EE                     l936:	
+  1133                           ;incstack = 0
+  1134                           ; Regs used in _SSD_Init: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1135                           
+  1136                           
+  1137                           ;SSD.c: 52:     int i = 0;
+  1138  06EE  01F9               	clrf	SSD_Init@i
+  1139  06EF  01FA               	clrf	SSD_Init@i+1
+  1140  06F0                     l938:	
+  1141                           
+  1142                           ;SSD.c: 54:     GPIO_Init_Port(&(TRISD),(0));
+  1143  06F0  3088               	movlw	136
+  1144  06F1  00F0               	movwf	GPIO_Init_Port@DirRegAddress
+  1145  06F2  3000               	movlw	0
+  1146  06F3  00F1               	movwf	GPIO_Init_Port@DirRegAddress+1
+  1147  06F4  01F2               	clrf	GPIO_Init_Port@dir
+  1148  06F5  120A  118A  2640  120A  118A  	fcall	_GPIO_Init_Port
+  1149  06FA                     l944:	
+  1150                           
+  1151                           ;SSD.c: 56:     {;SSD.c: 57:         Buffer[i] = SSD_NULL;
+  1152  06FA  300A               	movlw	10
+  1153  06FB  00F8               	movwf	??_SSD_Init
+  1154  06FC  0879               	movf	SSD_Init@i,w
+  1155  06FD  3E2B               	addlw	(low (_Buffer| 0))& (0+255)
+  1156  06FE  0084               	movwf	4
+  1157  06FF  0878               	movf	??_SSD_Init,w
+  1158  0700  1383               	bcf	3,7	;select IRP bank0
+  1159  0701  0080               	movwf	0
+  1160  0702                     l946:	
+  1161                           
+  1162                           ;SSD.c: 58:     }
+  1163  0702  3001               	movlw	1
+  1164  0703  07F9               	addwf	SSD_Init@i,f
+  1165  0704  1803               	skipnc
+  1166  0705  0AFA               	incf	SSD_Init@i+1,f
+  1167  0706  3000               	movlw	0
+  1168  0707  07FA               	addwf	SSD_Init@i+1,f
+  1169  0708                     l948:	
+  1170  0708  087A               	movf	SSD_Init@i+1,w
+  1171  0709  3A80               	xorlw	128
+  1172  070A  00FF               	movwf	btemp+1
+  1173  070B  3080               	movlw	128
+  1174  070C  027F               	subwf	btemp+1,w
+  1175  070D  1D03               	skipz
+  1176  070E  2F11               	goto	u295
+  1177  070F  3004               	movlw	4
+  1178  0710  0279               	subwf	SSD_Init@i,w
+  1179  0711                     u295:	
+  1180  0711  1C03               	skipc
+  1181  0712  2F14               	goto	u291
+  1182  0713  2F15               	goto	u290
+  1183  0714                     u291:	
+  1184  0714  2EFA               	goto	l944
+  1185  0715                     u290:	
+  1186  0715                     l950:	
+  1187                           
+  1188                           ;SSD.c: 60:     GPIO_Init_Pin(&(TRISB),(4),(0));
+  1189  0715  3086               	movlw	134
+  1190  0716  00F0               	movwf	GPIO_Init_Pin@DirRegAddress
+  1191  0717  3000               	movlw	0
+  1192  0718  00F1               	movwf	GPIO_Init_Pin@DirRegAddress+1
+  1193  0719  3004               	movlw	4
+  1194  071A  00F8               	movwf	??_SSD_Init
+  1195  071B  0878               	movf	??_SSD_Init,w
+  1196  071C  00F2               	movwf	GPIO_Init_Pin@pin_number
+  1197  071D  01F3               	clrf	GPIO_Init_Pin@dir
+  1198  071E  120A  118A  2690  120A  118A  	fcall	_GPIO_Init_Pin
+  1199  0723                     l952:	
+  1200                           
+  1201                           ;SSD.c: 61:     (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+  1202  0723  1283               	bcf	3,5	;RP0=0, select bank0
+  1203  0724  1303               	bcf	3,6	;RP1=0, select bank0
+  1204  0725  0806               	movf	6,w	;volatile
+  1205  0726  39EF               	andlw	239
+  1206  0727  0086               	movwf	6	;volatile
+  1207  0728                     l954:	
+  1208                           
+  1209                           ;SSD.c: 63:     GPIO_Init_Pin(&(TRISB),(5),(0));
+  1210  0728  3086               	movlw	134
+  1211  0729  00F0               	movwf	GPIO_Init_Pin@DirRegAddress
+  1212  072A  3000               	movlw	0
+  1213  072B  00F1               	movwf	GPIO_Init_Pin@DirRegAddress+1
+  1214  072C  3005               	movlw	5
+  1215  072D  00F8               	movwf	??_SSD_Init
+  1216  072E  0878               	movf	??_SSD_Init,w
+  1217  072F  00F2               	movwf	GPIO_Init_Pin@pin_number
+  1218  0730  01F3               	clrf	GPIO_Init_Pin@dir
+  1219  0731  120A  118A  2690  120A  118A  	fcall	_GPIO_Init_Pin
+  1220                           
+  1221                           ;SSD.c: 64:     (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+  1222  0736  1283               	bcf	3,5	;RP0=0, select bank0
+  1223  0737  1303               	bcf	3,6	;RP1=0, select bank0
+  1224  0738  0806               	movf	6,w	;volatile
+  1225  0739  39DF               	andlw	223
+  1226  073A  0086               	movwf	6	;volatile
+  1227  073B                     l956:	
+  1228                           
+  1229                           ;SSD.c: 66:     GPIO_Init_Pin(&(TRISB),(6),(0));
+  1230  073B  3086               	movlw	134
+  1231  073C  00F0               	movwf	GPIO_Init_Pin@DirRegAddress
+  1232  073D  3000               	movlw	0
+  1233  073E  00F1               	movwf	GPIO_Init_Pin@DirRegAddress+1
+  1234  073F  3006               	movlw	6
+  1235  0740  00F8               	movwf	??_SSD_Init
+  1236  0741  0878               	movf	??_SSD_Init,w
+  1237  0742  00F2               	movwf	GPIO_Init_Pin@pin_number
+  1238  0743  01F3               	clrf	GPIO_Init_Pin@dir
+  1239  0744  120A  118A  2690  120A  118A  	fcall	_GPIO_Init_Pin
+  1240  0749                     l958:	
+  1241                           
+  1242                           ;SSD.c: 67:     (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+  1243  0749  1283               	bcf	3,5	;RP0=0, select bank0
+  1244  074A  1303               	bcf	3,6	;RP1=0, select bank0
+  1245  074B  0806               	movf	6,w	;volatile
+  1246  074C  39BF               	andlw	191
+  1247  074D  0086               	movwf	6	;volatile
+  1248                           
+  1249                           ;SSD.c: 69:     GPIO_Init_Pin(&(TRISB),(7),(0));
+  1250  074E  3086               	movlw	134
+  1251  074F  00F0               	movwf	GPIO_Init_Pin@DirRegAddress
+  1252  0750  3000               	movlw	0
+  1253  0751  00F1               	movwf	GPIO_Init_Pin@DirRegAddress+1
+  1254  0752  3007               	movlw	7
+  1255  0753  00F8               	movwf	??_SSD_Init
+  1256  0754  0878               	movf	??_SSD_Init,w
+  1257  0755  00F2               	movwf	GPIO_Init_Pin@pin_number
+  1258  0756  01F3               	clrf	GPIO_Init_Pin@dir
+  1259  0757  120A  118A  2690  120A  118A  	fcall	_GPIO_Init_Pin
+  1260  075C                     l960:	
+  1261                           
+  1262                           ;SSD.c: 70:     (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+  1263  075C  1283               	bcf	3,5	;RP0=0, select bank0
+  1264  075D  1303               	bcf	3,6	;RP1=0, select bank0
+  1265  075E  0806               	movf	6,w	;volatile
+  1266  075F  397F               	andlw	127
+  1267  0760  0086               	movwf	6	;volatile
+  1268  0761                     l67:	
+  1269  0761  0008               	return
+  1270  0762                     __end_of_SSD_Init:	
+  1271                           
+  1272                           	psect	text6
+  1273  0640                     __ptext6:	
+  1274 ;; *************** function _GPIO_Init_Port *****************
+  1275 ;; Defined at:
+  1276 ;;		line 14 in file "GPIO.c"
+  1277 ;; Parameters:    Size  Location     Type
+  1278 ;;  DirRegAddres    2    0[COMMON] PTR unsigned char 
+  1279 ;;		 -> TRISD(1), 
+  1280 ;;  dir             1    2[COMMON] unsigned char 
+  1281 ;; Auto vars:     Size  Location     Type
+  1282 ;;  ret             1    0        unsigned char 
+  1283 ;; Return value:  Size  Location     Type
+  1284 ;;                  1    wreg      unsigned char 
+  1285 ;; Registers used:
+  1286 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1287 ;; Tracked objects:
+  1288 ;;		On entry : 0/0
+  1289 ;;		On exit  : 0/0
+  1290 ;;		Unchanged: 0/0
+  1291 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1292 ;;      Params:         3       0       0       0       0
+  1293 ;;      Locals:         3       0       0       0       0
+  1294 ;;      Temps:          1       0       0       0       0
+  1295 ;;      Totals:         7       0       0       0       0
+  1296 ;;Total ram usage:        7 bytes
+  1297 ;; Hardware stack levels used:    1
+  1298 ;; This function calls:
+  1299 ;;		Nothing
+  1300 ;; This function is called by:
+  1301 ;;		_SSD_Init
+  1302 ;; This function uses a non-reentrant model
+  1303 ;;
+  1304                           
+  1305                           
+  1306                           ;psect for function _GPIO_Init_Port
+  1307  0640                     _GPIO_Init_Port:	
+  1308  0640                     l862:	
+  1309                           ;incstack = 0
+  1310                           ; Regs used in _GPIO_Init_Port: [wreg-fsr0h+status,2+status,0]
+  1311                           
+  1312  0640                     l864:	
+  1313                           
+  1314                           ;GPIO.c: 18:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
+  1315  0640  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1316  0641  0084               	movwf	4
+  1317  0642  1783               	bsf	3,7
+  1318  0643  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1319  0644  1383               	bcf	3,7
+  1320  0645  0800               	movf	0,w
+  1321  0646  1683               	bsf	3,5	;RP0=1, select bank1
+  1322  0647  1303               	bcf	3,6	;RP1=0, select bank1
+  1323  0648  0605               	xorwf	5,w	;volatile
+  1324  0649  1903               	skipnz
+  1325  064A  2E4C               	goto	u161
+  1326  064B  2E4D               	goto	u160
+  1327  064C                     u161:	
+  1328  064C  2E7A               	goto	l876
+  1329  064D                     u160:	
+  1330  064D                     l866:	
+  1331  064D  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1332  064E  0084               	movwf	4
+  1333  064F  1783               	bsf	3,7
+  1334  0650  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1335  0651  1383               	bcf	3,7
+  1336  0652  0800               	movf	0,w
+  1337  0653  0606               	xorwf	6,w	;volatile
+  1338  0654  1903               	skipnz
+  1339  0655  2E57               	goto	u171
+  1340  0656  2E58               	goto	u170
+  1341  0657                     u171:	
+  1342  0657  2E7A               	goto	l876
+  1343  0658                     u170:	
+  1344  0658                     l868:	
+  1345  0658  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1346  0659  0084               	movwf	4
+  1347  065A  1783               	bsf	3,7
+  1348  065B  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1349  065C  1383               	bcf	3,7
+  1350  065D  0800               	movf	0,w
+  1351  065E  0607               	xorwf	7,w	;volatile
+  1352  065F  1903               	skipnz
+  1353  0660  2E62               	goto	u181
+  1354  0661  2E63               	goto	u180
+  1355  0662                     u181:	
+  1356  0662  2E7A               	goto	l876
+  1357  0663                     u180:	
+  1358  0663                     l870:	
+  1359  0663  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1360  0664  0084               	movwf	4
+  1361  0665  1783               	bsf	3,7
+  1362  0666  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1363  0667  1383               	bcf	3,7
+  1364  0668  0800               	movf	0,w
+  1365  0669  0608               	xorwf	8,w	;volatile
+  1366  066A  1903               	skipnz
+  1367  066B  2E6D               	goto	u191
+  1368  066C  2E6E               	goto	u190
+  1369  066D                     u191:	
+  1370  066D  2E7A               	goto	l876
+  1371  066E                     u190:	
+  1372  066E                     l872:	
+  1373  066E  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1374  066F  0084               	movwf	4
+  1375  0670  1783               	bsf	3,7
+  1376  0671  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1377  0672  1383               	bcf	3,7
+  1378  0673  0800               	movf	0,w
+  1379  0674  0609               	xorwf	9,w	;volatile
+  1380  0675  1903               	skipnz
+  1381  0676  2E78               	goto	u201
+  1382  0677  2E79               	goto	u200
+  1383  0678                     u201:	
+  1384  0678  2E7A               	goto	l876
+  1385  0679                     u200:	
+  1386  0679                     l874:	
+  1387                           
+  1388                           ;GPIO.c: 24:     }
+  1389  0679  2E8F               	goto	l19
+  1390  067A                     l876:	
+  1391                           
+  1392                           ;GPIO.c: 26:     {;GPIO.c: 27:         ((*DirRegAddress)=(dir)?(~0):(0));
+  1393  067A  0872               	movf	GPIO_Init_Port@dir,w
+  1394  067B  1D03               	btfss	3,2
+  1395  067C  2E7E               	goto	u211
+  1396  067D  2E7F               	goto	u210
+  1397  067E                     u211:	
+  1398  067E  2E82               	goto	l880
+  1399  067F                     u210:	
+  1400  067F                     l878:	
+  1401  067F  01F5               	clrf	_GPIO_Init_Port$31
+  1402  0680  01F6               	clrf	_GPIO_Init_Port$31+1
+  1403  0681  2E86               	goto	l882
+  1404  0682                     l880:	
+  1405  0682  30FF               	movlw	255
+  1406  0683  00F5               	movwf	_GPIO_Init_Port$31
+  1407  0684  30FF               	movlw	255
+  1408  0685  00F6               	movwf	_GPIO_Init_Port$31+1
+  1409  0686                     l882:	
+  1410  0686  0875               	movf	_GPIO_Init_Port$31,w
+  1411  0687  00F3               	movwf	??_GPIO_Init_Port
+  1412  0688  0870               	movf	GPIO_Init_Port@DirRegAddress,w
+  1413  0689  0084               	movwf	4
+  1414  068A  1783               	bsf	3,7
+  1415  068B  1C71               	btfss	GPIO_Init_Port@DirRegAddress+1,0
+  1416  068C  1383               	bcf	3,7
+  1417  068D  0873               	movf	??_GPIO_Init_Port,w
+  1418  068E  0080               	movwf	0
+  1419  068F                     l19:	
+  1420  068F  0008               	return
+  1421  0690                     __end_of_GPIO_Init_Port:	
+  1422                           
+  1423                           	psect	text7
+  1424  0690                     __ptext7:	
+  1425 ;; *************** function _GPIO_Init_Pin *****************
+  1426 ;; Defined at:
+  1427 ;;		line 34 in file "GPIO.c"
+  1428 ;; Parameters:    Size  Location     Type
+  1429 ;;  DirRegAddres    2    0[COMMON] PTR unsigned char 
+  1430 ;;		 -> TRISB(1), 
+  1431 ;;  pin_number      1    2[COMMON] unsigned char 
+  1432 ;;  dir             1    3[COMMON] unsigned char 
+  1433 ;; Auto vars:     Size  Location     Type
+  1434 ;;  ret             1    0        unsigned char 
+  1435 ;; Return value:  Size  Location     Type
+  1436 ;;                  1    wreg      unsigned char 
+  1437 ;; Registers used:
+  1438 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1439 ;; Tracked objects:
+  1440 ;;		On entry : 0/0
+  1441 ;;		On exit  : 0/0
+  1442 ;;		Unchanged: 0/0
+  1443 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1444 ;;      Params:         4       0       0       0       0
+  1445 ;;      Locals:         1       0       0       0       0
+  1446 ;;      Temps:          3       0       0       0       0
+  1447 ;;      Totals:         8       0       0       0       0
+  1448 ;;Total ram usage:        8 bytes
+  1449 ;; Hardware stack levels used:    1
+  1450 ;; This function calls:
+  1451 ;;		Nothing
+  1452 ;; This function is called by:
+  1453 ;;		_SSD_Init
+  1454 ;; This function uses a non-reentrant model
+  1455 ;;
+  1456                           
+  1457                           
+  1458                           ;psect for function _GPIO_Init_Pin
+  1459  0690                     _GPIO_Init_Pin:	
+  1460  0690                     l886:	
+  1461                           ;incstack = 0
+  1462                           ; Regs used in _GPIO_Init_Pin: [wreg-fsr0h+status,2+status,0]
+  1463                           
+  1464  0690                     l888:	
+  1465                           
+  1466                           ;GPIO.c: 38:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
+  1467  0690  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1468  0691  0084               	movwf	4
+  1469  0692  1783               	bsf	3,7
+  1470  0693  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1471  0694  1383               	bcf	3,7
+  1472  0695  0800               	movf	0,w
+  1473  0696  1683               	bsf	3,5	;RP0=1, select bank1
+  1474  0697  1303               	bcf	3,6	;RP1=0, select bank1
+  1475  0698  0605               	xorwf	5,w	;volatile
+  1476  0699  1903               	skipnz
+  1477  069A  2E9C               	goto	u221
+  1478  069B  2E9D               	goto	u220
+  1479  069C                     u221:	
+  1480  069C  2ECA               	goto	l900
+  1481  069D                     u220:	
+  1482  069D                     l890:	
+  1483  069D  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1484  069E  0084               	movwf	4
+  1485  069F  1783               	bsf	3,7
+  1486  06A0  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1487  06A1  1383               	bcf	3,7
+  1488  06A2  0800               	movf	0,w
+  1489  06A3  0606               	xorwf	6,w	;volatile
+  1490  06A4  1903               	skipnz
+  1491  06A5  2EA7               	goto	u231
+  1492  06A6  2EA8               	goto	u230
+  1493  06A7                     u231:	
+  1494  06A7  2ECA               	goto	l900
+  1495  06A8                     u230:	
+  1496  06A8                     l892:	
+  1497  06A8  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1498  06A9  0084               	movwf	4
+  1499  06AA  1783               	bsf	3,7
+  1500  06AB  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1501  06AC  1383               	bcf	3,7
+  1502  06AD  0800               	movf	0,w
+  1503  06AE  0607               	xorwf	7,w	;volatile
+  1504  06AF  1903               	skipnz
+  1505  06B0  2EB2               	goto	u241
+  1506  06B1  2EB3               	goto	u240
+  1507  06B2                     u241:	
+  1508  06B2  2ECA               	goto	l900
+  1509  06B3                     u240:	
+  1510  06B3                     l894:	
+  1511  06B3  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1512  06B4  0084               	movwf	4
+  1513  06B5  1783               	bsf	3,7
+  1514  06B6  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1515  06B7  1383               	bcf	3,7
+  1516  06B8  0800               	movf	0,w
+  1517  06B9  0608               	xorwf	8,w	;volatile
+  1518  06BA  1903               	skipnz
+  1519  06BB  2EBD               	goto	u251
+  1520  06BC  2EBE               	goto	u250
+  1521  06BD                     u251:	
+  1522  06BD  2ECA               	goto	l900
+  1523  06BE                     u250:	
+  1524  06BE                     l896:	
+  1525  06BE  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1526  06BF  0084               	movwf	4
+  1527  06C0  1783               	bsf	3,7
+  1528  06C1  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1529  06C2  1383               	bcf	3,7
+  1530  06C3  0800               	movf	0,w
+  1531  06C4  0609               	xorwf	9,w	;volatile
+  1532  06C5  1903               	skipnz
+  1533  06C6  2EC8               	goto	u261
+  1534  06C7  2EC9               	goto	u260
+  1535  06C8                     u261:	
+  1536  06C8  2ECA               	goto	l900
+  1537  06C9                     u260:	
+  1538  06C9                     l898:	
+  1539                           
+  1540                           ;GPIO.c: 44:     }
+  1541  06C9  2EED               	goto	l24
+  1542  06CA                     l900:	
+  1543                           
+  1544                           ;GPIO.c: 46:     {;GPIO.c: 47:         ((*DirRegAddress)=(*DirRegAddress & ~(1<<pin_numb
       +                          er))|(dir<<pin_number));
-   792  07C4  0873               	movf	GPIO_Init_Pin@dir,w
-   793  07C5  00F4               	movwf	??_GPIO_Init_Pin
-   794  07C6  0A72               	incf	GPIO_Init_Pin@pin_number,w
-   795  07C7  2FCA               	goto	u254
-   796  07C8                     u255:	
-   797  07C8  1003               	clrc
-   798  07C9  0DF4               	rlf	??_GPIO_Init_Pin,f
-   799  07CA                     u254:	
-   800  07CA  3EFF               	addlw	-1
-   801  07CB  1D03               	skipz
-   802  07CC  2FC8               	goto	u255
-   803  07CD  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   804  07CE  0084               	movwf	4
-   805  07CF  1783               	bsf	3,7
-   806  07D0  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   807  07D1  1383               	bcf	3,7
-   808  07D2  3001               	movlw	1
-   809  07D3  00F5               	movwf	??_GPIO_Init_Pin+1
-   810  07D4  0A72               	incf	GPIO_Init_Pin@pin_number,w
-   811  07D5  2FD8               	goto	u264
-   812  07D6                     u265:	
-   813  07D6  1003               	clrc
-   814  07D7  0DF5               	rlf	??_GPIO_Init_Pin+1,f
-   815  07D8                     u264:	
-   816  07D8  3EFF               	addlw	-1
-   817  07D9  1D03               	skipz
-   818  07DA  2FD6               	goto	u265
-   819  07DB  0875               	movf	??_GPIO_Init_Pin+1,w
-   820  07DC  3AFF               	xorlw	255
-   821  07DD  0500               	andwf	0,w
-   822  07DE  0474               	iorwf	??_GPIO_Init_Pin,w
-   823  07DF  00F6               	movwf	??_GPIO_Init_Pin+2
-   824  07E0  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
-   825  07E1  0084               	movwf	4
-   826  07E2  1783               	bsf	3,7
-   827  07E3  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
-   828  07E4  1383               	bcf	3,7
-   829  07E5  0876               	movf	??_GPIO_Init_Pin+2,w
-   830  07E6  0080               	movwf	0
-   831  07E7                     l24:	
-   832  07E7  0008               	return
-   833  07E8                     __end_of_GPIO_Init_Pin:	
-   834  007E                     btemp	set	126	;btemp
-   835  007E                     wtemp0	set	126
+  1545  06CA  0873               	movf	GPIO_Init_Pin@dir,w
+  1546  06CB  00F4               	movwf	??_GPIO_Init_Pin
+  1547  06CC  0A72               	incf	GPIO_Init_Pin@pin_number,w
+  1548  06CD  2ED0               	goto	u274
+  1549  06CE                     u275:	
+  1550  06CE  1003               	clrc
+  1551  06CF  0DF4               	rlf	??_GPIO_Init_Pin,f
+  1552  06D0                     u274:	
+  1553  06D0  3EFF               	addlw	-1
+  1554  06D1  1D03               	skipz
+  1555  06D2  2ECE               	goto	u275
+  1556  06D3  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1557  06D4  0084               	movwf	4
+  1558  06D5  1783               	bsf	3,7
+  1559  06D6  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1560  06D7  1383               	bcf	3,7
+  1561  06D8  3001               	movlw	1
+  1562  06D9  00F5               	movwf	??_GPIO_Init_Pin+1
+  1563  06DA  0A72               	incf	GPIO_Init_Pin@pin_number,w
+  1564  06DB  2EDE               	goto	u284
+  1565  06DC                     u285:	
+  1566  06DC  1003               	clrc
+  1567  06DD  0DF5               	rlf	??_GPIO_Init_Pin+1,f
+  1568  06DE                     u284:	
+  1569  06DE  3EFF               	addlw	-1
+  1570  06DF  1D03               	skipz
+  1571  06E0  2EDC               	goto	u285
+  1572  06E1  0875               	movf	??_GPIO_Init_Pin+1,w
+  1573  06E2  3AFF               	xorlw	255
+  1574  06E3  0500               	andwf	0,w
+  1575  06E4  0474               	iorwf	??_GPIO_Init_Pin,w
+  1576  06E5  00F6               	movwf	??_GPIO_Init_Pin+2
+  1577  06E6  0870               	movf	GPIO_Init_Pin@DirRegAddress,w
+  1578  06E7  0084               	movwf	4
+  1579  06E8  1783               	bsf	3,7
+  1580  06E9  1C71               	btfss	GPIO_Init_Pin@DirRegAddress+1,0
+  1581  06EA  1383               	bcf	3,7
+  1582  06EB  0876               	movf	??_GPIO_Init_Pin+2,w
+  1583  06EC  0080               	movwf	0
+  1584  06ED                     l24:	
+  1585  06ED  0008               	return
+  1586  06EE                     __end_of_GPIO_Init_Pin:	
+  1587  007E                     btemp	set	126	;btemp
+  1588  007E                     wtemp0	set	126
 
 
 Data Sizes:
@@ -860,8 +1616,8 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14      9      11
-    BANK0            80      0      15
+    COMMON           14     14      14
+    BANK0            80      0      17
     BANK1            80      0       0
     BANK3            96      0       0
     BANK2            96      0       0
@@ -877,7 +1633,10 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMMON
 
-    _main->_GPIO_Init_Pin
+    _main->_SSD_Init
+    _SSD_Update->_SSD_Disable
+    _SSD_Update->_SSD_Enable
+    _SSD_Init->_GPIO_Init_Pin
 
 Critical Paths under _main in BANK0
 
@@ -900,25 +1659,49 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 1     1      0     794
-                                              8 COMMON     1     1      0
+ (0) _main                                                 3     3      0    1938
+                                             11 COMMON     3     3      0
+                           _SSD_Init
+                     _SSD_Set_Symbol
+                         _SSD_Update
+ ---------------------------------------------------------------------------------
+ (1) _SSD_Update                                           0     0      0      44
+                        _SSD_Disable
+                         _SSD_Enable
+ ---------------------------------------------------------------------------------
+ (2) _SSD_Enable                                           3     3      0      22
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (2) _SSD_Disable                                          3     3      0      22
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (1) _SSD_Set_Symbol                                       3     2      1     348
+                                              0 COMMON     3     2      1
+ ---------------------------------------------------------------------------------
+ (1) _SSD_Init                                             3     3      0    1546
+                                              8 COMMON     3     3      0
                       _GPIO_Init_Pin
                      _GPIO_Init_Port
  ---------------------------------------------------------------------------------
- (1) _GPIO_Init_Port                                       7     4      3     338
+ (2) _GPIO_Init_Port                                       7     4      3     338
                                               0 COMMON     7     4      3
  ---------------------------------------------------------------------------------
- (1) _GPIO_Init_Pin                                        8     4      4     456
+ (2) _GPIO_Init_Pin                                        8     4      4    1140
                                               0 COMMON     8     4      4
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 1
+ Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
-   _GPIO_Init_Pin
-   _GPIO_Init_Port
+   _SSD_Init
+     _GPIO_Init_Pin
+     _GPIO_Init_Port
+   _SSD_Set_Symbol
+   _SSD_Update
+     _SSD_Disable
+     _SSD_Enable
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -934,59 +1717,89 @@ BANK1               50      0       0       7        0.0%
 BITBANK1            50      0       0       6        0.0%
 SFR1                 0      0       0       2        0.0%
 BITSFR1              0      0       0       2        0.0%
-BANK0               50      0       F       5       18.8%
+BANK0               50      0      11       5       21.3%
 BITBANK0            50      0       0       4        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR0              0      0       0       1        0.0%
-COMMON               E      9       B       1       78.6%
+COMMON               E      E       E       1      100.0%
 BITCOMMON            E      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-DATA                 0      0      1A      12        0.0%
-ABS                  0      0      1A       3        0.0%
+DATA                 0      0      1F      12        0.0%
+ABS                  0      0      1F       3        0.0%
 NULL                 0      0       0       0        0.0%
 STACK                0      0       0       2        0.0%
 EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Sun Jan 05 13:23:58 2020
+Symbol Table                                                                                   Mon Jan 06 09:36:34 2020
 
-                          pc 0002                  __CFG_CP$OFF 0000                           l24 07E7  
-                         l41 0736                           l42 0736                           l19 0789  
-                         fsr 0004                          l701 073A                          l711 0773  
-                        l703 0747                          l705 0752                          l713 0774  
-                        l731 07AD                          l723 078A                          l715 0779  
-                        l707 075D                          l733 07B8                          l725 078A  
-                        l717 077C                          l709 0768                          l741 0716  
-                        l735 07C3                          l727 0797                          l719 0780  
-                        l743 072E                          l729 07A2                          l737 07C4  
-                        l745 0732                          l699 073A                          u200 0797  
-                        u201 0796                          u210 07A2                          u211 07A1  
-                        u220 07AD                          u140 0747                          u221 07AC  
-                        u141 0746                          u230 07B8                          u150 0752  
-                        u231 07B7                          u151 0751                          u240 07C3  
-                        u160 075D                          u241 07C2                          u161 075C  
-                        u170 0768                          u171 0767                          u180 0773  
-                        u181 0772                          u254 07CA                          u190 0779  
-                        u255 07C8                          u191 0778                          u264 07D8  
-                        u265 07D6                 __CFG_CPD$OFF 0000                          fsr0 0004  
-                        indf 0000                 __CFG_FOSC$HS 0000                 __CFG_LVP$OFF 0000  
-               __CFG_WRT$OFF 0000                         _main 0716                         btemp 007E  
-                       start 0000                _GPIO_Init_Pin 078A                        ?_main 0070  
-              __CFG_WDTE$OFF 0000                        _PORTB 0006                        _PORTD 0008  
-                      _TRISA 0085                        _TRISB 0086                        _TRISC 0087  
-                      _TRISD 0088                        _TRISE 0089            _GPIO_Init_Port$31 0075  
-             __CFG_BOREN$OFF 0000                        pclath 000A                        status 0003  
-                      wtemp0 007E               ?_GPIO_Init_Pin 0070              __initialization 07E8  
-               __end_of_main 073A               _GPIO_Init_Port 073A                       ??_main 0078  
+                          pc 0002                   _SSD_Update 05AA                  __CFG_CP$OFF 0000  
+                         l24 06ED                           l19 068F                           l37 07E4  
+                         l70 058B                           l38 07E4                           l74 05D9  
+                         l67 0761                           l84 060A                           l94 063F  
+                         fsr 0004                          l900 06CA                          l910 05E8  
+                        l912 05EE                          l904 05DB                          l920 060C  
+                        l906 05DC                          l914 05F4                          l922 060D  
+                        l930 0629                          l908 05E2                          l924 0614  
+                        l870 0663                          l862 0640                          l950 0715  
+                        l926 061B                          l880 0682                          l872 066E  
+                        l864 0640                          l960 075C                          l952 0723  
+                        l944 06FA                          l936 06EE                          l928 0622  
+                        l890 069D                          l882 0686                          l874 0679  
+                        l866 064D                          l954 0728                          l946 0702  
+                        l938 06F0                          l962 0583                          l970 05C7  
+                        l892 06A8                          l868 0658                          l876 067A  
+                        l956 073B                          l948 0708                          l972 05CB  
+                        l964 05AA                          l980 076E                          l894 06B3  
+                        l886 0690                          l878 067F                          l958 0749  
+                        l974 05D3                          l966 05B2                          l990 07AE  
+                        l982 0776                          l896 06BE                          l888 0690  
+                        l968 05BA                          l992 07B3                          l984 0780  
+                        l976 0762                          l898 06C9                          l994 07C5  
+                        l986 078F                          l978 0767                          l996 07D2  
+                        l988 079C                          u200 0679                          u201 0678  
+                        u210 067F                          u211 067E                          u220 069D  
+                        u300 05C7                          u221 069C                          u301 05C6  
+                        u230 06A8                          u231 06A7                          u240 06B3  
+                        u160 064D                          u241 06B2                          u161 064C  
+                        u305 05C3                          u250 06BE                          u170 0658  
+                        u251 06BD                          u171 0657                          u260 06C9  
+                        u180 0663                          u261 06C8                          u181 0662  
+                        u317 0795                          u190 066E                          u191 066D  
+                        u327 07A7                          u337 07B9                          u274 06D0  
+                        u290 0715                 __CFG_CPD$OFF 0000                          u275 06CE  
+                        u291 0714                          u347 07CB                          u284 06DE  
+                        u285 06DC                          u357 07DD                          u295 0711  
+                        fsr0 0004                          indf 0000                 __CFG_FOSC$HS 0000  
+               __CFG_LVP$OFF 0000                         l1040 05FC                         l1038 0631  
+               __CFG_WRT$OFF 0000                         _main 0762                         btemp 007E  
+                       start 0000                _GPIO_Init_Pin 0690               _SSD_Set_Symbol 0582  
+                      ?_main 0070                __CFG_WDTE$OFF 0000                        _PORTB 0006  
+                      _PORTD 0008                        _TRISA 0085                        _TRISB 0086  
+                      _TRISC 0087                        _TRISD 0088                        _TRISE 0089  
+          _GPIO_Init_Port$31 0075             __end_of_SSD_Init 0762               __CFG_BOREN$OFF 0000  
+                      pclath 000A                        status 0003                        wtemp0 007E  
+               SSD_Disable@s 0072                  ?_SSD_Enable 0070               ?_GPIO_Init_Pin 0070  
+            __initialization 07E8                 __end_of_main 07E8       __end_of_SSD_Set_Symbol 058C  
+             _GPIO_Init_Port 0640                  ?_SSD_Update 0070                       ??_main 007B  
 GPIO_Init_Port@DirRegAddress 0070   GPIO_Init_Pin@DirRegAddress 0070                       _Buffer 002B  
-             __CFG_PWRTE$OFF 0000       __end_of_GPIO_Init_Port 078A      __end_of__initialization 07FC  
-            ??_GPIO_Init_Pin 0074             GPIO_Init_Pin@dir 0073              ?_GPIO_Init_Port 0070  
-             __pcstackCOMMON 0070                 __pidataBANK0 06F8                   __pbssBANK0 002B  
-                 __pmaintext 0716                   _currentSSD 0079                      __ptext1 073A  
-                    __ptext2 078A         end_of_initialization 07FC      GPIO_Init_Pin@pin_number 0072  
-           ??_GPIO_Init_Port 0073            GPIO_Init_Port@dir 0072          start_initialization 07E8  
-      __end_of_GPIO_Init_Pin 07E8                   init_fetch0 0703                  __pdataBANK0 0020  
-                __pbssCOMMON 0079                    ___latbits 0002                __size_of_main 0024  
-                   init_ram0 0707      __size_of_GPIO_Init_Port 0050       __size_of_GPIO_Init_Pin 005E  
-                _SSD_LOT_ARR 0020  
+             __CFG_PWRTE$OFF 0000       __end_of_GPIO_Init_Port 0690              ?_SSD_Set_Symbol 0070  
+        __size_of_SSD_Enable 0035          __size_of_SSD_Update 0030      __end_of__initialization 07FC  
+            ??_GPIO_Init_Pin 0074             GPIO_Init_Pin@dir 0073                 ?_SSD_Disable 0070  
+            ?_GPIO_Init_Port 0070               __pcstackCOMMON 0070                 __pidataBANK0 058C  
+                  ?_SSD_Init 0070                   __pbssBANK0 002B                   __pmaintext 0762  
+                 ??_SSD_Init 0078          SSD_Set_Symbol@index 0070                    SSD_Init@i 0079  
+               ??_SSD_Enable 0070                 ??_SSD_Update 0073                   _currentSSD 002F  
+                    __ptext1 05AA                      __ptext2 060B                      __ptext3 05DA  
+                    __ptext4 0582                      __ptext5 06EE                      __ptext6 0640  
+                    __ptext7 0690           __end_of_SSD_Enable 0640         end_of_initialization 07FC  
+         __end_of_SSD_Update 05DA             ??_SSD_Set_Symbol 0071         __size_of_SSD_Disable 0031  
+    GPIO_Init_Pin@pin_number 0072             ??_GPIO_Init_Port 0073            GPIO_Init_Port@dir 0072  
+                SSD_Enable@s 0072            __size_of_SSD_Init 0074          start_initialization 07E8  
+      __end_of_GPIO_Init_Pin 06EE                   init_fetch0 0597                  __pdataBANK0 0020  
+                  ___latbits 0002                     _SSD_Init 06EE         SSD_Set_Symbol@symbol 0072  
+              ??_SSD_Disable 0070                __size_of_main 0086          __end_of_SSD_Disable 060B  
+    __size_of_SSD_Set_Symbol 000A                     init_ram0 059B      __size_of_GPIO_Init_Port 0050  
+     __size_of_GPIO_Init_Pin 005E                  _SSD_LOT_ARR 0020                  _SSD_Disable 05DA  
+                 _SSD_Enable 060B  
