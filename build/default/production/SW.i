@@ -1,4 +1,4 @@
-# 1 "SSD.c"
+# 1 "SW.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,15 +6,16 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "SSD.c" 2
+# 1 "SW.c" 2
 
 
 
 
 
 
-# 1 "./Port.h" 1
-# 34 "./Port.h"
+
+# 1 "./GPIO.h" 1
+# 34 "./GPIO.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1728,7 +1729,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 34 "./Port.h" 2
+# 34 "./GPIO.h" 2
+
 
 
 # 1 "./HW.h" 1
@@ -1744,32 +1746,23 @@ extern __bank0 __bit __timeout;
 # 84 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
-# 36 "./Port.h" 2
-
-# 1 "./GPIO.h" 1
+# 37 "./GPIO.h" 2
 # 61 "./GPIO.h"
 u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
 u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
-# 37 "./Port.h" 2
-# 7 "SSD.c" 2
+# 8 "SW.c" 2
 
-# 1 "./SSD.h" 1
-# 49 "./SSD.h"
+# 1 "./Port.h" 1
+# 9 "SW.c" 2
+
+# 1 "./SW.h" 1
+# 24 "./SW.h"
 typedef enum
 {
-    SSD_0 = 0,
-    SSD_1,
-    SSD_2,
-    SSD_3,
-    SSD_4,
-    SSD_5,
-    SSD_6,
-    SSD_7,
-    SSD_8,
-    SSD_9,
-    SSD_NULL
-}SSD_Symbol_t;
-
+    SW_PLUS,
+    SW_MINUS,
+    SW_SET
+}SW_t;
 
 
 
@@ -1777,132 +1770,113 @@ typedef enum
 
 typedef enum
 {
-    SSD_MINUTES_UNITS,
-    SSD_MINUTES_TENS,
-    SSD_HOURS_UNITS,
-    SSD_HOURS_TENS
-}SSD_t;
+    SW_RELEASED,
+    SW_PRE_PRESSED,
+    SW_PRESSED,
+    SW_PRE_RELEASED
+}SW_State_t;
+# 50 "./SW.h"
+void SW_Init(void);
 
 
-typedef enum
+
+u8_t SW_GetState(SW_t sw);
+
+
+
+
+void SW_Update(void);
+
+
+
+
+void SW_UpdateState(SW_t sw);
+# 10 "SW.c" 2
+# 32 "SW.c"
+typedef struct
 {
-    SSD_OFF = 0,
-    SSD_ON = 1
-}tSSD_State;
-
-void SSD_Init(void);
-void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
-void SSD_Update(void);
-void SSD_Disable(SSD_t s);
-void SSD_Enable(SSD_t s);
-# 8 "SSD.c" 2
-# 24 "SSD.c"
-static SSD_Symbol_t Buffer[(4)];
-
-
-
-static currentSSD = 0;
+    u8_t samples[2];
+    u8_t state;
+}SW_DATA_t;
 
 
 
 
+SW_DATA_t SW_DATA[(3)];
 
-static u8_t SSD_LOT_ARR[] =
+void SW_Init(void)
 {
-    0b00111111,
-    0b00000110,
-    0b01011011,
-    0b01001111,
-    0b01100110,
-    0b01101101,
-    0b01111101,
-    0b00000111,
-    0b01111111,
-    0b01101111,
-    0b00000000
-};
 
 
-void SSD_Init()
+    GPIO_Init_Pin((TRISB),(0),(1));
+    SW_DATA[SW_PLUS].state = SW_RELEASED;
+    SW_DATA[SW_PLUS].samples[0] = 1;
+    SW_DATA[SW_PLUS].samples[1] = 1;
+
+    SW_DATA[SW_MINUS].state = SW_RELEASED;
+    SW_DATA[SW_MINUS].samples[0] = 1;
+    SW_DATA[SW_MINUS].samples[1] = 1;
+
+    SW_DATA[SW_SET].state = SW_RELEASED;
+    SW_DATA[SW_SET].samples[0] = 1;
+    SW_DATA[SW_SET].samples[1] = 1;
+
+}
+u8_t SW_GetState(SW_t sw)
 {
-    int i = 0;
+    u8_t ret =0;
 
-    GPIO_Init_Port(&(TRISD),(0));
-    for(;i<(4);i++)
+
+    ret = SW_DATA[sw].state;
+
+    return ret;
+}
+void SW_Update(void)
+{
+
+
+
+    SW_DATA[SW_PLUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_PLUS].samples[1] = (((PORTB) >> (0))& 1);
+
+    SW_UpdateState(SW_PLUS);
+
+    SW_DATA[SW_MINUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_MINUS].samples[1] = (((PORTB) >> (1))& 1);
+
+    SW_UpdateState(SW_MINUS);
+
+
+    SW_DATA[SW_SET].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_SET].samples[1] = (((PORTB) >> (2))& 1);
+
+    SW_UpdateState(SW_SET);
+}
+
+void SW_UpdateState(SW_t sw)
+{
+# 109 "SW.c"
+    switch(SW_DATA[sw].state)
     {
-        Buffer[i] = SSD_NULL;
-    }
 
-    GPIO_Init_Pin(&(TRISB),(4),(0));
-    (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
-
-    GPIO_Init_Pin(&(TRISB),(5),(0));
-    (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
-
-    GPIO_Init_Pin(&(TRISB),(6),(0));
-    (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
-
-    GPIO_Init_Pin(&(TRISB),(7),(0));
-    (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
-}
-void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
-{
-
-    Buffer[index] = symbol;
-}
-void SSD_Update(void)
-{
-
-
-
-    SSD_Disable(currentSSD);
-
-    currentSSD++;
-    if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;
-
-    (((PORTD))=(SSD_LOT_ARR[Buffer[currentSSD]]));
-
-    SSD_Enable(currentSSD);
-}
-
-void SSD_Disable(SSD_t s)
-{
-    switch(s)
-    {
-        case SSD_MINUTES_UNITS:
-            (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
+        case SW_PRE_RELEASED:
+            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+                SW_DATA[sw].state = SW_RELEASED;
             break;
-        case SSD_MINUTES_TENS:
-            (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_OFF<<(5)));
+        case SW_RELEASED:
+            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+                SW_DATA[sw].state = SW_PRE_PRESSED;
             break;
-        case SSD_HOURS_UNITS:
-            (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_OFF<<(6)));
+        case SW_PRE_PRESSED:
+            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+                SW_DATA[sw].state = SW_PRESSED;
             break;
-        case SSD_HOURS_TENS:
-            (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+        case SW_PRESSED:
+            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+                SW_DATA[sw].state = SW_PRE_RELEASED;
             break;
         default:
-                             ;
-    }
-}
 
-void SSD_Enable(SSD_t s)
-{
-    switch(s)
-    {
-        case SSD_MINUTES_UNITS:
-            (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_ON<<(4)));
             break;
-        case SSD_MINUTES_TENS:
-            (((PORTB))=((PORTB) & ~(1<<(5)))|(SSD_ON<<(5)));
-            break;
-        case SSD_HOURS_UNITS:
-            (((PORTB))=((PORTB) & ~(1<<(6)))|(SSD_ON<<(6)));
-            break;
-        case SSD_HOURS_TENS:
-            (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_ON<<(7)));
-            break;
-        default:
-                             ;
     }
 }

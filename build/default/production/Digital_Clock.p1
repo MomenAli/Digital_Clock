@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "84 ./SSD.h
 [; ;./SSD.h: 84: void SSD_Init(void);
 [v _SSD_Init `(v ~T0 @X0 0 ef ]
-"19 Digital_Clock.c
-[; ;Digital_Clock.c: 19:     SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+"21 Digital_Clock.c
+[; ;Digital_Clock.c: 21:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
 [c E859 0 1 2 3 4 5 6 7 8 9 10 .. ]
 [n E859 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
 [c E872 0 1 2 3 .. ]
@@ -19,6 +19,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF842 ~T0 @X0 0 e ]
 [p i __delay ]
+"59 ./SW.h
+[; ;./SW.h: 59: void SW_Update(void);
+[v _SW_Update `(v ~T0 @X0 0 ef ]
+"43 Digital_Clock.c
+[; ;Digital_Clock.c: 43:         if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+[c E891 0 1 2 .. ]
+[n E891 . SW_PLUS SW_MINUS SW_SET  ]
+"54 ./SW.h
+[; ;./SW.h: 54: u8_t SW_GetState(SW_t sw);
+[v _SW_GetState `(uc ~T0 @X0 0 ef1`E891 ]
+"43 Digital_Clock.c
+[; ;Digital_Clock.c: 43:         if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+[c E896 0 1 2 3 .. ]
+[n E896 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -216,33 +230,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44
 [p x CP = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"14 Digital_Clock.c
-[; ;Digital_Clock.c: 14: void main(void) {
+"15 Digital_Clock.c
+[; ;Digital_Clock.c: 15: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"16
-[; ;Digital_Clock.c: 16:     SSD_Init();
+"17
+[; ;Digital_Clock.c: 17:     u8_t i = 0;
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+"18
+[; ;Digital_Clock.c: 18:     SSD_Init();
 [e ( _SSD_Init ..  ]
-"19
-[; ;Digital_Clock.c: 19:     SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
-[e ( _SSD_Set_Symbol (2 , -> -> 1 `i `E859 . `E872 0 ]
-"20
-[; ;Digital_Clock.c: 20:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
-[e ( _SSD_Set_Symbol (2 , -> -> 2 `i `E859 . `E872 1 ]
 "21
-[; ;Digital_Clock.c: 21:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
-[e ( _SSD_Set_Symbol (2 , -> -> 3 `i `E859 . `E872 2 ]
+[; ;Digital_Clock.c: 21:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> _i `E859 . `E872 0 ]
 "22
-[; ;Digital_Clock.c: 22:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
-[e ( _SSD_Set_Symbol (2 , -> -> 4 `i `E859 . `E872 3 ]
+[; ;Digital_Clock.c: 22:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> -> 2 `i `E859 . `E872 1 ]
+"23
+[; ;Digital_Clock.c: 23:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> -> 3 `i `E859 . `E872 2 ]
 "24
-[; ;Digital_Clock.c: 24:     SSD_Update();
-[e ( _SSD_Update ..  ]
-"25
-[; ;Digital_Clock.c: 25:     _delay((unsigned long)((1000)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;Digital_Clock.c: 24:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> -> 4 `i `E859 . `E872 3 ]
 "26
 [; ;Digital_Clock.c: 26:     SSD_Update();
 [e ( _SSD_Update ..  ]
@@ -253,11 +265,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Digital_Clock.c: 28:     SSD_Update();
 [e ( _SSD_Update ..  ]
 "29
-[; ;Digital_Clock.c: 29:     _delay((unsigned long)((1000)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;Digital_Clock.c: 29:     i = i+1;
+[e = _i -> + -> _i `i -> 1 `i `uc ]
 "30
-[; ;Digital_Clock.c: 30:     SSD_Update();
-[e ( _SSD_Update ..  ]
+[; ;Digital_Clock.c: 30:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> _i `E859 . `E872 0 ]
 "31
 [; ;Digital_Clock.c: 31:     _delay((unsigned long)((1000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
@@ -267,16 +279,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;Digital_Clock.c: 33:     _delay((unsigned long)((1000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"34
+[; ;Digital_Clock.c: 34:     SSD_Update();
+[e ( _SSD_Update ..  ]
 "35
-[; ;Digital_Clock.c: 35:     while(1);
+[; ;Digital_Clock.c: 35:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"36
+[; ;Digital_Clock.c: 36:     SSD_Update();
+[e ( _SSD_Update ..  ]
+"37
+[; ;Digital_Clock.c: 37:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"39
+[; ;Digital_Clock.c: 39:     while(1)
 [e :U 97 ]
+"40
+[; ;Digital_Clock.c: 40:     {
+{
+"41
+[; ;Digital_Clock.c: 41:         _delay((unsigned long)((5)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"42
+[; ;Digital_Clock.c: 42:         SW_Update();
+[e ( _SW_Update ..  ]
+"43
+[; ;Digital_Clock.c: 43:         if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+[e $ ! == -> ( _SW_GetState (1 . `E891 0 `i -> . `E896 1 `i 99  ]
+"44
+[; ;Digital_Clock.c: 44:         {
+{
+"45
+[; ;Digital_Clock.c: 45:             SSD_Set_Symbol(++i,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> =+ _i -> -> 1 `i `uc `E859 . `E872 0 ]
+"46
+[; ;Digital_Clock.c: 46:         }
+}
+[e :U 99 ]
+"47
+[; ;Digital_Clock.c: 47:         SSD_Update();
+[e ( _SSD_Update ..  ]
+"48
+[; ;Digital_Clock.c: 48:     }
+}
 [e :U 96 ]
 [e $U 97  ]
 [e :U 98 ]
-"36
-[; ;Digital_Clock.c: 36:     return;
-[e $UE 95  ]
-"37
-[; ;Digital_Clock.c: 37: }
+"50
+[; ;Digital_Clock.c: 50: }
 [e :UE 95 ]
 }

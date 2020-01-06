@@ -1799,13 +1799,52 @@ void SSD_Disable(SSD_t s);
 void SSD_Enable(SSD_t s);
 # 12 "Digital_Clock.c" 2
 
+# 1 "./SW.h" 1
+# 24 "./SW.h"
+typedef enum
+{
+    SW_PLUS,
+    SW_MINUS,
+    SW_SET
+}SW_t;
+
+
+
+
+
+typedef enum
+{
+    SW_RELEASED,
+    SW_PRE_PRESSED,
+    SW_PRESSED,
+    SW_PRE_RELEASED
+}SW_State_t;
+# 50 "./SW.h"
+void SW_Init(void);
+
+
+
+u8_t SW_GetState(SW_t sw);
+
+
+
+
+void SW_Update(void);
+
+
+
+
+void SW_UpdateState(SW_t sw);
+# 13 "Digital_Clock.c" 2
+
 
 void main(void) {
 
+    u8_t i = 0;
     SSD_Init();
 
 
-    SSD_Set_Symbol(1,SSD_MINUTES_UNITS);
+    SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
     SSD_Set_Symbol(4,SSD_HOURS_TENS);
@@ -1813,6 +1852,8 @@ void main(void) {
     SSD_Update();
     _delay((unsigned long)((1000)*(20000000/4000.0)));
     SSD_Update();
+    i = i+1;
+    SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
     _delay((unsigned long)((1000)*(20000000/4000.0)));
     SSD_Update();
     _delay((unsigned long)((1000)*(20000000/4000.0)));
@@ -1821,6 +1862,15 @@ void main(void) {
     SSD_Update();
     _delay((unsigned long)((1000)*(20000000/4000.0)));
 
-    while(1);
-    return;
+    while(1)
+    {
+        _delay((unsigned long)((5)*(20000000/4000.0)));
+        SW_Update();
+        if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+        {
+            SSD_Set_Symbol(++i,SSD_MINUTES_UNITS);
+        }
+        SSD_Update();
+    }
+
 }

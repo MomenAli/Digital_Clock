@@ -361,8 +361,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _currentSSD -> 0 `i ]
 [e :U 101 ]
 "87
-[; ;SSD.c: 87:     (((PORTD))=(SSD_LOT_ARR[currentSSD]));
-[e = _PORTD *U + &U _SSD_LOT_ARR * -> -> _currentSSD `ui `ux -> -> # *U &U _SSD_LOT_ARR `ui `ux ]
+[; ;SSD.c: 87:     (((PORTD))=(SSD_LOT_ARR[Buffer[currentSSD]]));
+[e = _PORTD *U + &U _SSD_LOT_ARR * -> *U + &U _Buffer * -> -> _currentSSD `ui `ux -> -> # *U &U _Buffer `ui `ux `ux -> -> # *U &U _SSD_LOT_ARR `ui `ux ]
 "89
 [; ;SSD.c: 89:     SSD_Enable(currentSSD);
 [e ( _SSD_Enable (1 -> _currentSSD `E872 ]

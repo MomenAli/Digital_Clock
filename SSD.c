@@ -84,7 +84,7 @@ void SSD_Update(void)
     currentSSD++;
     if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;     
     // output the symbol in the data port
-    GPIO_Write_Port(SSD_DATA_PORT,SSD_LOT_ARR[currentSSD]);
+    GPIO_Write_Port(SSD_DATA_PORT,SSD_LOT_ARR[Buffer[currentSSD]]);
     //enable the current SSD
     SSD_Enable(currentSSD);
 }
