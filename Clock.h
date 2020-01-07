@@ -50,20 +50,14 @@ Mode_t CLOCK_GetMode(void);
  *  current time 
  */
 void CLOCK_GetTime(Time_t * t);
-/*
- * increment the time with the tick period
- */
-void CLOCK_Increment(void);
+
 /*
  * periodic function called every tick period to update 
  * the statues of the clock 
  */
 void CLOCK_Update(void);
 
-/*
- * send pointer to min or hours and check if plus or minus was pressed
- */
-void set_mode_process(u8_t * var);
+
 
 
 #endif	/* XC_HEADER_TEMPLATE_H */

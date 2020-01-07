@@ -10,6 +10,10 @@
 #include "SW.h"
 
 
+/*
+ * update the state depend on the previous state the state transition table
+ */
+void SW_UpdateState(SW_t sw);
 
 /*
  * State Struct to hold data 

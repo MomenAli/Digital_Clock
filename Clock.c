@@ -14,6 +14,17 @@
 /*lets assume it 20 till we make dynamic design*/
 #define CLOCK_UPDATE_TICK (5)
 
+
+
+/*
+ * increment the time with the tick period
+ */
+void CLOCK_Increment(void);
+/*
+ * send pointer to min or hours and check if plus or minus was pressed
+ */
+void set_mode_process(u8_t * var);
+
 /*
  * Create static object of the struct to hold the current time
  */

@@ -10,6 +10,7 @@
       <itemPath>SSD.h</itemPath>
       <itemPath>SW.h</itemPath>
       <itemPath>Clock.h</itemPath>
+      <itemPath>Disp.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,6 +24,7 @@
       <itemPath>SSD.c</itemPath>
       <itemPath>SW.c</itemPath>
       <itemPath>Clock.c</itemPath>
+      <itemPath>Disp.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

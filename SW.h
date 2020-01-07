@@ -68,10 +68,7 @@ u8_t SW_GetState(SW_t sw);
  */
 void SW_Update(void);
 
-/*
- * update the state depend on the previous state the state transition table
- */
-void SW_UpdateState(SW_t sw);
+
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

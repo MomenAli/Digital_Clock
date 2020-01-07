@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=GPIO.c Digital_Clock.c SSD.c SW.c Clock.c
+SOURCEFILES_QUOTED_IF_SPACED=GPIO.c Digital_Clock.c SSD.c SW.c Clock.c Disp.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Digital_Clock.p1 ${OBJECTDIR}/SSD.p1 ${OBJECTDIR}/SW.p1 ${OBJECTDIR}/Clock.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Digital_Clock.p1.d ${OBJECTDIR}/SSD.p1.d ${OBJECTDIR}/SW.p1.d ${OBJECTDIR}/Clock.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Digital_Clock.p1 ${OBJECTDIR}/SSD.p1 ${OBJECTDIR}/SW.p1 ${OBJECTDIR}/Clock.p1 ${OBJECTDIR}/Disp.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Digital_Clock.p1.d ${OBJECTDIR}/SSD.p1.d ${OBJECTDIR}/SW.p1.d ${OBJECTDIR}/Clock.p1.d ${OBJECTDIR}/Disp.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Digital_Clock.p1 ${OBJECTDIR}/SSD.p1 ${OBJECTDIR}/SW.p1 ${OBJECTDIR}/Clock.p1
+OBJECTFILES=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Digital_Clock.p1 ${OBJECTDIR}/SSD.p1 ${OBJECTDIR}/SW.p1 ${OBJECTDIR}/Clock.p1 ${OBJECTDIR}/Disp.p1
 
 # Source Files
-SOURCEFILES=GPIO.c Digital_Clock.c SSD.c SW.c Clock.c
+SOURCEFILES=GPIO.c Digital_Clock.c SSD.c SW.c Clock.c Disp.c
 
 
 
@@ -134,6 +134,14 @@ ${OBJECTDIR}/Clock.p1: Clock.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Clock.d ${OBJECTDIR}/Clock.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/Disp.p1: Disp.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Disp.p1.d 
+	@${RM} ${OBJECTDIR}/Disp.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Disp.p1 Disp.c 
+	@-${MV} ${OBJECTDIR}/Disp.d ${OBJECTDIR}/Disp.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Disp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/GPIO.p1: GPIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -174,6 +182,14 @@ ${OBJECTDIR}/Clock.p1: Clock.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Clock.p1 Clock.c 
 	@-${MV} ${OBJECTDIR}/Clock.d ${OBJECTDIR}/Clock.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/Disp.p1: Disp.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Disp.p1.d 
+	@${RM} ${OBJECTDIR}/Disp.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Disp.p1 Disp.c 
+	@-${MV} ${OBJECTDIR}/Disp.d ${OBJECTDIR}/Disp.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Disp.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
