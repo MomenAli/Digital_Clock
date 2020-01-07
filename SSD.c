@@ -25,7 +25,7 @@ static SSD_Symbol_t Buffer[NUMBER_SSD];
 /*
  * Buffer for the current displayed values
  */
-static currentSSD = 0;
+static u8_t currentSSD = 0;
 
 /*
  * LOOK UP TABLE
@@ -77,6 +77,7 @@ void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 void SSD_Update(void)
 {
     //check if my tick comes
+    /*NOT DONE*/
     
     // disable previous SSD
     SSD_Disable(currentSSD);

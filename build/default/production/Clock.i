@@ -1,4 +1,4 @@
-# 1 "Digital_Clock.c"
+# 1 "Clock.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Digital_Clock.c" 2
+# 1 "Clock.c" 2
 
 
 
@@ -1728,10 +1728,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "Digital_Clock.c" 2
+# 9 "Clock.c" 2
 
-# 1 "./Port.h" 1
-# 36 "./Port.h"
+
+# 1 "./Clock.h" 1
+# 16 "./Clock.h"
 # 1 "./HW.h" 1
 # 37 "./HW.h"
 #pragma config FOSC = HS
@@ -1745,100 +1746,11 @@ extern __bank0 __bit __timeout;
 # 84 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
-# 36 "./Port.h" 2
-
-# 1 "./GPIO.h" 1
-# 61 "./GPIO.h"
-u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
-u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
-# 37 "./Port.h" 2
-# 10 "Digital_Clock.c" 2
-
-
-# 1 "./SSD.h" 1
-# 49 "./SSD.h"
-typedef enum
-{
-    SSD_0 = 0,
-    SSD_1,
-    SSD_2,
-    SSD_3,
-    SSD_4,
-    SSD_5,
-    SSD_6,
-    SSD_7,
-    SSD_8,
-    SSD_9,
-    SSD_NULL
-}SSD_Symbol_t;
+# 16 "./Clock.h" 2
 
 
 
 
-
-
-typedef enum
-{
-    SSD_MINUTES_UNITS,
-    SSD_MINUTES_TENS,
-    SSD_HOURS_UNITS,
-    SSD_HOURS_TENS
-}SSD_t;
-
-
-typedef enum
-{
-    SSD_OFF = 0,
-    SSD_ON = 1
-}tSSD_State;
-
-void SSD_Init(void);
-void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
-void SSD_Update(void);
-void SSD_Disable(SSD_t s);
-void SSD_Enable(SSD_t s);
-# 12 "Digital_Clock.c" 2
-
-# 1 "./SW.h" 1
-# 34 "./SW.h"
-typedef enum
-{
-    SW_PLUS,
-    SW_MINUS,
-    SW_SET
-}SW_t;
-
-
-
-
-
-typedef enum
-{
-    SW_RELEASED,
-    SW_PRE_PRESSED,
-    SW_PRESSED,
-    SW_PRE_RELEASED
-}SW_State_t;
-# 60 "./SW.h"
-void SW_Init(void);
-
-
-
-u8_t SW_GetState(SW_t sw);
-
-
-
-
-void SW_Update(void);
-
-
-
-
-void SW_UpdateState(SW_t sw);
-# 13 "Digital_Clock.c" 2
-
-# 1 "./Clock.h" 1
-# 20 "./Clock.h"
 typedef struct
 {
     u8_t hours;
@@ -1886,30 +1798,203 @@ void CLOCK_Update(void);
 
 
 void set_mode_process(u8_t * var);
-# 14 "Digital_Clock.c" 2
+# 11 "Clock.c" 2
+
+# 1 "./SW.h" 1
+# 34 "./SW.h"
+typedef enum
+{
+    SW_PLUS,
+    SW_MINUS,
+    SW_SET
+}SW_t;
 
 
-void main(void) {
-
-    u8_t i = 0;
-    SSD_Init();
 
 
-    SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
-    SSD_Set_Symbol(2,SSD_MINUTES_TENS);
-    SSD_Set_Symbol(3,SSD_HOURS_UNITS);
-    SSD_Set_Symbol(4,SSD_HOURS_TENS);
+
+typedef enum
+{
+    SW_RELEASED,
+    SW_PRE_PRESSED,
+    SW_PRESSED,
+    SW_PRE_RELEASED
+}SW_State_t;
+# 60 "./SW.h"
+void SW_Init(void);
 
 
-    CLOCK_Init();
+
+u8_t SW_GetState(SW_t sw);
 
 
-    while(1)
+
+
+void SW_Update(void);
+
+
+
+
+void SW_UpdateState(SW_t sw);
+# 12 "Clock.c" 2
+
+
+
+
+
+
+
+
+static Time_t CurrentTime;
+
+
+
+
+static Mode_t CurrentMode;
+
+
+
+
+
+
+
+void CLOCK_Init(void)
+{
+
+    CurrentTime.hours = 0;
+    CurrentTime.minuts = 0;
+    CurrentTime.seconds = 0;
+    CurrentTime.mSeconds = 0;
+
+
+    CurrentMode = CL_NORMAL;
+
+
+}
+
+
+
+Mode_t CLOCK_GetMode(void)
+{
+
+    return CurrentMode;
+}
+
+
+
+void CLOCK_GetTime(Time_t * t)
+{
+
+    t->hours = CurrentTime.hours;
+    t->minuts = CurrentTime.minuts;
+    t->seconds = CurrentTime.seconds;
+    t->mSeconds = CurrentTime.mSeconds;
+}
+
+
+
+void CLOCK_Increment(void)
+{
+
+    CurrentTime.mSeconds+=(5);
+
+    if(CurrentTime.mSeconds >= 1000)
     {
-        _delay((unsigned long)((5)*(20000000/4000.0)));
-        SW_Update();
-        CLOCK_Update();
-        SSD_Update();
+
+
+    CurrentTime.mSeconds = 0;
+    CurrentTime.seconds += 1;
+
+        if(CurrentTime.seconds>=60)
+        {
+
+
+        CurrentTime.seconds = 0;
+        CurrentTime.minuts += 1;
+
+            if(CurrentTime.minuts>=60)
+            {
+
+
+            CurrentTime.minuts = 0;
+            CurrentTime.hours += 1;
+
+                if(CurrentTime.hours>=24){
+
+
+                CurrentTime.hours = 0;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+void CLOCK_Update(void)
+{
+
+
+
+
+    if(SW_GetState(SW_SET)== SW_PRESSED)
+    {
+
+        switch(CurrentMode)
+        {
+            case CL_NORMAL:
+                CurrentMode = CL_SET_HOURS;
+                break;
+            case CL_SET_HOURS:
+                CurrentMode = CL_SET_MINUTES;
+                break;
+            case CL_SET_MINUTES:
+                CurrentMode = CL_NORMAL;
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    if(CurrentMode == CL_NORMAL)
+    {
+        CLOCK_Increment();
+    }
+    else
+    {
+        switch(CurrentMode)
+        {
+
+            case CL_SET_HOURS:
+
+                set_mode_process(&CurrentTime.hours);
+                break;
+            case CL_SET_MINUTES:
+
+                set_mode_process(&CurrentTime.minuts);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+void set_mode_process(u8_t * var)
+{
+    if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+    {
+
+
+        *var += 1;
+    }
+    if(SW_GetState(SW_MINUS) == SW_PRE_PRESSED)
+    {
+
+
+        *var -= 1;
     }
 
 }

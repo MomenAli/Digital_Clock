@@ -1756,7 +1756,7 @@ u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 9 "SW.c" 2
 
 # 1 "./SW.h" 1
-# 24 "./SW.h"
+# 34 "./SW.h"
 typedef enum
 {
     SW_PLUS,
@@ -1775,7 +1775,7 @@ typedef enum
     SW_PRESSED,
     SW_PRE_RELEASED
 }SW_State_t;
-# 50 "./SW.h"
+# 60 "./SW.h"
 void SW_Init(void);
 
 
@@ -1802,7 +1802,7 @@ typedef struct
 
 
 
-SW_DATA_t SW_DATA[(3)];
+ static SW_DATA_t SW_DATA[(3)];
 
 void SW_Init(void)
 {
@@ -1836,6 +1836,7 @@ void SW_Update(void)
 
 
 
+
     SW_DATA[SW_PLUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
     SW_DATA[SW_PLUS].samples[1] = (((PORTB) >> (0))& 1);
 
@@ -1855,7 +1856,7 @@ void SW_Update(void)
 
 void SW_UpdateState(SW_t sw)
 {
-# 109 "SW.c"
+# 110 "SW.c"
     switch(SW_DATA[sw].state)
     {
 

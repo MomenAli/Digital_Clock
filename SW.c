@@ -70,6 +70,7 @@ u8_t SW_GetState(SW_t sw)
 void SW_Update(void)
 {
     //check if it's my tick 
+    /*NOT DONE*/
     
     // update samples of plus switch
     SW_DATA[SW_PLUS].samples[0] = SW_DATA[SW_PLUS].samples[1];

@@ -1801,7 +1801,7 @@ static SSD_Symbol_t Buffer[(4)];
 
 
 
-static currentSSD = 0;
+static u8_t currentSSD = 0;
 
 
 
@@ -1852,6 +1852,7 @@ void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 }
 void SSD_Update(void)
 {
+
 
 
 
