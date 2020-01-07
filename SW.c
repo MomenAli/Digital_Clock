@@ -38,7 +38,7 @@ typedef struct
 /*
  * Create array of structs to hold data
  */
-SW_DATA_t SW_DATA[SW_NUM];
+ static SW_DATA_t SW_DATA[SW_NUM];
 
 void SW_Init(void)
 {

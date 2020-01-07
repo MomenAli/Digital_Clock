@@ -13,7 +13,17 @@
 
 #include <xc.h> // include processor files - each processor file is guarded. 
 
+/*
+ * number of switches in this application is 3  plus, minus and set
+ * please edit this number if you change the application
+ */
 #define SW_NUM (3)
+
+/*
+ * we will take samples every this amount of time
+ * please edit this number depend on the debouncing time of your switch data sheet
+ */
+#define SW_UPDATE_TICK (20)
 
 
 /*

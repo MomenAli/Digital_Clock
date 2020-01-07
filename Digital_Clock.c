@@ -1,6 +1,6 @@
 /*
  * File:   Digital_Clock.c
- * Author: engmo
+ * Author: Momen Ali
  *
  * Created on January 5, 2020, 12:21 AM
  */
