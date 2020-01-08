@@ -1733,7 +1733,7 @@ extern __bank0 __bit __timeout;
 # 1 "./Port.h" 1
 # 36 "./Port.h"
 # 1 "./HW.h" 1
-# 37 "./HW.h"
+# 39 "./HW.h"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -1742,7 +1742,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 84 "./HW.h"
+# 86 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 36 "./Port.h" 2
@@ -1795,8 +1795,8 @@ typedef enum
 void SSD_Init(void);
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 void SSD_Update(void);
-void SSD_Disable(SSD_t s);
-void SSD_Enable(SSD_t s);
+void SSD_Toggle_Second_Dot(void);
+void SSD_Set_PM_Dot(tSSD_State s);
 # 12 "Digital_Clock.c" 2
 
 # 1 "./SW.h" 1
@@ -1830,11 +1830,6 @@ u8_t SW_GetState(SW_t sw);
 
 
 void SW_Update(void);
-
-
-
-
-void SW_UpdateState(SW_t sw);
 # 13 "Digital_Clock.c" 2
 
 # 1 "./Clock.h" 1
@@ -1844,7 +1839,7 @@ typedef struct
     u8_t hours;
     u8_t minuts;
     u8_t seconds;
-    u8_t mSeconds;
+    u16_t mSeconds;
 }Time_t;
 
 
@@ -1875,24 +1870,24 @@ void CLOCK_GetTime(Time_t * t);
 
 
 
-void CLOCK_Increment(void);
-
-
 
 
 void CLOCK_Update(void);
-
-
-
-
-void set_mode_process(u8_t * var);
 # 14 "Digital_Clock.c" 2
+
+# 1 "./Disp.h" 1
+# 18 "./Disp.h"
+void Disp_Init(void);
+void Disp_Update(void);
+# 15 "Digital_Clock.c" 2
 
 
 void main(void) {
 
     u8_t i = 0;
     SSD_Init();
+    SW_Init();
+    Disp_Init();
 
 
     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
@@ -1906,9 +1901,10 @@ void main(void) {
 
     while(1)
     {
-        _delay((unsigned long)((5)*(20000000/4000.0)));
+        _delay((unsigned long)((5)*(8000000/4000.0)));
         SW_Update();
         CLOCK_Update();
+        Disp_Update();
         SSD_Update();
     }
 

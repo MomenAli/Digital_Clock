@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
-"22 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+"25 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
 [e E859 . `uc
 SSD_0 0
 SSD_1 1
@@ -23,7 +23,7 @@ SSD_MINUTES_TENS 1
 SSD_HOURS_UNITS 2
 SSD_HOURS_TENS 3
 ]
-"24 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+"31 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 [e E859 . `uc
 SSD_0 0
 SSD_1 1
@@ -37,19 +37,19 @@ SSD_8 8
 SSD_9 9
 SSD_NULL 10
 ]
-"61
+"37
 [e E878 . `uc
 SSD_OFF 0
 SSD_ON 1
 ]
-"72
+"86
 [e E872 . `uc
 SSD_MINUTES_UNITS 0
 SSD_MINUTES_TENS 1
 SSD_HOURS_UNITS 2
 SSD_HOURS_TENS 3
 ]
-"48 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+"52 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
 [e E859 . `uc
 SW_PLUS 0
 SW_MINUS 1
@@ -61,24 +61,54 @@ SW_PRE_PRESSED 1
 SW_PRESSED 2
 SW_PRE_RELEASED 3
 ]
-"25 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+"36 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
 [e E858 . `uc
 CL_NORMAL 0
 CL_SET_HOURS 1
 CL_SET_MINUTES 2
 ]
-"113
-[e E871 . `uc
+"124
+[e E868 . `uc
 SW_PLUS 0
 SW_MINUS 1
 SW_SET 2
 ]
-[e E876 . `uc
+[e E873 . `uc
 SW_RELEASED 0
 SW_PRE_PRESSED 1
 SW_PRESSED 2
 SW_PRE_RELEASED 3
 ]
+"53 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+[e E850 . `uc
+SSD_0 0
+SSD_1 1
+SSD_2 2
+SSD_3 3
+SSD_4 4
+SSD_5 5
+SSD_6 6
+SSD_7 7
+SSD_8 8
+SSD_9 9
+SSD_NULL 10
+]
+[e E863 . `uc
+SSD_MINUTES_UNITS 0
+SSD_MINUTES_TENS 1
+SSD_HOURS_UNITS 2
+SSD_HOURS_TENS 3
+]
+"78
+[e E889 . `uc
+CL_NORMAL 0
+CL_SET_HOURS 1
+CL_SET_MINUTES 2
+]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
@@ -89,35 +119,55 @@ SW_PRE_RELEASED 3
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"33 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+"44 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
 [v _CLOCK_Init CLOCK_Init `(v  1 e 1 0 ]
+"60
+[v _CLOCK_GetMode CLOCK_GetMode `(E858  1 e 1 0 ]
 "68
+[v _CLOCK_GetTime CLOCK_GetTime `(v  1 e 1 0 ]
+"79
 [v _CLOCK_Increment CLOCK_Increment `(v  1 e 1 0 ]
-"107
+"118
 [v _CLOCK_Update CLOCK_Update `(v  1 e 1 0 ]
-"157
+"168
 [v _set_mode_process set_mode_process `(v  1 e 1 0 ]
-"16 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+"17 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
 [v _main main `(v  1 e 1 0 ]
+"48 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+[v _Disp_Init Disp_Init `(v  1 e 1 0 ]
+"60
+[v _Disp_Update Disp_Update `(v  1 e 1 0 ]
+"87
+[v _DISP_Normal_Operation DISP_Normal_Operation `(v  1 e 1 0 ]
+"116
+[v _DISP_Set_Hours_Operation DISP_Set_Hours_Operation `(v  1 e 1 0 ]
+"146
+[v _DISP_Set_Minutes_Operation DISP_Set_Minutes_Operation `(v  1 e 1 0 ]
 "14 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
 [v _GPIO_Init_Port GPIO_Init_Port `(uc  1 e 1 0 ]
 "34
 [v _GPIO_Init_Pin GPIO_Init_Pin `(uc  1 e 1 0 ]
-"50 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+"61 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 [v _SSD_Init SSD_Init `(v  1 e 1 0 ]
-"72
+"86
 [v _SSD_Set_Symbol SSD_Set_Symbol `(v  1 e 1 0 ]
-"77
+"91
 [v _SSD_Update SSD_Update `(v  1 e 1 0 ]
-"93
+"107
 [v _SSD_Disable SSD_Disable `(v  1 e 1 0 ]
-"114
+"128
 [v _SSD_Enable SSD_Enable `(v  1 e 1 0 ]
-"61 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+"151
+[v _SSD_Data_write SSD_Data_write `(v  1 e 1 0 ]
+"171
+[v _SSD_Toggle_Second_Dot SSD_Toggle_Second_Dot `(v  1 e 1 0 ]
+"47 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+[v _SW_Init SW_Init `(v  1 e 1 0 ]
+"67
 [v _SW_GetState SW_GetState `(uc  1 e 1 0 ]
-"70
+"76
 [v _SW_Update SW_Update `(v  1 e 1 0 ]
-"93
+"99
 [v _SW_UpdateState SW_UpdateState `(v  1 e 1 0 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -133,75 +183,166 @@ SW_PRE_RELEASED 3
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1561
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S174 . 4 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `uc 1 mSeconds 1 3 ]
-"20 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-[v _CurrentTime CurrentTime `S174  1 s 4 CurrentTime ]
-"25
+[s S192 . 5 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `ui 1 mSeconds 2 3 ]
+"31 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+[v _CurrentTime CurrentTime `S192  1 s 5 CurrentTime ]
+"36
 [v _CurrentMode CurrentMode `E858  1 s 1 CurrentMode ]
-"24 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+"20 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+[v _Disp_Blink_counter Disp_Blink_counter `uc  1 s 1 Disp_Blink_counter ]
+"31 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 [v _Buffer Buffer `[4]E859  1 s 4 Buffer ]
-"28
+"35
 [v _currentSSD currentSSD `uc  1 s 1 currentSSD ]
-"34
+"37
+[v _Second_Dot_State Second_Dot_State `E878  1 s 1 Second_Dot_State ]
+"45
 [v _SSD_LOT_ARR SSD_LOT_ARR `[11]uc  1 s 11 SSD_LOT_ARR ]
-[s S143 . 3 `[2]uc 1 samples 2 0 `uc 1 state 1 2 ]
-"41 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-[v _SW_DATA SW_DATA `[3]S143  1 s 9 SW_DATA ]
-"16 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+[s S161 . 3 `[2]uc 1 samples 2 0 `uc 1 state 1 2 ]
+"45 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+[v _SW_DATA SW_DATA `[3]S161  1 s 9 SW_DATA ]
+"17 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
 [v _main main `(v  1 e 1 0 ]
 {
-"39
+"43
 } 0
-"70 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+"76 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
 [v _SW_Update SW_Update `(v  1 e 1 0 ]
 {
-"91
+"97
 } 0
-"93
+"99
 [v _SW_UpdateState SW_UpdateState `(v  1 e 1 0 ]
 {
 [v SW_UpdateState@sw sw `E859  1 a 1 wreg ]
 [v SW_UpdateState@sw sw `E859  1 a 1 wreg ]
 [v SW_UpdateState@sw sw `E859  1 a 1 7 ]
-"133
+"139
 } 0
-"77 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+"47
+[v _SW_Init SW_Init `(v  1 e 1 0 ]
+{
+"66
+} 0
+"91 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 [v _SSD_Update SSD_Update `(v  1 e 1 0 ]
 {
-"91
+"105
 } 0
-"114
+"128
 [v _SSD_Enable SSD_Enable `(v  1 e 1 0 ]
 {
 [v SSD_Enable@s s `E872  1 a 1 wreg ]
 [v SSD_Enable@s s `E872  1 a 1 wreg ]
 [v SSD_Enable@s s `E872  1 a 1 2 ]
-"133
+"147
 } 0
-"93
+"107
 [v _SSD_Disable SSD_Disable `(v  1 e 1 0 ]
 {
 [v SSD_Disable@s s `E872  1 a 1 wreg ]
 [v SSD_Disable@s s `E872  1 a 1 wreg ]
 [v SSD_Disable@s s `E872  1 a 1 2 ]
+"126
+} 0
+"151
+[v _SSD_Data_write SSD_Data_write `(v  1 e 1 0 ]
+{
+"168
+} 0
+"60 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+[v _Disp_Update Disp_Update `(v  1 e 1 0 ]
+{
+"79
+} 0
+"146
+[v _DISP_Set_Minutes_Operation DISP_Set_Minutes_Operation `(v  1 e 1 0 ]
+{
+[s S192 . 5 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `ui 1 mSeconds 2 3 ]
+"150
+[v DISP_Set_Minutes_Operation@tt tt `S192  1 a 5 3 ]
+"180
+} 0
+"116
+[v _DISP_Set_Hours_Operation DISP_Set_Hours_Operation `(v  1 e 1 0 ]
+{
+[s S192 . 5 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `ui 1 mSeconds 2 3 ]
+"120
+[v DISP_Set_Hours_Operation@tt tt `S192  1 a 5 3 ]
+"142
+} 0
+"87
+[v _DISP_Normal_Operation DISP_Normal_Operation `(v  1 e 1 0 ]
+{
+[s S192 . 5 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `ui 1 mSeconds 2 3 ]
+"90
+[v DISP_Normal_Operation@tt tt `S192  1 a 5 3 ]
 "112
 } 0
-"72
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"171 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+[v _SSD_Toggle_Second_Dot SSD_Toggle_Second_Dot `(v  1 e 1 0 ]
+{
+"174
+} 0
+"68 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+[v _CLOCK_GetTime CLOCK_GetTime `(v  1 e 1 0 ]
+{
+[s S192 . 5 `uc 1 hours 1 0 `uc 1 minuts 1 1 `uc 1 seconds 1 2 `ui 1 mSeconds 2 3 ]
+[v CLOCK_GetTime@t t `*.4S192  1 a 1 wreg ]
+[v CLOCK_GetTime@t t `*.4S192  1 a 1 wreg ]
+"71
+"68
+[v CLOCK_GetTime@t t `*.4S192  1 a 1 1 ]
+"75
+} 0
+"60
+[v _CLOCK_GetMode CLOCK_GetMode `(E858  1 e 1 0 ]
+{
+"64
+} 0
+"48 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+[v _Disp_Init Disp_Init `(v  1 e 1 0 ]
+{
+"59
+} 0
+"86 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 [v _SSD_Set_Symbol SSD_Set_Symbol `(v  1 e 1 0 ]
 {
 [v SSD_Set_Symbol@symbol symbol `E859  1 a 1 wreg ]
 [v SSD_Set_Symbol@symbol symbol `E859  1 a 1 wreg ]
-[v SSD_Set_Symbol@index index `E872  1 p 1 0 ]
-"75
-[v SSD_Set_Symbol@symbol symbol `E859  1 a 1 2 ]
-"76
+[v SSD_Set_Symbol@index index `E872  1 p 1 9 ]
+"89
+[v SSD_Set_Symbol@symbol symbol `E859  1 a 1 11 ]
+"90
 } 0
-"50
+"61
 [v _SSD_Init SSD_Init `(v  1 e 1 0 ]
 {
-"52
-[v SSD_Init@i i `i  1 a 2 9 ]
-"71
+"85
 } 0
 "14 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
 [v _GPIO_Init_Port GPIO_Init_Port `(uc  1 e 1 0 ]
@@ -218,30 +359,30 @@ SW_PRE_RELEASED 3
 [v GPIO_Init_Pin@dir dir `uc  1 p 1 3 ]
 "50
 } 0
-"107 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+"118 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
 [v _CLOCK_Update CLOCK_Update `(v  1 e 1 0 ]
 {
-"154
+"165
 } 0
-"157
+"168
 [v _set_mode_process set_mode_process `(v  1 e 1 0 ]
 {
 [v set_mode_process@var var `*.4uc  1 a 1 wreg ]
 [v set_mode_process@var var `*.4uc  1 a 1 wreg ]
-"159
+"170
 [v set_mode_process@var var `*.4uc  1 a 1 9 ]
-"172
+"183
 } 0
-"61 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+"67 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
 [v _SW_GetState SW_GetState `(uc  1 e 1 0 ]
 {
 [v SW_GetState@sw sw `E859  1 a 1 wreg ]
-"63
+"69
 [v SW_GetState@ret ret `uc  1 a 1 7 ]
-"61
+"67
 [v SW_GetState@sw sw `E859  1 a 1 wreg ]
 [v SW_GetState@sw sw `E859  1 a 1 6 ]
-"69
+"75
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
@@ -256,13 +397,13 @@ SW_PRE_RELEASED 3
 [v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
 "51
 } 0
-"68 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+"79 D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
 [v _CLOCK_Increment CLOCK_Increment `(v  1 e 1 0 ]
 {
-"102
+"113
 } 0
-"33
+"44
 [v _CLOCK_Init CLOCK_Init `(v  1 e 1 0 ]
 {
-"45
+"56
 } 0

@@ -22,7 +22,7 @@ typedef struct
     u8_t hours;
     u8_t minuts;
     u8_t seconds;
-    u8_t mSeconds;
+    u16_t mSeconds;
 }Time_t;
 
 /*

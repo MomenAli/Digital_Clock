@@ -1,4 +1,4 @@
-# 1 "Clock.c"
+# 1 "Disp.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Clock.c" 2
+# 1 "Disp.c" 2
 
 
 
@@ -1728,8 +1728,52 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 9 "Clock.c" 2
+# 9 "Disp.c" 2
 
+
+# 1 "./SSD.h" 1
+# 49 "./SSD.h"
+typedef enum
+{
+    SSD_0 = 0,
+    SSD_1,
+    SSD_2,
+    SSD_3,
+    SSD_4,
+    SSD_5,
+    SSD_6,
+    SSD_7,
+    SSD_8,
+    SSD_9,
+    SSD_NULL
+}SSD_Symbol_t;
+
+
+
+
+
+
+typedef enum
+{
+    SSD_MINUTES_UNITS,
+    SSD_MINUTES_TENS,
+    SSD_HOURS_UNITS,
+    SSD_HOURS_TENS
+}SSD_t;
+
+
+typedef enum
+{
+    SSD_OFF = 0,
+    SSD_ON = 1
+}tSSD_State;
+
+void SSD_Init(void);
+void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+void SSD_Update(void);
+void SSD_Toggle_Second_Dot(void);
+void SSD_Set_PM_Dot(tSSD_State s);
+# 11 "Disp.c" 2
 
 # 1 "./Clock.h" 1
 # 16 "./Clock.h"
@@ -1790,56 +1834,7 @@ void CLOCK_GetTime(Time_t * t);
 
 
 void CLOCK_Update(void);
-# 11 "Clock.c" 2
-
-# 1 "./SW.h" 1
-# 34 "./SW.h"
-typedef enum
-{
-    SW_PLUS,
-    SW_MINUS,
-    SW_SET
-}SW_t;
-
-
-
-
-
-typedef enum
-{
-    SW_RELEASED,
-    SW_PRE_PRESSED,
-    SW_PRESSED,
-    SW_PRE_RELEASED
-}SW_State_t;
-# 60 "./SW.h"
-void SW_Init(void);
-
-
-
-u8_t SW_GetState(SW_t sw);
-
-
-
-
-void SW_Update(void);
-# 12 "Clock.c" 2
-# 22 "Clock.c"
-void CLOCK_Increment(void);
-
-
-
-void set_mode_process(u8_t * var);
-
-
-
-
-static Time_t CurrentTime;
-
-
-
-
-static Mode_t CurrentMode;
+# 12 "Disp.c" 2
 
 
 
@@ -1847,143 +1842,156 @@ static Mode_t CurrentMode;
 
 
 
-void CLOCK_Init(void)
+
+static u8_t Disp_Blink_counter;
+
+
+
+
+void DISP_Normal_Operation(void);
+
+
+
+void DISP_Set_Hours_Operation(void);
+
+
+
+void DISP_Set_Minutes_Operation(void);
+
+
+
+void Blink_Minutes_Unit_Dot(void);
+# 48 "Disp.c"
+void Disp_Init(void)
 {
 
-    CurrentTime.hours = 0;
-    CurrentTime.minuts = 0;
-    CurrentTime.seconds = 0;
-    CurrentTime.mSeconds = 0;
+    SSD_Init();
 
+    SSD_Set_Symbol(SSD_0,SSD_MINUTES_UNITS);
+    SSD_Set_Symbol(SSD_0,SSD_MINUTES_TENS);
+    SSD_Set_Symbol(SSD_0,SSD_HOURS_UNITS);
+    SSD_Set_Symbol(SSD_0,SSD_HOURS_TENS);
 
-    CurrentMode = CL_NORMAL;
-
-
+    Disp_Blink_counter = 0;
 }
-
-
-
-Mode_t CLOCK_GetMode(void)
+void Disp_Update(void)
 {
 
-    return CurrentMode;
-}
 
-
-
-void CLOCK_GetTime(Time_t * t)
-{
-
-    t->hours = CurrentTime.hours;
-    t->minuts = CurrentTime.minuts;
-    t->seconds = CurrentTime.seconds;
-    t->mSeconds = CurrentTime.mSeconds;
-}
-
-
-
-void CLOCK_Increment(void)
-{
-
-    CurrentTime.mSeconds+=(5);
-
-    if(CurrentTime.mSeconds >= 1000)
+    switch(CLOCK_GetMode())
     {
+        case CL_NORMAL:
 
+            DISP_Normal_Operation();
+            break;
+        case CL_SET_HOURS:
 
-    CurrentTime.mSeconds = 0;
-    CurrentTime.seconds += 1;
+            DISP_Set_Hours_Operation();
+            break;
+        case CL_SET_MINUTES:
 
-        if(CurrentTime.seconds>=60)
-        {
-
-
-        CurrentTime.seconds = 0;
-        CurrentTime.minuts += 1;
-
-            if(CurrentTime.minuts>=60)
-            {
-
-
-            CurrentTime.minuts = 0;
-            CurrentTime.hours += 1;
-
-                if(CurrentTime.hours>=24){
-
-
-                CurrentTime.hours = 0;
-                }
-            }
-        }
+            DISP_Set_Minutes_Operation();
+            break;
     }
 }
 
 
 
 
-void CLOCK_Update(void)
+
+
+
+void DISP_Normal_Operation(void)
+{
+
+    Time_t tt;
+    CLOCK_GetTime(&tt);
+
+
+    SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+    SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+
+    SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+    SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+    Disp_Blink_counter++;
+    if(Disp_Blink_counter>= 25)
+    {
+        SSD_Toggle_Second_Dot();
+        Disp_Blink_counter = 0;
+    }
+
+
+
+
+
+
+
+}
+
+
+
+void DISP_Set_Hours_Operation(void)
 {
 
 
+    Time_t tt;
+    CLOCK_GetTime(&tt);
 
-
-    if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
+    SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+    SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+    if(Disp_Blink_counter < 25)
     {
 
-        switch(CurrentMode)
-        {
-            case CL_NORMAL:
-                CurrentMode = CL_SET_HOURS;
-                break;
-            case CL_SET_HOURS:
-                CurrentMode = CL_SET_MINUTES;
-                break;
-            case CL_SET_MINUTES:
-                CurrentMode = CL_NORMAL;
-                break;
-            default:
-                break;
-        }
+        SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+        SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
     }
-
-
-    if(CurrentMode == CL_NORMAL)
+    if(Disp_Blink_counter>25)
     {
-        CLOCK_Increment();
+
+        SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
+        SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
     }
-    else
+    if(Disp_Blink_counter>=50)
     {
-        switch(CurrentMode)
-        {
 
-            case CL_SET_HOURS:
-
-                set_mode_process(&CurrentTime.hours);
-                break;
-            case CL_SET_MINUTES:
-
-                set_mode_process(&CurrentTime.minuts);
-                break;
-            default:
-                break;
-        }
+        Disp_Blink_counter = 0;
     }
 }
 
 
-void set_mode_process(u8_t * var)
+
+void DISP_Set_Minutes_Operation(void)
 {
-    if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+
+
+    Time_t tt;
+    CLOCK_GetTime(&tt);
+
+
+    SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+    SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+
+
+
+
+
+
+
+    if(Disp_Blink_counter < 25)
     {
 
-
-        *var += 1;
+        SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+        SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
     }
-    if(SW_GetState(SW_MINUS) == SW_PRE_PRESSED)
+    if(Disp_Blink_counter>25)
     {
 
-
-        *var -= 1;
+        SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
+        SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
     }
+    if(Disp_Blink_counter>=50)
+    {
 
+        Disp_Blink_counter = 0;
+    }
 }

@@ -16,7 +16,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 void Disp_Init(void);
-void Disp_Upate(void);
+void Disp_Update(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

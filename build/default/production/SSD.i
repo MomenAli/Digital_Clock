@@ -1732,7 +1732,7 @@ extern __bank0 __bit __timeout;
 
 
 # 1 "./HW.h" 1
-# 37 "./HW.h"
+# 39 "./HW.h"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -1741,7 +1741,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 84 "./HW.h"
+# 86 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 36 "./Port.h" 2
@@ -1793,15 +1793,26 @@ typedef enum
 void SSD_Init(void);
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 void SSD_Update(void);
-void SSD_Disable(SSD_t s);
-void SSD_Enable(SSD_t s);
+void SSD_Toggle_Second_Dot(void);
+void SSD_Set_PM_Dot(tSSD_State s);
 # 8 "SSD.c" 2
 # 24 "SSD.c"
+void SSD_Disable(SSD_t s);
+void SSD_Enable(SSD_t s);
+void SSD_Data_write(void);
+
+
+
+
 static SSD_Symbol_t Buffer[(4)];
 
 
 
 static u8_t currentSSD = 0;
+
+static tSSD_State Second_Dot_State;
+
+
 
 
 
@@ -1825,13 +1836,9 @@ static u8_t SSD_LOT_ARR[] =
 
 void SSD_Init()
 {
-    int i = 0;
 
     GPIO_Init_Port(&(TRISD),(0));
-    for(;i<(4);i++)
-    {
-        Buffer[i] = SSD_NULL;
-    }
+
 
     GPIO_Init_Pin(&(TRISB),(4),(0));
     (((PORTB))=((PORTB) & ~(1<<(4)))|(SSD_OFF<<(4)));
@@ -1844,6 +1851,13 @@ void SSD_Init()
 
     GPIO_Init_Pin(&(TRISB),(7),(0));
     (((PORTB))=((PORTB) & ~(1<<(7)))|(SSD_OFF<<(7)));
+
+
+    Second_Dot_State = SSD_OFF;
+
+
+
+
 }
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 {
@@ -1861,7 +1875,7 @@ void SSD_Update(void)
     currentSSD++;
     if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;
 
-    (((PORTD))=(SSD_LOT_ARR[Buffer[currentSSD]]));
+    SSD_Data_write();
 
     SSD_Enable(currentSSD);
 }
@@ -1906,4 +1920,24 @@ void SSD_Enable(SSD_t s)
         default:
                              ;
     }
+}
+
+
+
+void SSD_Data_write(void)
+{
+
+    (((PORTD))=(SSD_LOT_ARR[Buffer[currentSSD]]));
+
+    if(currentSSD == SSD_MINUTES_UNITS)
+    {
+        (((PORTD))=((PORTD) & ~(1<<(7)))|(Second_Dot_State<<(7)));
+    }
+# 168 "SSD.c"
+}
+
+
+void SSD_Toggle_Second_Dot(void)
+{
+    Second_Dot_State ^= 1;
 }

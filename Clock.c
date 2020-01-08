@@ -83,29 +83,29 @@ void CLOCK_Increment(void)
     //check if mSeconds bigger than or equal 1000 
     if(CurrentTime.mSeconds >= 1000)
     {
-    //false return
-    //true mSeconds = 0 Second++
-    CurrentTime.mSeconds = 0;
-    CurrentTime.seconds += 1;
+        //false return
+        //true mSeconds = 0 Second++
+        CurrentTime.mSeconds = 0;
+        CurrentTime.seconds += 1;
         //check if Second bigger than or equal 60 
         if(CurrentTime.seconds>=60)
         {
-        //false return
-        //true Second = 0 minutes++
-        CurrentTime.seconds = 0;
-        CurrentTime.minuts += 1;
+            //false return
+            //true Second = 0 minutes++
+            CurrentTime.seconds = 0;
+            CurrentTime.minuts += 1;
             //check if minutes bigger than or equal 60 
             if(CurrentTime.minuts>=60)
             {
-            //false return
-            //true minutes = 0 hours++
-            CurrentTime.minuts = 0;
-            CurrentTime.hours += 1;
+                //false return
+                //true minutes = 0 hours++
+                CurrentTime.minuts = 0;
+                CurrentTime.hours += 1;
                 //check if hours bigger than or equal 24 
                 if(CurrentTime.hours>=24){
-                //false return
-                //true hours = 0 
-                CurrentTime.hours = 0;
+                    //false return
+                    //true hours = 0 
+                    CurrentTime.hours = 0;
                 }
             }
         }
@@ -121,7 +121,7 @@ void CLOCK_Update(void)
     /*NOT DONE*/
     
     //check if set button is pressed
-    if(SW_GetState(SW_SET)== SW_PRESSED)
+    if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
     {
         // change the mode if true
         switch(CurrentMode)

@@ -1734,7 +1734,7 @@ extern __bank0 __bit __timeout;
 
 
 # 1 "./HW.h" 1
-# 37 "./HW.h"
+# 39 "./HW.h"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -1743,7 +1743,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 84 "./HW.h"
+# 86 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 37 "./GPIO.h" 2
@@ -1786,13 +1786,15 @@ u8_t SW_GetState(SW_t sw);
 
 
 void SW_Update(void);
+# 10 "SW.c" 2
+
+
 
 
 
 
 void SW_UpdateState(SW_t sw);
-# 10 "SW.c" 2
-# 32 "SW.c"
+# 36 "SW.c"
 typedef struct
 {
     u8_t samples[2];
@@ -1813,10 +1815,12 @@ void SW_Init(void)
     SW_DATA[SW_PLUS].samples[0] = 1;
     SW_DATA[SW_PLUS].samples[1] = 1;
 
+    GPIO_Init_Pin((TRISB),(1),(1));
     SW_DATA[SW_MINUS].state = SW_RELEASED;
     SW_DATA[SW_MINUS].samples[0] = 1;
     SW_DATA[SW_MINUS].samples[1] = 1;
 
+    GPIO_Init_Pin((TRISB),(2),(1));
     SW_DATA[SW_SET].state = SW_RELEASED;
     SW_DATA[SW_SET].samples[0] = 1;
     SW_DATA[SW_SET].samples[1] = 1;
@@ -1856,7 +1860,7 @@ void SW_Update(void)
 
 void SW_UpdateState(SW_t sw)
 {
-# 110 "SW.c"
+# 116 "SW.c"
     switch(SW_DATA[sw].state)
     {
 

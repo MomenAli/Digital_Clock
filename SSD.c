@@ -21,12 +21,23 @@
  * Buffer for the current displayed values
  */
 
+void SSD_Disable(SSD_t s);
+void SSD_Enable(SSD_t s);
+void SSD_Data_write(void);
+
+
+
+
 static SSD_Symbol_t Buffer[NUMBER_SSD];
 /*
  * Buffer for the current displayed values
  */
 static u8_t currentSSD = 0;
 
+static tSSD_State Second_Dot_State;
+#ifdef _12_MODE
+static tSSD_State PM_Dot_State;
+#endif
 /*
  * LOOK UP TABLE
  * edit this table to add new symbols
@@ -49,13 +60,9 @@ static u8_t SSD_LOT_ARR[] =
 
 void SSD_Init()
 {
-    int i = 0;
     //initialize to data port
     GPIO_Init_Port(&SSD_DATA_DIR,GPIO_OUT);
-    for(;i<NUMBER_SSD;i++)
-    {
-        Buffer[i] = SSD_NULL;
-    }
+  
     //initialize MINUTES UNITS enable pin
     GPIO_Init_Pin(&SSD_MINUTES_UNITS_DIR,SSD_MINUTES_UNITS_PIN,GPIO_OUT);
     GPIO_Write_Pin(SSD_MINUTES_UNITS_PORT,SSD_MINUTES_UNITS_PIN,SSD_OFF);
@@ -68,6 +75,13 @@ void SSD_Init()
     //initialize HOURS TENS enable pin
     GPIO_Init_Pin(&SSD_HOURS_TENS_DIR,SSD_HOURS_TENS_PIN,GPIO_OUT);
     GPIO_Write_Pin(SSD_HOURS_TENS_PORT,SSD_HOURS_TENS_PIN,SSD_OFF);
+    
+    // initialize the dots
+    Second_Dot_State = SSD_OFF;
+#ifdef _12_MODE
+    PM_Dot_State = SSD_OFF;
+#endif
+    
 }
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 {
@@ -83,9 +97,9 @@ void SSD_Update(void)
     SSD_Disable(currentSSD);
     //increment the current index
     currentSSD++;
-    if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;     
-    // output the symbol in the data port
-    GPIO_Write_Port(SSD_DATA_PORT,SSD_LOT_ARR[Buffer[currentSSD]]);
+    if(currentSSD > SSD_HOURS_TENS)currentSSD = 0;  
+    // write data on port
+    SSD_Data_write();
     //enable the current SSD
     SSD_Enable(currentSSD);
 }
@@ -131,3 +145,36 @@ void SSD_Enable(SSD_t s)
             /*never go here*/;
     }
 }
+
+
+
+void SSD_Data_write(void)
+{
+    // output the symbol in the data port
+    GPIO_Write_Port(SSD_DATA_PORT,SSD_LOT_ARR[Buffer[currentSSD]]);
+    //Blink dot if minutes unit
+    if(currentSSD == SSD_MINUTES_UNITS)
+    {
+        GPIO_Write_Pin(SSD_DATA_PORT,PIN_7,Second_Dot_State);
+    }
+    
+#ifdef _12_MODE
+    //on dot if PM and hours tens
+    if(currentSSD == SSD_HOURS_TENS)
+    {
+        GPIO_Write_Pin(SSD_DATA_PORT,PIN_7,PM_Dot_State);
+    }
+#endif
+}
+
+
+void SSD_Toggle_Second_Dot(void)
+{
+    Second_Dot_State ^= 1;
+}
+#ifdef _12_MODE
+void SSD_Set_PM_Dot(tSSD_State s)
+{
+    PM_Dot_State = s;
+}
+#endif

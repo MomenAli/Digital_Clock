@@ -1,26 +1,42 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"21 ./Clock.h
+"84 ./SSD.h
+[; ;./SSD.h: 84: void SSD_Init(void);
+[v _SSD_Init `(v ~T0 @X0 0 ef ]
+"53 Disp.c
+[; ;Disp.c: 53:     SSD_Set_Symbol(SSD_0,SSD_MINUTES_UNITS);
+[c E850 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E850 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
+[c E863 0 1 2 3 .. ]
+[n E863 . SSD_MINUTES_UNITS SSD_MINUTES_TENS SSD_HOURS_UNITS SSD_HOURS_TENS  ]
+"85 ./SSD.h
+[; ;./SSD.h: 85: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+[v _SSD_Set_Symbol `(v ~T0 @X0 0 ef2`E850`E863 ]
+"25 Disp.c
+[; ;Disp.c: 25: void DISP_Normal_Operation(void);
+[v _DISP_Normal_Operation `(v ~T0 @X0 0 ef ]
+"29
+[; ;Disp.c: 29: void DISP_Set_Hours_Operation(void);
+[v _DISP_Set_Hours_Operation `(v ~T0 @X0 0 ef ]
+"33
+[; ;Disp.c: 33: void DISP_Set_Minutes_Operation(void);
+[v _DISP_Set_Minutes_Operation `(v ~T0 @X0 0 ef ]
+"78
+[; ;Disp.c: 78:     }
+[c E889 0 1 2 .. ]
+[n E889 . CL_NORMAL CL_SET_HOURS CL_SET_MINUTES  ]
+"48 ./Clock.h
+[; ;./Clock.h: 48: Mode_t CLOCK_GetMode(void);
+[v _CLOCK_GetMode `(E889 ~T0 @X0 0 ef ]
+"21
 [; ;./Clock.h: 21: {
 [s S95 `uc 1 `uc 1 `uc 1 `ui 1 ]
 [n S95 . hours minuts seconds mSeconds ]
-"36 Clock.c
-[; ;Clock.c: 36: static Mode_t CurrentMode;
-[c E858 0 1 2 .. ]
-[n E858 . CL_NORMAL CL_SET_HOURS CL_SET_MINUTES  ]
-"124
-[; ;Clock.c: 124:     if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
-[c E868 0 1 2 .. ]
-[n E868 . SW_PLUS SW_MINUS SW_SET  ]
-"64 ./SW.h
-[; ;./SW.h: 64: u8_t SW_GetState(SW_t sw);
-[v _SW_GetState `(uc ~T0 @X0 0 ef1`E868 ]
-"124 Clock.c
-[; ;Clock.c: 124:     if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
-[c E873 0 1 2 3 .. ]
-[n E873 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
-"26
-[; ;Clock.c: 26: void set_mode_process(u8_t * var);
-[v _set_mode_process `(v ~T0 @X0 0 ef1`*uc ]
+"52
+[; ;./Clock.h: 52: void CLOCK_GetTime(Time_t * t);
+[v _CLOCK_GetTime `(v ~T0 @X0 0 ef1`*S95 ]
+"87 ./SSD.h
+[; ;./SSD.h: 87: void SSD_Toggle_Second_Dot(void);
+[v _SSD_Toggle_Second_Dot `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -217,331 +233,278 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x WRT = OFF ]
 "46
 [p x CP = OFF ]
-"31 Clock.c
-[; ;Clock.c: 31: static Time_t CurrentTime;
-[v _CurrentTime `S95 ~T0 @X0 1 s ]
-"36
-[; ;Clock.c: 36: static Mode_t CurrentMode;
-[v _CurrentMode `E858 ~T0 @X0 1 s ]
-"44
-[; ;Clock.c: 44: void CLOCK_Init(void)
-[v _CLOCK_Init `(v ~T0 @X0 1 ef ]
-"45
-[; ;Clock.c: 45: {
-{
-[e :U _CLOCK_Init ]
-[f ]
-"47
-[; ;Clock.c: 47:     CurrentTime.hours = 0;
-[e = . _CurrentTime 0 -> -> 0 `i `uc ]
+"20 Disp.c
+[; ;Disp.c: 20: static u8_t Disp_Blink_counter;
+[v _Disp_Blink_counter `uc ~T0 @X0 1 s ]
 "48
-[; ;Clock.c: 48:     CurrentTime.minuts = 0;
-[e = . _CurrentTime 1 -> -> 0 `i `uc ]
+[; ;Disp.c: 48: void Disp_Init(void)
+[v _Disp_Init `(v ~T0 @X0 1 ef ]
 "49
-[; ;Clock.c: 49:     CurrentTime.seconds = 0;
-[e = . _CurrentTime 2 -> -> 0 `i `uc ]
-"50
-[; ;Clock.c: 50:     CurrentTime.mSeconds = 0;
-[e = . _CurrentTime 3 -> -> 0 `i `ui ]
+[; ;Disp.c: 49: {
+{
+[e :U _Disp_Init ]
+[f ]
+"51
+[; ;Disp.c: 51:     SSD_Init();
+[e ( _SSD_Init ..  ]
 "53
-[; ;Clock.c: 53:     CurrentMode = CL_NORMAL;
-[e = _CurrentMode . `E858 0 ]
+[; ;Disp.c: 53:     SSD_Set_Symbol(SSD_0,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , . `E850 0 . `E863 0 ]
+"54
+[; ;Disp.c: 54:     SSD_Set_Symbol(SSD_0,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , . `E850 0 . `E863 1 ]
+"55
+[; ;Disp.c: 55:     SSD_Set_Symbol(SSD_0,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , . `E850 0 . `E863 2 ]
 "56
-[; ;Clock.c: 56: }
+[; ;Disp.c: 56:     SSD_Set_Symbol(SSD_0,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , . `E850 0 . `E863 3 ]
+"58
+[; ;Disp.c: 58:     Disp_Blink_counter = 0;
+[e = _Disp_Blink_counter -> -> 0 `i `uc ]
+"59
+[; ;Disp.c: 59: }
 [e :UE 96 ]
 }
 "60
-[; ;Clock.c: 60: Mode_t CLOCK_GetMode(void)
-[v _CLOCK_GetMode `(E858 ~T0 @X0 1 ef ]
+[; ;Disp.c: 60: void Disp_Update(void)
+[v _Disp_Update `(v ~T0 @X0 1 ef ]
 "61
-[; ;Clock.c: 61: {
+[; ;Disp.c: 61: {
 {
-[e :U _CLOCK_GetMode ]
+[e :U _Disp_Update ]
 [f ]
-"63
-[; ;Clock.c: 63:     return CurrentMode;
-[e ) _CurrentMode ]
-[e $UE 97  ]
 "64
-[; ;Clock.c: 64: }
+[; ;Disp.c: 64:     switch(CLOCK_GetMode())
+[e $U 99  ]
+"65
+[; ;Disp.c: 65:     {
+{
+"66
+[; ;Disp.c: 66:         case CL_NORMAL:
+[e :U 100 ]
+"68
+[; ;Disp.c: 68:             DISP_Normal_Operation();
+[e ( _DISP_Normal_Operation ..  ]
+"69
+[; ;Disp.c: 69:             break;
+[e $U 98  ]
+"70
+[; ;Disp.c: 70:         case CL_SET_HOURS:
+[e :U 101 ]
+"72
+[; ;Disp.c: 72:             DISP_Set_Hours_Operation();
+[e ( _DISP_Set_Hours_Operation ..  ]
+"73
+[; ;Disp.c: 73:             break;
+[e $U 98  ]
+"74
+[; ;Disp.c: 74:         case CL_SET_MINUTES:
+[e :U 102 ]
+"76
+[; ;Disp.c: 76:             DISP_Set_Minutes_Operation();
+[e ( _DISP_Set_Minutes_Operation ..  ]
+"77
+[; ;Disp.c: 77:             break;
+[e $U 98  ]
+"78
+[; ;Disp.c: 78:     }
+}
+[e $U 98  ]
+[e :U 99 ]
+[e [\ -> ( _CLOCK_GetMode ..  `ui , $ -> . `E889 0 `ui 100
+ , $ -> . `E889 1 `ui 101
+ , $ -> . `E889 2 `ui 102
+ 98 ]
+[e :U 98 ]
+"79
+[; ;Disp.c: 79: }
 [e :UE 97 ]
 }
-"68
-[; ;Clock.c: 68: void CLOCK_GetTime(Time_t * t)
-[v _CLOCK_GetTime `(v ~T0 @X0 1 ef1`*S95 ]
-"69
-[; ;Clock.c: 69: {
-{
-[e :U _CLOCK_GetTime ]
-"68
-[; ;Clock.c: 68: void CLOCK_GetTime(Time_t * t)
-[v _t `*S95 ~T0 @X0 1 r1 ]
-"69
-[; ;Clock.c: 69: {
-[f ]
-"71
-[; ;Clock.c: 71:     t->hours = CurrentTime.hours;
-[e = . *U _t 0 . _CurrentTime 0 ]
-"72
-[; ;Clock.c: 72:     t->minuts = CurrentTime.minuts;
-[e = . *U _t 1 . _CurrentTime 1 ]
-"73
-[; ;Clock.c: 73:     t->seconds = CurrentTime.seconds;
-[e = . *U _t 2 . _CurrentTime 2 ]
-"74
-[; ;Clock.c: 74:     t->mSeconds = CurrentTime.mSeconds;
-[e = . *U _t 3 . _CurrentTime 3 ]
-"75
-[; ;Clock.c: 75: }
-[e :UE 98 ]
-}
-"79
-[; ;Clock.c: 79: void CLOCK_Increment(void)
-[v _CLOCK_Increment `(v ~T0 @X0 1 ef ]
-"80
-[; ;Clock.c: 80: {
-{
-[e :U _CLOCK_Increment ]
-[f ]
-"82
-[; ;Clock.c: 82:     CurrentTime.mSeconds+=(5);
-[e =+ . _CurrentTime 3 -> -> 5 `i `ui ]
-"84
-[; ;Clock.c: 84:     if(CurrentTime.mSeconds >= 1000)
-[e $ ! >= . _CurrentTime 3 -> -> 1000 `i `ui 100  ]
-"85
-[; ;Clock.c: 85:     {
-{
+"87
+[; ;Disp.c: 87: void DISP_Normal_Operation(void)
+[v _DISP_Normal_Operation `(v ~T0 @X0 1 ef ]
 "88
-[; ;Clock.c: 88:     CurrentTime.mSeconds = 0;
-[e = . _CurrentTime 3 -> -> 0 `i `ui ]
-"89
-[; ;Clock.c: 89:     CurrentTime.seconds += 1;
-[e =+ . _CurrentTime 2 -> -> 1 `i `uc ]
-"91
-[; ;Clock.c: 91:         if(CurrentTime.seconds>=60)
-[e $ ! >= -> . _CurrentTime 2 `i -> 60 `i 101  ]
-"92
-[; ;Clock.c: 92:         {
+[; ;Disp.c: 88: {
 {
+[e :U _DISP_Normal_Operation ]
+[f ]
+"90
+[; ;Disp.c: 90:     Time_t tt;
+[v _tt `S95 ~T0 @X0 1 a ]
+"91
+[; ;Disp.c: 91:     CLOCK_GetTime(&tt);
+[e ( _CLOCK_GetTime (1 &U _tt ]
+"94
+[; ;Disp.c: 94:     SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
 "95
-[; ;Clock.c: 95:         CurrentTime.seconds = 0;
-[e = . _CurrentTime 2 -> -> 0 `i `uc ]
-"96
-[; ;Clock.c: 96:         CurrentTime.minuts += 1;
-[e =+ . _CurrentTime 1 -> -> 1 `i `uc ]
+[; ;Disp.c: 95:     SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
+"97
+[; ;Disp.c: 97:     SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 1 `i -> 10 `i `E850 . `E863 1 ]
 "98
-[; ;Clock.c: 98:             if(CurrentTime.minuts>=60)
-[e $ ! >= -> . _CurrentTime 1 `i -> 60 `i 102  ]
+[; ;Disp.c: 98:     SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 1 `i -> 10 `i `E850 . `E863 0 ]
 "99
-[; ;Clock.c: 99:             {
+[; ;Disp.c: 99:     Disp_Blink_counter++;
+[e ++ _Disp_Blink_counter -> -> 1 `i `uc ]
+"100
+[; ;Disp.c: 100:     if(Disp_Blink_counter>= 25)
+[e $ ! >= -> _Disp_Blink_counter `i -> 25 `i 104  ]
+"101
+[; ;Disp.c: 101:     {
 {
 "102
-[; ;Clock.c: 102:             CurrentTime.minuts = 0;
-[e = . _CurrentTime 1 -> -> 0 `i `uc ]
+[; ;Disp.c: 102:         SSD_Toggle_Second_Dot();
+[e ( _SSD_Toggle_Second_Dot ..  ]
 "103
-[; ;Clock.c: 103:             CurrentTime.hours += 1;
-[e =+ . _CurrentTime 0 -> -> 1 `i `uc ]
-"105
-[; ;Clock.c: 105:                 if(CurrentTime.hours>=24){
-[e $ ! >= -> . _CurrentTime 0 `i -> 24 `i 103  ]
-{
-"108
-[; ;Clock.c: 108:                 CurrentTime.hours = 0;
-[e = . _CurrentTime 0 -> -> 0 `i `uc ]
-"109
-[; ;Clock.c: 109:                 }
+[; ;Disp.c: 103:         Disp_Blink_counter = 0;
+[e = _Disp_Blink_counter -> -> 0 `i `uc ]
+"104
+[; ;Disp.c: 104:     }
 }
-[e :U 103 ]
-"110
-[; ;Clock.c: 110:             }
-}
-[e :U 102 ]
-"111
-[; ;Clock.c: 111:         }
-}
-[e :U 101 ]
+[e :U 104 ]
 "112
-[; ;Clock.c: 112:     }
+[; ;Disp.c: 112: }
+[e :UE 103 ]
 }
-[e :U 100 ]
-"113
-[; ;Clock.c: 113: }
-[e :UE 99 ]
-}
-"118
-[; ;Clock.c: 118: void CLOCK_Update(void)
-[v _CLOCK_Update `(v ~T0 @X0 1 ef ]
-"119
-[; ;Clock.c: 119: {
+"116
+[; ;Disp.c: 116: void DISP_Set_Hours_Operation(void)
+[v _DISP_Set_Hours_Operation `(v ~T0 @X0 1 ef ]
+"117
+[; ;Disp.c: 117: {
 {
-[e :U _CLOCK_Update ]
+[e :U _DISP_Set_Hours_Operation ]
 [f ]
+"120
+[; ;Disp.c: 120:     Time_t tt;
+[v _tt `S95 ~T0 @X0 1 a ]
+"121
+[; ;Disp.c: 121:     CLOCK_GetTime(&tt);
+[e ( _CLOCK_GetTime (1 &U _tt ]
+"123
+[; ;Disp.c: 123:     SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 1 `i -> 10 `i `E850 . `E863 1 ]
 "124
-[; ;Clock.c: 124:     if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
-[e $ ! == -> ( _SW_GetState (1 . `E868 2 `i -> . `E873 1 `i 105  ]
+[; ;Disp.c: 124:     SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 1 `i -> 10 `i `E850 . `E863 0 ]
 "125
-[; ;Clock.c: 125:     {
+[; ;Disp.c: 125:     if(Disp_Blink_counter < 25)
+[e $ ! < -> _Disp_Blink_counter `i -> 25 `i 106  ]
+"126
+[; ;Disp.c: 126:     {
 {
-"127
-[; ;Clock.c: 127:         switch(CurrentMode)
-[e $U 107  ]
 "128
-[; ;Clock.c: 128:         {
-{
+[; ;Disp.c: 128:         SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
 "129
-[; ;Clock.c: 129:             case CL_NORMAL:
-[e :U 108 ]
+[; ;Disp.c: 129:         SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
 "130
-[; ;Clock.c: 130:                 CurrentMode = CL_SET_HOURS;
-[e = _CurrentMode . `E858 1 ]
-"131
-[; ;Clock.c: 131:                 break;
-[e $U 106  ]
-"132
-[; ;Clock.c: 132:             case CL_SET_HOURS:
-[e :U 109 ]
-"133
-[; ;Clock.c: 133:                 CurrentMode = CL_SET_MINUTES;
-[e = _CurrentMode . `E858 2 ]
-"134
-[; ;Clock.c: 134:                 break;
-[e $U 106  ]
-"135
-[; ;Clock.c: 135:             case CL_SET_MINUTES:
-[e :U 110 ]
-"136
-[; ;Clock.c: 136:                 CurrentMode = CL_NORMAL;
-[e = _CurrentMode . `E858 0 ]
-"137
-[; ;Clock.c: 137:                 break;
-[e $U 106  ]
-"138
-[; ;Clock.c: 138:             default:
-[e :U 111 ]
-"139
-[; ;Clock.c: 139:                 break;
-[e $U 106  ]
-"140
-[; ;Clock.c: 140:         }
+[; ;Disp.c: 130:     }
 }
-[e $U 106  ]
-[e :U 107 ]
-[e [\ -> _CurrentMode `ui , $ -> . `E858 0 `ui 108
- , $ -> . `E858 1 `ui 109
- , $ -> . `E858 2 `ui 110
- 111 ]
 [e :U 106 ]
+"131
+[; ;Disp.c: 131:     if(Disp_Blink_counter>25)
+[e $ ! > -> _Disp_Blink_counter `i -> 25 `i 107  ]
+"132
+[; ;Disp.c: 132:     {
+{
+"134
+[; ;Disp.c: 134:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 3 ]
+"135
+[; ;Disp.c: 135:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 2 ]
+"136
+[; ;Disp.c: 136:     }
+}
+[e :U 107 ]
+"137
+[; ;Disp.c: 137:     if(Disp_Blink_counter>=50)
+[e $ ! >= -> _Disp_Blink_counter `i -> 50 `i 108  ]
+"138
+[; ;Disp.c: 138:     {
+{
+"140
+[; ;Disp.c: 140:         Disp_Blink_counter = 0;
+[e = _Disp_Blink_counter -> -> 0 `i `uc ]
 "141
-[; ;Clock.c: 141:     }
+[; ;Disp.c: 141:     }
 }
-[e :U 105 ]
-"144
-[; ;Clock.c: 144:     if(CurrentMode == CL_NORMAL)
-[e $ ! == -> _CurrentMode `ui -> . `E858 0 `ui 112  ]
-"145
-[; ;Clock.c: 145:     {
-{
+[e :U 108 ]
+"142
+[; ;Disp.c: 142: }
+[e :UE 105 ]
+}
 "146
-[; ;Clock.c: 146:         CLOCK_Increment();
-[e ( _CLOCK_Increment ..  ]
+[; ;Disp.c: 146: void DISP_Set_Minutes_Operation(void)
+[v _DISP_Set_Minutes_Operation `(v ~T0 @X0 1 ef ]
 "147
-[; ;Clock.c: 147:     }
-}
-[e $U 113  ]
-"148
-[; ;Clock.c: 148:     else
-[e :U 112 ]
-"149
-[; ;Clock.c: 149:     {
+[; ;Disp.c: 147: {
 {
-"150
-[; ;Clock.c: 150:         switch(CurrentMode)
-[e $U 115  ]
-"151
-[; ;Clock.c: 151:         {
-{
-"153
-[; ;Clock.c: 153:             case CL_SET_HOURS:
-[e :U 116 ]
-"155
-[; ;Clock.c: 155:                 set_mode_process(&CurrentTime.hours);
-[e ( _set_mode_process (1 &U . _CurrentTime 0 ]
-"156
-[; ;Clock.c: 156:                 break;
-[e $U 114  ]
-"157
-[; ;Clock.c: 157:             case CL_SET_MINUTES:
-[e :U 117 ]
-"159
-[; ;Clock.c: 159:                 set_mode_process(&CurrentTime.minuts);
-[e ( _set_mode_process (1 &U . _CurrentTime 1 ]
-"160
-[; ;Clock.c: 160:                 break;
-[e $U 114  ]
-"161
-[; ;Clock.c: 161:             default:
-[e :U 118 ]
-"162
-[; ;Clock.c: 162:                 break;
-[e $U 114  ]
-"163
-[; ;Clock.c: 163:         }
-}
-[e $U 114  ]
-[e :U 115 ]
-[e [\ -> _CurrentMode `ui , $ -> . `E858 1 `ui 116
- , $ -> . `E858 2 `ui 117
- 118 ]
-[e :U 114 ]
-"164
-[; ;Clock.c: 164:     }
-}
-[e :U 113 ]
-"165
-[; ;Clock.c: 165: }
-[e :UE 104 ]
-}
-"168
-[; ;Clock.c: 168: void set_mode_process(u8_t * var)
-[v _set_mode_process `(v ~T0 @X0 1 ef1`*uc ]
-"169
-[; ;Clock.c: 169: {
-{
-[e :U _set_mode_process ]
-"168
-[; ;Clock.c: 168: void set_mode_process(u8_t * var)
-[v _var `*uc ~T0 @X0 1 r1 ]
-"169
-[; ;Clock.c: 169: {
+[e :U _DISP_Set_Minutes_Operation ]
 [f ]
+"150
+[; ;Disp.c: 150:     Time_t tt;
+[v _tt `S95 ~T0 @X0 1 a ]
+"151
+[; ;Disp.c: 151:     CLOCK_GetTime(&tt);
+[e ( _CLOCK_GetTime (1 &U _tt ]
+"154
+[; ;Disp.c: 154:     SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
+"155
+[; ;Disp.c: 155:     SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
+"163
+[; ;Disp.c: 163:     if(Disp_Blink_counter < 25)
+[e $ ! < -> _Disp_Blink_counter `i -> 25 `i 110  ]
+"164
+[; ;Disp.c: 164:     {
+{
+"166
+[; ;Disp.c: 166:         SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 1 `i -> 10 `i `E850 . `E863 1 ]
+"167
+[; ;Disp.c: 167:         SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 1 `i -> 10 `i `E850 . `E863 0 ]
+"168
+[; ;Disp.c: 168:     }
+}
+[e :U 110 ]
+"169
+[; ;Disp.c: 169:     if(Disp_Blink_counter>25)
+[e $ ! > -> _Disp_Blink_counter `i -> 25 `i 111  ]
 "170
-[; ;Clock.c: 170:     if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
-[e $ ! == -> ( _SW_GetState (1 . `E868 0 `i -> . `E873 1 `i 120  ]
-"171
-[; ;Clock.c: 171:     {
+[; ;Disp.c: 170:     {
 {
+"172
+[; ;Disp.c: 172:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 1 ]
+"173
+[; ;Disp.c: 173:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 0 ]
 "174
-[; ;Clock.c: 174:         *var += 1;
-[e =+ *U _var -> -> 1 `i `uc ]
+[; ;Disp.c: 174:     }
+}
+[e :U 111 ]
 "175
-[; ;Clock.c: 175:     }
-}
-[e :U 120 ]
+[; ;Disp.c: 175:     if(Disp_Blink_counter>=50)
+[e $ ! >= -> _Disp_Blink_counter `i -> 50 `i 112  ]
 "176
-[; ;Clock.c: 176:     if(SW_GetState(SW_MINUS) == SW_PRE_PRESSED)
-[e $ ! == -> ( _SW_GetState (1 . `E868 1 `i -> . `E873 1 `i 121  ]
-"177
-[; ;Clock.c: 177:     {
+[; ;Disp.c: 176:     {
 {
-"180
-[; ;Clock.c: 180:         *var -= 1;
-[e =- *U _var -> -> 1 `i `uc ]
-"181
-[; ;Clock.c: 181:     }
+"178
+[; ;Disp.c: 178:         Disp_Blink_counter = 0;
+[e = _Disp_Blink_counter -> -> 0 `i `uc ]
+"179
+[; ;Disp.c: 179:     }
 }
-[e :U 121 ]
-"183
-[; ;Clock.c: 183: }
-[e :UE 119 ]
+[e :U 112 ]
+"180
+[; ;Disp.c: 180: }
+[e :UE 109 ]
 }

@@ -31,7 +31,9 @@
 #ifndef __HW_H
 #define	__HW_H
  
-#define _XTAL_FREQ 20000000
+#define _XTAL_FREQ 8000000
+
+//#define _12_MODE   5
 
 // CONFIG
 #pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)

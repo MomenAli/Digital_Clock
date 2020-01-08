@@ -12,11 +12,14 @@
 #include"SSD.h"
 #include "SW.h"
 #include "Clock.h"
+#include "Disp.h"
 
 void main(void) {
     //Initialization
     u8_t i = 0;
     SSD_Init();
+    SW_Init();
+    Disp_Init();
     // GPIO_Write_Port(SSD_DATA_PORT)
     // set symbols
     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
@@ -33,6 +36,7 @@ void main(void) {
         __delay_ms(5);
         SW_Update();
         CLOCK_Update();
+        Disp_Update();
         SSD_Update();
     }  
     
