@@ -82,6 +82,71 @@
 
 
 
+/*
+ * Redefine register and configuration bits of TIMER 0
+ * if you use another timer please edit this section 
+ */
+/*
+ * PSA = 0  Pre scaler is assign to TIMERO
+ * PSA = 1  Pre scaler is assign to WDT 
+ */
+#define TIMER_PRESCALER_ACTIVE   (PSA = 0)
+
+
+/*
+ * 
+ *  define the pre scaler as below table 
+ *    _____________________
+ *  | TMR0 RATE | PS2:PS0 |
+ *  |___________|_________|
+ *  |     2     |   000   |
+ *  |___________|_________|
+ *  |     4     |   001   |
+ *  |___________|_________|
+ *  |     .     |    .    |
+ *  |___________|_________|
+ *  |     .     |    .    |
+ *  |___________|_________|
+ *  |    128    |   110   |
+ *  |___________|_________|
+ *  |    256    |   111   |
+ *  |___________|_________|
+ *  
+ */
+/* 
+ * we will use pre scaler 256
+ * edit this if you need to change pre scaler 
+ */
+#define TIMER_PRESCALER_256 PS2 = 1;\
+                            PS1 = 1;\
+                            PS0 = 1;
+
+/*
+ * timer register
+ */
+#define TIMER_REG    (TM0)
+/*this flag will be 1 if overflow happened to the timer*/
+#define TIMER_I_FLAG (TMR0IF)
+
+//#define TMR_UPDATE_REGISTER(TIME)		(TMR0 = 256 - ((TIME) * 8))
+
+/*enable interrupts flag*/
+#define TMR_ENABLE_INTERRUPT	(TMR0IE = 1)
+/*enable global interrupt flag*/
+#define GLOBAL_INTERRUPT_ENABLE	(GIE = 1)
+
+/* CLOCK CONTROL BIT
+ * TOCS = 0  enable internal instruction cycle clock(CLKO)
+ * T0CS = 1  enable external clock from TOCKI pin
+ */
+#define TMR_ENABLE_CLOCK		(T0CS = 0)
+/* 
+ * we don't have any input in RA4
+ * be sure you don't use this pin if you need to stop the timer0
+ */
+#define TMR_DISABLE_CLOCK		(T0CS = 1)    
+
+
 /* define some standard types does not depend on the machine */
 typedef unsigned char u8_t;
 typedef unsigned int  u16_t;

@@ -11,6 +11,7 @@
       <itemPath>SW.h</itemPath>
       <itemPath>Clock.h</itemPath>
       <itemPath>Disp.h</itemPath>
+      <itemPath>Timer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -25,6 +26,7 @@
       <itemPath>SW.c</itemPath>
       <itemPath>Clock.c</itemPath>
       <itemPath>Disp.c</itemPath>
+      <itemPath>Timer.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
