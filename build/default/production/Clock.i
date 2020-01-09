@@ -1743,7 +1743,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 86 "./HW.h"
+# 150 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 16 "./Clock.h" 2
@@ -1891,27 +1891,27 @@ void CLOCK_Increment(void)
     {
 
 
-    CurrentTime.mSeconds = 0;
-    CurrentTime.seconds += 1;
+        CurrentTime.mSeconds = 0;
+        CurrentTime.seconds += 1;
 
         if(CurrentTime.seconds>=60)
         {
 
 
-        CurrentTime.seconds = 0;
-        CurrentTime.minuts += 1;
+            CurrentTime.seconds = 0;
+            CurrentTime.minuts += 1;
 
             if(CurrentTime.minuts>=60)
             {
 
 
-            CurrentTime.minuts = 0;
-            CurrentTime.hours += 1;
+                CurrentTime.minuts = 0;
+                CurrentTime.hours += 1;
 
                 if(CurrentTime.hours>=24){
 
 
-                CurrentTime.hours = 0;
+                    CurrentTime.hours = 0;
                 }
             }
         }

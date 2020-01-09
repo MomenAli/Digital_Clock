@@ -48,17 +48,17 @@ void SW_Init(void)
 {
      
     // initialize the the plus switch
-    GPIO_Init_Pin(SW_P_DIR,SW_P_PIN,GPIO_IN);
+    GPIO_Init_Pin(&SW_P_DIR,SW_P_PIN,GPIO_IN);
     SW_DATA[SW_PLUS].state = SW_RELEASED;
     SW_DATA[SW_PLUS].samples[0] = 1;
     SW_DATA[SW_PLUS].samples[1] = 1;
     // initialize the the Minus switch
-    GPIO_Init_Pin(SW_M_DIR,SW_M_PIN,GPIO_IN);
+    GPIO_Init_Pin(&SW_M_DIR,SW_M_PIN,GPIO_IN);
     SW_DATA[SW_MINUS].state = SW_RELEASED;
     SW_DATA[SW_MINUS].samples[0] = 1;
     SW_DATA[SW_MINUS].samples[1] = 1;
     // initialize the the SET switch
-    GPIO_Init_Pin(SW_S_DIR,SW_S_PIN,GPIO_IN);
+    GPIO_Init_Pin(&SW_S_DIR,SW_S_PIN,GPIO_IN);
     SW_DATA[SW_SET].state = SW_RELEASED;
     SW_DATA[SW_SET].samples[0] = 1;
     SW_DATA[SW_SET].samples[1] = 1;

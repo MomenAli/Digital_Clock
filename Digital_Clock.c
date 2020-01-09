@@ -13,6 +13,7 @@
 #include "SW.h"
 #include "Clock.h"
 #include "Disp.h"
+#include "Timer.h"
 
 void main(void) {
     //Initialization
@@ -29,15 +30,17 @@ void main(void) {
     
     //init clock
     CLOCK_Init();
+    TMR_Init();
+    TMR_Start();
     
     //super loop
     while(1)
     {
-        __delay_ms(5);
-        SW_Update();
-        CLOCK_Update();
-        Disp_Update();
-        SSD_Update();
+//        __delay_ms(5);
+//        SW_Update();
+//        CLOCK_Update();
+//        Disp_Update();
+//        SSD_Update();
     }  
     
 }

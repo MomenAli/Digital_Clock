@@ -1742,7 +1742,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 86 "./HW.h"
+# 150 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 36 "./Port.h" 2
@@ -1881,6 +1881,14 @@ void Disp_Init(void);
 void Disp_Update(void);
 # 15 "Digital_Clock.c" 2
 
+# 1 "./Timer.h" 1
+# 45 "./Timer.h"
+void TMR_Init(void);
+void TMR_Start(void);
+void TMR_Stop(void);
+u8_t TMR_CheckOverflow(void);
+# 16 "Digital_Clock.c" 2
+
 
 void main(void) {
 
@@ -1897,15 +1905,17 @@ void main(void) {
 
 
     CLOCK_Init();
+    TMR_Init();
+    TMR_Start();
 
 
     while(1)
     {
-        _delay((unsigned long)((5)*(8000000/4000.0)));
-        SW_Update();
-        CLOCK_Update();
-        Disp_Update();
-        SSD_Update();
+
+
+
+
+
     }
 
 }

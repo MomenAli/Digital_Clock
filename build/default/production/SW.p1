@@ -229,8 +229,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _SW_Init ]
 [f ]
 "51
-[; ;SW.c: 51:     GPIO_Init_Pin((TRISB),(0),(1));
-[e ( _GPIO_Init_Pin (3 , , -> _TRISB `*uc -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;SW.c: 51:     GPIO_Init_Pin(&(TRISB),(0),(1));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 0 `i `uc -> -> 1 `i `uc ]
 "52
 [; ;SW.c: 52:     SW_DATA[SW_PLUS].state = SW_RELEASED;
 [e = . *U + &U _SW_DATA * -> . `E859 0 `ux -> -> # *U &U _SW_DATA `ui `ux 1 -> . `E864 0 `uc ]
@@ -241,8 +241,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SW.c: 54:     SW_DATA[SW_PLUS].samples[1] = 1;
 [e = *U + &U . *U + &U _SW_DATA * -> . `E859 0 `ux -> -> # *U &U _SW_DATA `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SW_DATA * -> . `E859 0 `ux -> -> # *U &U _SW_DATA `ui `ux 0 `ui `ux -> -> 1 `i `uc ]
 "56
-[; ;SW.c: 56:     GPIO_Init_Pin((TRISB),(1),(1));
-[e ( _GPIO_Init_Pin (3 , , -> _TRISB `*uc -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;SW.c: 56:     GPIO_Init_Pin(&(TRISB),(1),(1));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 1 `i `uc -> -> 1 `i `uc ]
 "57
 [; ;SW.c: 57:     SW_DATA[SW_MINUS].state = SW_RELEASED;
 [e = . *U + &U _SW_DATA * -> . `E859 1 `ux -> -> # *U &U _SW_DATA `ui `ux 1 -> . `E864 0 `uc ]
@@ -253,8 +253,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SW.c: 59:     SW_DATA[SW_MINUS].samples[1] = 1;
 [e = *U + &U . *U + &U _SW_DATA * -> . `E859 1 `ux -> -> # *U &U _SW_DATA `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SW_DATA * -> . `E859 1 `ux -> -> # *U &U _SW_DATA `ui `ux 0 `ui `ux -> -> 1 `i `uc ]
 "61
-[; ;SW.c: 61:     GPIO_Init_Pin((TRISB),(2),(1));
-[e ( _GPIO_Init_Pin (3 , , -> _TRISB `*uc -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;SW.c: 61:     GPIO_Init_Pin(&(TRISB),(2),(1));
+[e ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 2 `i `uc -> -> 1 `i `uc ]
 "62
 [; ;SW.c: 62:     SW_DATA[SW_SET].state = SW_RELEASED;
 [e = . *U + &U _SW_DATA * -> . `E859 2 `ux -> -> # *U &U _SW_DATA `ui `ux 1 -> . `E864 0 `uc ]

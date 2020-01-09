@@ -1743,7 +1743,7 @@ extern __bank0 __bit __timeout;
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
-# 86 "./HW.h"
+# 150 "./HW.h"
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 37 "./GPIO.h" 2
@@ -1810,17 +1810,17 @@ void SW_Init(void)
 {
 
 
-    GPIO_Init_Pin((TRISB),(0),(1));
+    GPIO_Init_Pin(&(TRISB),(0),(1));
     SW_DATA[SW_PLUS].state = SW_RELEASED;
     SW_DATA[SW_PLUS].samples[0] = 1;
     SW_DATA[SW_PLUS].samples[1] = 1;
 
-    GPIO_Init_Pin((TRISB),(1),(1));
+    GPIO_Init_Pin(&(TRISB),(1),(1));
     SW_DATA[SW_MINUS].state = SW_RELEASED;
     SW_DATA[SW_MINUS].samples[0] = 1;
     SW_DATA[SW_MINUS].samples[1] = 1;
 
-    GPIO_Init_Pin((TRISB),(2),(1));
+    GPIO_Init_Pin(&(TRISB),(2),(1));
     SW_DATA[SW_SET].state = SW_RELEASED;
     SW_DATA[SW_SET].samples[0] = 1;
     SW_DATA[SW_SET].samples[1] = 1;

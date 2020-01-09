@@ -117,18 +117,17 @@
  * we will use pre scaler 256
  * edit this if you need to change pre scaler 
  */
-#define TIMER_PRESCALER_256 PS2 = 1;\
+#define TMR_PRESCALER_256 PS2 = 1;\
                             PS1 = 1;\
-                            PS0 = 1;
+                            PS0 = 1
 
 /*
  * timer register
  */
-#define TIMER_REG    (TM0)
+#define TMR_REG    (TMR0)
 /*this flag will be 1 if overflow happened to the timer*/
-#define TIMER_I_FLAG (TMR0IF)
+#define TMR_I_FLAG (TMR0IF)
 
-//#define TMR_UPDATE_REGISTER(TIME)		(TMR0 = 256 - ((TIME) * 8))
 
 /*enable interrupts flag*/
 #define TMR_ENABLE_INTERRUPT	(TMR0IE = 1)

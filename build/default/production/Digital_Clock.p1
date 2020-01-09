@@ -9,8 +9,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18 ./Disp.h
 [; ;./Disp.h: 18: void Disp_Init(void);
 [v _Disp_Init `(v ~T0 @X0 0 ef ]
-"25 Digital_Clock.c
-[; ;Digital_Clock.c: 25:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
+"26 Digital_Clock.c
+[; ;Digital_Clock.c: 26:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
 [c E859 0 1 2 3 4 5 6 7 8 9 10 .. ]
 [n E859 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
 [c E872 0 1 2 3 .. ]
@@ -21,22 +21,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44 ./Clock.h
 [; ;./Clock.h: 44: void CLOCK_Init(void);
 [v _CLOCK_Init `(v ~T0 @X0 0 ef ]
-[v F842 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
-[v __delay `JF842 ~T0 @X0 0 e ]
-[p i __delay ]
-"69 ./SW.h
-[; ;./SW.h: 69: void SW_Update(void);
-[v _SW_Update `(v ~T0 @X0 0 ef ]
-"58 ./Clock.h
-[; ;./Clock.h: 58: void CLOCK_Update(void);
-[v _CLOCK_Update `(v ~T0 @X0 0 ef ]
-"19 ./Disp.h
-[; ;./Disp.h: 19: void Disp_Update(void);
-[v _Disp_Update `(v ~T0 @X0 0 ef ]
-"86 ./SSD.h
-[; ;./SSD.h: 86: void SSD_Update(void);
-[v _SSD_Update `(v ~T0 @X0 0 ef ]
+"45 ./Timer.h
+[; ;./Timer.h: 45: void TMR_Init(void);
+[v _TMR_Init `(v ~T0 @X0 0 ef ]
+"46
+[; ;./Timer.h: 46: void TMR_Start(void);
+[v _TMR_Start `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -234,68 +224,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [p x CP = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"17 Digital_Clock.c
-[; ;Digital_Clock.c: 17: void main(void) {
+"18 Digital_Clock.c
+[; ;Digital_Clock.c: 18: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"19
-[; ;Digital_Clock.c: 19:     u8_t i = 0;
+"20
+[; ;Digital_Clock.c: 20:     u8_t i = 0;
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-"20
-[; ;Digital_Clock.c: 20:     SSD_Init();
-[e ( _SSD_Init ..  ]
 "21
-[; ;Digital_Clock.c: 21:     SW_Init();
-[e ( _SW_Init ..  ]
+[; ;Digital_Clock.c: 21:     SSD_Init();
+[e ( _SSD_Init ..  ]
 "22
-[; ;Digital_Clock.c: 22:     Disp_Init();
+[; ;Digital_Clock.c: 22:     SW_Init();
+[e ( _SW_Init ..  ]
+"23
+[; ;Digital_Clock.c: 23:     Disp_Init();
 [e ( _Disp_Init ..  ]
-"25
-[; ;Digital_Clock.c: 25:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
-[e ( _SSD_Set_Symbol (2 , -> _i `E859 . `E872 0 ]
 "26
-[; ;Digital_Clock.c: 26:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
-[e ( _SSD_Set_Symbol (2 , -> -> 2 `i `E859 . `E872 1 ]
+[; ;Digital_Clock.c: 26:     SSD_Set_Symbol(i,SSD_MINUTES_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> _i `E859 . `E872 0 ]
 "27
-[; ;Digital_Clock.c: 27:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
-[e ( _SSD_Set_Symbol (2 , -> -> 3 `i `E859 . `E872 2 ]
+[; ;Digital_Clock.c: 27:     SSD_Set_Symbol(2,SSD_MINUTES_TENS);
+[e ( _SSD_Set_Symbol (2 , -> -> 2 `i `E859 . `E872 1 ]
 "28
-[; ;Digital_Clock.c: 28:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
+[; ;Digital_Clock.c: 28:     SSD_Set_Symbol(3,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> -> 3 `i `E859 . `E872 2 ]
+"29
+[; ;Digital_Clock.c: 29:     SSD_Set_Symbol(4,SSD_HOURS_TENS);
 [e ( _SSD_Set_Symbol (2 , -> -> 4 `i `E859 . `E872 3 ]
-"31
-[; ;Digital_Clock.c: 31:     CLOCK_Init();
+"32
+[; ;Digital_Clock.c: 32:     CLOCK_Init();
 [e ( _CLOCK_Init ..  ]
+"33
+[; ;Digital_Clock.c: 33:     TMR_Init();
+[e ( _TMR_Init ..  ]
 "34
-[; ;Digital_Clock.c: 34:     while(1)
-[e :U 98 ]
-"35
-[; ;Digital_Clock.c: 35:     {
-{
-"36
-[; ;Digital_Clock.c: 36:         _delay((unsigned long)((5)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Digital_Clock.c: 34:     TMR_Start();
+[e ( _TMR_Start ..  ]
 "37
-[; ;Digital_Clock.c: 37:         SW_Update();
-[e ( _SW_Update ..  ]
+[; ;Digital_Clock.c: 37:     while(1)
+[e :U 98 ]
 "38
-[; ;Digital_Clock.c: 38:         CLOCK_Update();
-[e ( _CLOCK_Update ..  ]
-"39
-[; ;Digital_Clock.c: 39:         Disp_Update();
-[e ( _Disp_Update ..  ]
-"40
-[; ;Digital_Clock.c: 40:         SSD_Update();
-[e ( _SSD_Update ..  ]
-"41
-[; ;Digital_Clock.c: 41:     }
+[; ;Digital_Clock.c: 38:     {
+{
+"44
+[; ;Digital_Clock.c: 44:     }
 }
 [e :U 97 ]
 [e $U 98  ]
 [e :U 99 ]
-"43
-[; ;Digital_Clock.c: 43: }
+"46
+[; ;Digital_Clock.c: 46: }
 [e :UE 96 ]
 }
