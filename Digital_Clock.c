@@ -36,11 +36,6 @@ void main(void) {
     //super loop
     while(1)
     {
-//        __delay_ms(5);
-//        SW_Update();
-//        CLOCK_Update();
-//        Disp_Update();
-//        SSD_Update();
     }  
     
 }

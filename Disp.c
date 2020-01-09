@@ -10,6 +10,7 @@
 
 #include "SSD.h"
 #include "Clock.h"
+#include "Timer.h"
 
 
 /*
@@ -59,7 +60,17 @@ void Disp_Init(void)
 }
 void Disp_Update(void)
 {
-    //check if it's my tick
+     /*
+     * create static variable to hold time
+     */
+    static u8_t DISP_Time_Counter = 0; 
+    DISP_Time_Counter += OS_TICK;
+    //check if it's my tick 
+    if(DISP_Time_Counter != DISP_UPDATE_TICK)
+    {
+        return;
+    }
+    DISP_Time_Counter = 0;
     
     switch(CLOCK_GetMode())
     {

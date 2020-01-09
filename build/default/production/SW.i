@@ -1788,13 +1788,21 @@ u8_t SW_GetState(SW_t sw);
 void SW_Update(void);
 # 10 "SW.c" 2
 
+# 1 "./Timer.h" 1
+# 46 "./Timer.h"
+void TMR_Init(void);
+void TMR_Start(void);
+void TMR_Stop(void);
+u8_t TMR_CheckOverflow(void);
+# 11 "SW.c" 2
+
 
 
 
 
 
 void SW_UpdateState(SW_t sw);
-# 36 "SW.c"
+# 37 "SW.c"
 typedef struct
 {
     u8_t samples[2];
@@ -1805,6 +1813,8 @@ typedef struct
 
 
  static SW_DATA_t SW_DATA[(3)];
+
+
 
 void SW_Init(void)
 {
@@ -1835,11 +1845,21 @@ u8_t SW_GetState(SW_t sw)
 
     return ret;
 }
+
 void SW_Update(void)
+
 {
 
 
 
+    static u8_t SW_Time_Counter = 0;
+    SW_Time_Counter += (5);
+
+    if(SW_Time_Counter != (20))
+    {
+
+    }
+    SW_Time_Counter = 0;
 
     SW_DATA[SW_PLUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
     SW_DATA[SW_PLUS].samples[1] = (((PORTB) >> (0))& 1);
@@ -1860,7 +1880,7 @@ void SW_Update(void)
 
 void SW_UpdateState(SW_t sw)
 {
-# 116 "SW.c"
+# 129 "SW.c"
     switch(SW_DATA[sw].state)
     {
 

@@ -1824,7 +1824,15 @@ u8_t SW_GetState(SW_t sw);
 
 void SW_Update(void);
 # 12 "Clock.c" 2
-# 22 "Clock.c"
+
+# 1 "./Timer.h" 1
+# 46 "./Timer.h"
+void TMR_Init(void);
+void TMR_Start(void);
+void TMR_Stop(void);
+u8_t TMR_CheckOverflow(void);
+# 13 "Clock.c" 2
+# 23 "Clock.c"
 void CLOCK_Increment(void);
 
 
@@ -1885,7 +1893,7 @@ void CLOCK_GetTime(Time_t * t)
 void CLOCK_Increment(void)
 {
 
-    CurrentTime.mSeconds+=(5);
+    CurrentTime.mSeconds+=(20);
 
     if(CurrentTime.mSeconds >= 1000)
     {
@@ -1925,6 +1933,15 @@ void CLOCK_Update(void)
 {
 
 
+
+    static u8_t CLOCK_Time_Counter = 0;
+    CLOCK_Time_Counter += (5);
+
+    if(CLOCK_Time_Counter != (20))
+    {
+        return;
+    }
+    CLOCK_Time_Counter = 0;
 
 
     if(SW_GetState(SW_SET)== SW_PRE_PRESSED)

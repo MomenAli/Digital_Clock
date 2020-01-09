@@ -10,9 +10,10 @@
 
 #include "Clock.h"
 #include "SW.h"
+#include"Timer.h"
 
 /*lets assume it 20 till we make dynamic design*/
-#define CLOCK_UPDATE_TICK (5)
+#define CLOCK_UPDATE_TICK (20)
 
 
 
@@ -117,8 +118,17 @@ void CLOCK_Increment(void)
  */
 void CLOCK_Update(void)
 {
-    //check if it's my tick
-    /*NOT DONE*/
+     /*
+     * create static variable to hold time
+     */
+    static u8_t CLOCK_Time_Counter = 0; 
+    CLOCK_Time_Counter += OS_TICK;
+    //check if it's my tick 
+    if(CLOCK_Time_Counter != CLOCK_UPDATE_TICK)
+    {
+        return;
+    }
+    CLOCK_Time_Counter = 0;
     
     //check if set button is pressed
     if(SW_GetState(SW_SET)== SW_PRE_PRESSED)

@@ -12,30 +12,50 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production\Digital_Clock.production.o
-cinit CODE 0 F F 1C 2
-text1 CODE 0 242 242 B 2
-text2 CODE 0 228 228 F 2
-text3 CODE 0 17C 17C 3E 2
-text4 CODE 0 1BA 1BA 2E 2
-text5 CODE 0 24D 24D A 2
-text6 CODE 0 89 89 5A 2
-text7 CODE 0 E3 E3 50 2
-text8 CODE 0 2B 2B 5E 2
-text9 CODE 0 257 257 9 2
-text10 CODE 0 1E8 1E8 2D 2
-maintext CODE 0 133 133 49 2
-cstackCOMMON COMMON 1 70 70 9 1
-cstackBANK0 BANK0 1 41 41 3 1
-inittext CODE 0 215 215 13 2
-intentry CODE 0 4 4 8 2
-bssBANK0 BANK0 1 20 20 16 1
-idataBANK0 CODE 0 237 237 B 2
-dataBANK0 BANK0 1 36 36 B 1
-clrtext CODE 0 260 260 8 2
-bssCOMMON COMMON 1 79 79 2 1
-$C:\Users\engmo\AppData\Local\Temp\slv0.o
+cinit CODE 0 13 13 1A 2
+text1 CODE 0 FD7 FD7 B 2
+text2 CODE 0 FB5 FB5 7 2
+text3 CODE 0 5CB 5CB 40 2
+text4 CODE 0 6AF 6AF 34 2
+text5 CODE 0 7EF 7EF C 2
+text6 CODE 0 485 485 5C 2
+text7 CODE 0 421 421 64 2
+text8 CODE 0 2E3 2E3 72 2
+text9 CODE 0 FC4 FC4 9 2
+text10 CODE 0 767 767 22 2
+text11 CODE 0 587 587 44 2
+text12 CODE 0 2D 2D F9 2
+text13 CODE 0 714 714 2F 2
+text14 CODE 0 67A 67A 35 2
+text15 CODE 0 6E3 6E3 31 2
+text16 CODE 0 7A9 7A9 1D 2
+text17 CODE 0 60B 60B 39 2
+text18 CODE 0 1C5 1C5 98 2
+text19 CODE 0 126 126 9F 2
+text20 CODE 0 25D 25D 86 2
+text21 CODE 0 FCD FCD A 2
+text22 CODE 0 4E1 4E1 59 2
+text23 CODE 0 355 355 67 2
+text24 CODE 0 FAE FAE 7 2
+text25 CODE 0 789 789 20 2
+text26 CODE 0 7FB 7FB 4 2
+text27 CODE 0 3BC 3BC 65 2
+text28 CODE 0 743 743 24 2
+text29 CODE 0 7DB 7DB 14 2
+text30 CODE 0 7C6 7C6 15 2
+text31 CODE 0 644 644 36 2
+maintext CODE 0 53A 53A 4D 2
+cstackCOMMON COMMON 1 70 70 E 1
+cstackBANK0 BANK0 1 3C 3C 16 1
+inittext CODE 0 FED FED 13 2
+intentry CODE 0 4 4 C 2
+bssBANK0 BANK0 1 20 20 1C 1
+idataBANK0 CODE 0 FE2 FE2 B 2
+dataBANK0 BANK0 1 52 52 B 1
+clrtext CODE 0 FBC FBC 8 2
+$C:\Users\engmo\AppData\Local\Temp\sitk.o
 reset_vec CODE 0 0 0 3 2
-end_init CODE 0 C C 3 2
+end_init CODE 0 10 10 3 2
 config CONFIG 0 2007 2007 1 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -43,32 +63,36 @@ config CONFIG 0 2007 2007 1 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 44-6F 1
+RAM 5D-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 44-6F 1
+BANK0 5D-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 268-1FFF 2
+CONST 7FF-FAD 2
+CONST 1000-1FFF 2
 ENTRY 3-3 2
-ENTRY 268-1FFF 2
+ENTRY 7FF-FAD 2
+ENTRY 1000-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 268-1FFF 2
+CODE 7FF-FAD 2
+CODE 1000-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
 SFR3 180-18F 1
-COMMON 7B-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 268-1FFF 2
+STRCODE 7FF-FAD 2
+STRCODE 1000-1FFF 2
 STRING 3-3 2
-STRING 268-1FFF 2
+STRING 7FF-FAD 2
+STRING 1000-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -83,150 +107,376 @@ STRING 268-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Digital_Clock.production.o
-F cinit CODE >1142:C:\Users\engmo\AppData\Local\Temp\slv0.s
-F cinit CODE >1145:C:\Users\engmo\AppData\Local\Temp\slv0.s
-F cinit CODE >1216:C:\Users\engmo\AppData\Local\Temp\slv0.s
-10 cinit CODE >1217:C:\Users\engmo\AppData\Local\Temp\slv0.s
-11 cinit CODE >1218:C:\Users\engmo\AppData\Local\Temp\slv0.s
-12 cinit CODE >1219:C:\Users\engmo\AppData\Local\Temp\slv0.s
-13 cinit CODE >1220:C:\Users\engmo\AppData\Local\Temp\slv0.s
-14 cinit CODE >1221:C:\Users\engmo\AppData\Local\Temp\slv0.s
-15 cinit CODE >1222:C:\Users\engmo\AppData\Local\Temp\slv0.s
-16 cinit CODE >1223:C:\Users\engmo\AppData\Local\Temp\slv0.s
-17 cinit CODE >1224:C:\Users\engmo\AppData\Local\Temp\slv0.s
-18 cinit CODE >1225:C:\Users\engmo\AppData\Local\Temp\slv0.s
-1D cinit CODE >1244:C:\Users\engmo\AppData\Local\Temp\slv0.s
-1E cinit CODE >1245:C:\Users\engmo\AppData\Local\Temp\slv0.s
-1F cinit CODE >1246:C:\Users\engmo\AppData\Local\Temp\slv0.s
-20 cinit CODE >1247:C:\Users\engmo\AppData\Local\Temp\slv0.s
-25 cinit CODE >1250:C:\Users\engmo\AppData\Local\Temp\slv0.s
-26 cinit CODE >1251:C:\Users\engmo\AppData\Local\Temp\slv0.s
-27 cinit CODE >1257:C:\Users\engmo\AppData\Local\Temp\slv0.s
-27 cinit CODE >1259:C:\Users\engmo\AppData\Local\Temp\slv0.s
-28 cinit CODE >1260:C:\Users\engmo\AppData\Local\Temp\slv0.s
-4 intentry CODE >30:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1E8 text10 CODE >30:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1E8 text10 CODE >34:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1E9 text10 CODE >36:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1ED text10 CODE >39:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1F3 text10 CODE >40:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-1FC text10 CODE >42:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-200 text10 CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-209 text10 CODE >46:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-20B text10 CODE >47:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-20E text10 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-257 text9 CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-257 text9 CODE >47:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-25A text9 CODE >48:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-25B text9 CODE >49:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-25C text9 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-25E text9 CODE >53:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-25F text9 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
-2B text8 CODE >34:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-2B text8 CODE >36:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-2B text8 CODE >38:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-64 text8 CODE >43:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-64 text8 CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-65 text8 CODE >47:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-88 text8 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-E3 text7 CODE >14:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-E3 text7 CODE >16:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-E3 text7 CODE >18:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-11C text7 CODE >23:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-11C text7 CODE >24:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-11D text7 CODE >27:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-132 text7 CODE >31:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
-89 text6 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-89 text6 CODE >64:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-93 text6 CODE >67:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-A3 text6 CODE >68:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-A8 text6 CODE >70:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-B6 text6 CODE >71:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-BB text6 CODE >73:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-C9 text6 CODE >74:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-CE text6 CODE >76:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-DC text6 CODE >77:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-E1 text6 CODE >80:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-E2 text6 CODE >85:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-24D text5 CODE >86:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-24E text5 CODE >89:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-256 text5 CODE >90:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
-1BA text4 CODE >48:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1BA text4 CODE >51:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1BF text4 CODE >53:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1C6 text4 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1CE text4 CODE >55:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1DA text4 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1E6 text4 CODE >58:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-1E7 text4 CODE >59:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
-17C text3 CODE >47:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-17C text3 CODE >51:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-188 text3 CODE >52:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-18B text3 CODE >53:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-18D text3 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-18F text3 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-19C text3 CODE >57:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-19F text3 CODE >58:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1A1 text3 CODE >59:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1A3 text3 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1B2 text3 CODE >62:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1B5 text3 CODE >63:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1B7 text3 CODE >64:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-1B9 text3 CODE >66:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
-228 text2 CODE >18:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-228 text2 CODE >22:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-22D text2 CODE >24:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-22E text2 CODE >26:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-231 text2 CODE >27:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-236 text2 CODE >29:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-242 text1 CODE >51:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-242 text1 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-243 text1 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-247 text1 CODE >58:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-248 text1 CODE >59:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-249 text1 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-24C text1 CODE >62:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
-133 maintext CODE >18:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-133 maintext CODE >20:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-133 maintext CODE >21:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-138 maintext CODE >22:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-13D maintext CODE >23:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-142 maintext CODE >26:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-149 maintext CODE >27:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-151 maintext CODE >28:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-15D maintext CODE >29:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-169 maintext CODE >32:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-16E maintext CODE >33:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-173 maintext CODE >34:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-178 maintext CODE >37:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-178 maintext CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
-260 clrtext CODE >1231:C:\Users\engmo\AppData\Local\Temp\slv0.s
-260 clrtext CODE >1232:C:\Users\engmo\AppData\Local\Temp\slv0.s
-261 clrtext CODE >1233:C:\Users\engmo\AppData\Local\Temp\slv0.s
-261 clrtext CODE >1234:C:\Users\engmo\AppData\Local\Temp\slv0.s
-262 clrtext CODE >1235:C:\Users\engmo\AppData\Local\Temp\slv0.s
-263 clrtext CODE >1236:C:\Users\engmo\AppData\Local\Temp\slv0.s
-264 clrtext CODE >1237:C:\Users\engmo\AppData\Local\Temp\slv0.s
-265 clrtext CODE >1238:C:\Users\engmo\AppData\Local\Temp\slv0.s
-266 clrtext CODE >1239:C:\Users\engmo\AppData\Local\Temp\slv0.s
-267 clrtext CODE >1240:C:\Users\engmo\AppData\Local\Temp\slv0.s
-215 inittext CODE >1190:C:\Users\engmo\AppData\Local\Temp\slv0.s
-215 inittext CODE >1191:C:\Users\engmo\AppData\Local\Temp\slv0.s
-216 inittext CODE >1192:C:\Users\engmo\AppData\Local\Temp\slv0.s
-217 inittext CODE >1193:C:\Users\engmo\AppData\Local\Temp\slv0.s
-218 inittext CODE >1194:C:\Users\engmo\AppData\Local\Temp\slv0.s
-219 inittext CODE >1201:C:\Users\engmo\AppData\Local\Temp\slv0.s
-219 inittext CODE >1202:C:\Users\engmo\AppData\Local\Temp\slv0.s
-21E inittext CODE >1203:C:\Users\engmo\AppData\Local\Temp\slv0.s
-21F inittext CODE >1204:C:\Users\engmo\AppData\Local\Temp\slv0.s
-220 inittext CODE >1205:C:\Users\engmo\AppData\Local\Temp\slv0.s
-221 inittext CODE >1206:C:\Users\engmo\AppData\Local\Temp\slv0.s
-222 inittext CODE >1207:C:\Users\engmo\AppData\Local\Temp\slv0.s
-223 inittext CODE >1208:C:\Users\engmo\AppData\Local\Temp\slv0.s
-224 inittext CODE >1209:C:\Users\engmo\AppData\Local\Temp\slv0.s
-225 inittext CODE >1210:C:\Users\engmo\AppData\Local\Temp\slv0.s
-226 inittext CODE >1211:C:\Users\engmo\AppData\Local\Temp\slv0.s
-227 inittext CODE >1212:C:\Users\engmo\AppData\Local\Temp\slv0.s
+13 cinit CODE >1176:C:\Users\engmo\AppData\Local\Temp\sitk.s
+13 cinit CODE >1179:C:\Users\engmo\AppData\Local\Temp\sitk.s
+13 cinit CODE >1259:C:\Users\engmo\AppData\Local\Temp\sitk.s
+14 cinit CODE >1260:C:\Users\engmo\AppData\Local\Temp\sitk.s
+15 cinit CODE >1261:C:\Users\engmo\AppData\Local\Temp\sitk.s
+16 cinit CODE >1262:C:\Users\engmo\AppData\Local\Temp\sitk.s
+17 cinit CODE >1263:C:\Users\engmo\AppData\Local\Temp\sitk.s
+18 cinit CODE >1264:C:\Users\engmo\AppData\Local\Temp\sitk.s
+19 cinit CODE >1265:C:\Users\engmo\AppData\Local\Temp\sitk.s
+1A cinit CODE >1266:C:\Users\engmo\AppData\Local\Temp\sitk.s
+1B cinit CODE >1267:C:\Users\engmo\AppData\Local\Temp\sitk.s
+1C cinit CODE >1268:C:\Users\engmo\AppData\Local\Temp\sitk.s
+21 cinit CODE >1287:C:\Users\engmo\AppData\Local\Temp\sitk.s
+22 cinit CODE >1288:C:\Users\engmo\AppData\Local\Temp\sitk.s
+23 cinit CODE >1289:C:\Users\engmo\AppData\Local\Temp\sitk.s
+24 cinit CODE >1290:C:\Users\engmo\AppData\Local\Temp\sitk.s
+29 cinit CODE >1296:C:\Users\engmo\AppData\Local\Temp\sitk.s
+29 cinit CODE >1298:C:\Users\engmo\AppData\Local\Temp\sitk.s
+2A cinit CODE >1299:C:\Users\engmo\AppData\Local\Temp\sitk.s
+4 intentry CODE >31:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+644 text31 CODE >80:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+644 text31 CODE >83:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+64C text31 CODE >85:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+655 text31 CODE >89:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+657 text31 CODE >90:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+65B text31 CODE >92:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+661 text31 CODE >96:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+662 text31 CODE >97:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+666 text31 CODE >99:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+66C text31 CODE >103:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+66D text31 CODE >104:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+671 text31 CODE >106:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+677 text31 CODE >109:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+679 text31 CODE >112:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+679 text31 CODE >114:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7C6 text30 CODE >4:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7C7 text30 CODE >6:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7C8 text30 CODE >43:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7CC text30 CODE >44:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7D0 text30 CODE >45:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7D2 text30 CODE >46:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7D4 text30 CODE >47:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7D9 text30 CODE >50:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7DA text30 CODE >51:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+7DB text29 CODE >70:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+7DC text29 CODE >72:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+7DC text29 CODE >75:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+7ED text29 CODE >77:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+7EE text29 CODE >78:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+743 text28 CODE >178:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+744 text28 CODE >180:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+74F text28 CODE >184:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+756 text28 CODE >186:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+761 text28 CODE >190:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+766 text28 CODE >193:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3BC text27 CODE >119:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3BC text27 CODE >125:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3C2 text27 CODE >127:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3C9 text27 CODE >131:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3CA text27 CODE >134:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3D6 text27 CODE >139:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3D6 text27 CODE >140:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3D8 text27 CODE >141:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3D9 text27 CODE >143:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3DD text27 CODE >144:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3DE text27 CODE >146:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3DF text27 CODE >147:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3E0 text27 CODE >150:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3F5 text27 CODE >154:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+3FC text27 CODE >156:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+401 text27 CODE >157:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+402 text27 CODE >165:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+408 text27 CODE >166:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+409 text27 CODE >169:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+40F text27 CODE >170:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+410 text27 CODE >173:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+420 text27 CODE >175:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7FB text26 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7FB text26 CODE >64:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7FE text26 CODE >65:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+789 text25 CODE >69:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+78A text25 CODE >72:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+793 text25 CODE >73:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+799 text25 CODE >74:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7A0 text25 CODE >75:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+7A8 text25 CODE >76:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FAE text24 CODE >181:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+FAE text24 CODE >183:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+FB4 text24 CODE >184:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+355 text23 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+355 text23 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+356 text23 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+35A text23 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+35F text23 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+361 text23 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+365 text23 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+36A text23 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+36E text23 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+370 text23 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+376 text23 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+378 text23 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+379 text23 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+380 text23 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+384 text23 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+388 text23 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+38F text23 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+399 text23 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+39F text23 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3A0 text23 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3A7 text23 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3AD text23 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3B2 text23 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3B7 text23 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+3BB text23 CODE >41:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awdiv.c
+4E1 text22 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4E1 text22 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4E2 text22 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4E6 text22 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4EB text22 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4ED text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4F1 text22 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4F6 text22 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4FC text22 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4FE text22 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+4FF text22 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+506 text22 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+50A text22 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+50E text22 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+518 text22 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+51E text22 CODE >28:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+525 text22 CODE >29:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+52B text22 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+530 text22 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+535 text22 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+539 text22 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
+FCD text21 CODE >87:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+FCE text21 CODE >90:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+FD6 text21 CODE >91:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+25D text20 CODE >98:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+25D text20 CODE >102:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+263 text20 CODE >105:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+27F text20 CODE >106:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+29B text20 CODE >108:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2B5 text20 CODE >109:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2CE text20 CODE >110:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2D4 text20 CODE >111:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2DA text20 CODE >113:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2DF text20 CODE >114:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+2E2 text20 CODE >123:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+126 text19 CODE >127:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+126 text19 CODE >132:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+12C text19 CODE >134:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+146 text19 CODE >135:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+15F text19 CODE >136:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+167 text19 CODE >139:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+181 text19 CODE >140:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+19D text19 CODE >142:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1A5 text19 CODE >145:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1AF text19 CODE >146:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1BB text19 CODE >148:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1C3 text19 CODE >151:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1C4 text19 CODE >153:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1C5 text18 CODE >157:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1C5 text18 CODE >162:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1CB text18 CODE >165:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+1E7 text18 CODE >166:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+203 text18 CODE >174:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+20B text18 CODE >177:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+223 text18 CODE >178:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+23C text18 CODE >180:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+244 text18 CODE >183:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+24C text18 CODE >184:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+253 text18 CODE >186:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+25B text18 CODE >189:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+25C text18 CODE >191:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+60B text17 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+60B text17 CODE >67:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+611 text17 CODE >69:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+618 text17 CODE >73:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+619 text17 CODE >75:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+61A text17 CODE >79:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+61F text17 CODE >80:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+620 text17 CODE >83:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+625 text17 CODE >84:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+626 text17 CODE >87:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+62B text17 CODE >88:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+62C text17 CODE >89:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+643 text17 CODE >90:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+7A9 text16 CODE >161:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7A9 text16 CODE >164:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7B4 text16 CODE >166:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7B9 text16 CODE >168:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7C5 text16 CODE >178:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6E3 text15 CODE >117:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6E4 text15 CODE >119:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6E5 text15 CODE >122:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6EA text15 CODE >123:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6EB text15 CODE >125:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6F0 text15 CODE >126:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6F1 text15 CODE >128:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6F6 text15 CODE >129:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6F7 text15 CODE >131:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6FC text15 CODE >132:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6FD text15 CODE >135:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+713 text15 CODE >136:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+67A text14 CODE >138:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+67B text14 CODE >140:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+67C text14 CODE >143:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+682 text14 CODE >144:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+683 text14 CODE >146:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+689 text14 CODE >147:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+68A text14 CODE >149:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+690 text14 CODE >150:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+691 text14 CODE >152:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+697 text14 CODE >153:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+698 text14 CODE >156:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6AE text14 CODE >157:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+714 text13 CODE >92:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+714 text13 CODE >98:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+71A text13 CODE >100:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+721 text13 CODE >104:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+722 text13 CODE >107:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+728 text13 CODE >109:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+72E text13 CODE >110:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+735 text13 CODE >112:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+73A text13 CODE >114:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+742 text13 CODE >115:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+2D text12 CODE >112:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+2E text12 CODE >129:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+2F text12 CODE >133:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+53 text12 CODE >134:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+62 text12 CODE >137:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+86 text12 CODE >138:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+96 text12 CODE >141:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+BA text12 CODE >142:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+CC text12 CODE >145:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+F0 text12 CODE >146:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+102 text12 CODE >151:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+125 text12 CODE >152:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+587 text11 CODE >80:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+587 text11 CODE >87:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+58D text11 CODE >93:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+58E text11 CODE >95:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+592 text11 CODE >96:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+597 text11 CODE >98:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+59D text11 CODE >100:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5A3 text11 CODE >101:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5AB text11 CODE >103:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5B1 text11 CODE >106:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5B7 text11 CODE >107:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5C4 text11 CODE >109:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5CA text11 CODE >110:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+767 text10 CODE >31:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+767 text10 CODE >35:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+768 text10 CODE >37:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+76A text10 CODE >40:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+76F text10 CODE >41:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+774 text10 CODE >42:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+779 text10 CODE >43:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+77E text10 CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FC4 text9 CODE >45:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FC4 text9 CODE >48:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FC7 text9 CODE >49:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FC8 text9 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FC9 text9 CODE >51:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FCB text9 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+FCC text9 CODE >57:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Clock.c
+2E3 text8 CODE >34:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+2E3 text8 CODE >36:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+2E3 text8 CODE >38:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+32E text8 CODE >43:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+32E text8 CODE >44:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+32F text8 CODE >47:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+354 text8 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+421 text7 CODE >14:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+421 text7 CODE >16:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+421 text7 CODE >18:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+46C text7 CODE >23:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+46C text7 CODE >24:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+46D text7 CODE >27:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+484 text7 CODE >31:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\GPIO.c
+485 text6 CODE >62:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+485 text6 CODE >65:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+491 text6 CODE >68:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4A1 text6 CODE >69:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4A6 text6 CODE >71:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4B4 text6 CODE >72:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4B9 text6 CODE >74:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4C7 text6 CODE >75:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4CC text6 CODE >77:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4DA text6 CODE >78:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4DF text6 CODE >81:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+4E0 text6 CODE >86:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7EF text5 CODE >87:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7F2 text5 CODE >90:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+7FA text5 CODE >91:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
+6AF text4 CODE >49:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6AF text4 CODE >52:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6B4 text4 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6BD text4 CODE >55:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6C7 text4 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6D3 text4 CODE >57:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6DF text4 CODE >59:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+6E2 text4 CODE >60:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Disp.c
+5CB text3 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5CB text3 CODE >54:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5D9 text3 CODE >55:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5DC text3 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5DE text3 CODE >57:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5E0 text3 CODE >59:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5ED text3 CODE >60:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5F0 text3 CODE >61:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5F2 text3 CODE >62:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+5F4 text3 CODE >64:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+603 text3 CODE >65:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+606 text3 CODE >66:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+608 text3 CODE >67:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+60A text3 CODE >69:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SW.c
+FB5 text2 CODE >22:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FB5 text2 CODE >26:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FBA text2 CODE >28:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FBB text2 CODE >30:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FD7 text1 CODE >45:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FD7 text1 CODE >48:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FD8 text1 CODE >50:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FDC text1 CODE >52:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FDD text1 CODE >53:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FDE text1 CODE >55:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+FE1 text1 CODE >56:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Timer.c
+53A maintext CODE >18:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+53A maintext CODE >20:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+53A maintext CODE >21:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+53F maintext CODE >22:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+544 maintext CODE >23:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+549 maintext CODE >26:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+552 maintext CODE >27:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+55C maintext CODE >28:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+568 maintext CODE >29:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+574 maintext CODE >32:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+579 maintext CODE >33:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+57E maintext CODE >34:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+583 maintext CODE >37:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+583 maintext CODE >39:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\Digital_Clock.c
+FBC clrtext CODE >1274:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FBC clrtext CODE >1275:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FBD clrtext CODE >1276:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FBD clrtext CODE >1277:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FBE clrtext CODE >1278:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FBF clrtext CODE >1279:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FC0 clrtext CODE >1280:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FC1 clrtext CODE >1281:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FC2 clrtext CODE >1282:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FC3 clrtext CODE >1283:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FED inittext CODE >1233:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FED inittext CODE >1234:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FEE inittext CODE >1235:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FEF inittext CODE >1236:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF0 inittext CODE >1237:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF1 inittext CODE >1244:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF1 inittext CODE >1245:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF6 inittext CODE >1246:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF7 inittext CODE >1247:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF8 inittext CODE >1248:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FF9 inittext CODE >1249:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFA inittext CODE >1250:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFB inittext CODE >1251:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFC inittext CODE >1252:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFD inittext CODE >1253:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFE inittext CODE >1254:C:\Users\engmo\AppData\Local\Temp\sitk.s
+FFF inittext CODE >1255:C:\Users\engmo\AppData\Local\Temp\sitk.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -239,84 +489,124 @@ E2 text6 CODE >85:D:\bootcamp\Device_Drivers\Labs\Mine\Digital_Clock\SSD.c
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
+_SSD_Toggle_Second_Dot 1F5C 0 CODE 0 text24 dist/default/production\Digital_Clock.production.o
 ___latbits 2 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+___awdiv@counter 75 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
+__size_of_DISP_Normal_Operation 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+DISP_Normal_Operation@tt 3F 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
 __Hspace_0 2008 0 ABS 0 - -
-__Hspace_1 7B 0 ABS 0 - -
+__Hspace_1 7E 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
-_GPIO_Init_Port$31 77 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+_GPIO_Init_Port$31 4C 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+_CLOCK_Increment C88 0 CODE 0 text31 dist/default/production\Digital_Clock.production.o
 __Hstrings 0 0 ABS 0 strings -
+SW_UpdateState@sw 77 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_Disp_Update C88 0 CODE 0 text17 dist/default/production\Digital_Clock.production.o
 _T0CS 40D 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-___sp 0 0 STACK 2 stack C:\Users\engmo\AppData\Local\Temp\slv0.o
-_main 266 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
+___sp 0 0 STACK 2 stack C:\Users\engmo\AppData\Local\Temp\sitk.o
+_main A74 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
+__size_of_SSD_Update 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-start 18 0 CODE 0 init C:\Users\engmo\AppData\Local\Temp\slv0.o
+start 20 0 CODE 0 init C:\Users\engmo\AppData\Local\Temp\sitk.o
+__size_of___awdiv 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__size_of___awmod 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-__HbssCOMMON 0 0 ABS 0 bssCOMMON -
+__end_of_SSD_Data_write F8C 0 CODE 0 text16 dist/default/production\Digital_Clock.production.o
+__end_of_SW_Update B96 0 CODE 0 text11 dist/default/production\Digital_Clock.production.o
+__size_of_SW_Update 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-__end_of_Disp_Init 3D0 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
+_SSD_Disable DC6 0 CODE 0 text15 dist/default/production\Digital_Clock.production.o
+___awmod@sign 76 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_Disp_Init DC6 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
 __size_of_Disp_Init 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\slv0.o
-__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+intlevel0 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\engmo\AppData\Local\Temp\sitk.o
+_DISP_Set_Hours_Operation 24C 0 CODE 0 text19 dist/default/production\Digital_Clock.production.o
+_SW_Update B0E 0 CODE 0 text11 dist/default/production\Digital_Clock.production.o
+___bmul@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
+__end_of_DISP_Set_Minutes_Operation 4BA 0 CODE 0 text18 dist/default/production\Digital_Clock.production.o
+SW_GetState@sw 76 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+i1SSD_Set_Symbol@symbol 7B 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+___awdiv@sign 76 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-_Disp_Init 374 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
+SW_Update@SW_Time_Counter 33 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+_Disp_Init D5E 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
+___awdiv@dividend 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 _Buffer 29 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+__end_of___bmul FB6 0 CODE 0 text30 dist/default/production\Digital_Clock.production.o
+SW_GetState@ret 77 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__size_of_CLOCK_Increment 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Lmaintext 0 0 ABS 0 maintext -
+___bmul@multiplier 73 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+___awdiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of___awdiv 778 0 CODE 0 text23 dist/default/production\Digital_Clock.production.o
+__end_of___awmod A74 0 CODE 0 text22 dist/default/production\Digital_Clock.production.o
 __size_of_SSD_Init 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __size_of_CLOCK_Init 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-_SSD_LOT_ARR 36 0 BANK0 1 dataBANK0 dist/default/production\Digital_Clock.production.o
-___stackhi 0 0 ABS 0 - C:\Users\engmo\AppData\Local\Temp\slv0.o
-___stacklo 0 0 ABS 0 - C:\Users\engmo\AppData\Local\Temp\slv0.o
-SSD_Set_Symbol@symbol 74 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-_GPIO_Init_Pin 56 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
-_SSD_Set_Symbol 49A 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
-start_initialization 1E 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
-SSD_Set_Symbol@index 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-clear_ram0 4C0 0 CODE 0 clrtext dist/default/production\Digital_Clock.production.o
-__pcstackBANK0 41 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+_SSD_LOT_ARR 52 0 BANK0 1 dataBANK0 dist/default/production\Digital_Clock.production.o
+___stackhi 0 0 ABS 0 - C:\Users\engmo\AppData\Local\Temp\sitk.o
+___stacklo 0 0 ABS 0 - C:\Users\engmo\AppData\Local\Temp\sitk.o
+SSD_Update@SSD_Time_Counter 34 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+SSD_Set_Symbol@symbol 49 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+_GPIO_Init_Pin 5C6 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
+SSD_Disable@s 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+_SSD_Set_Symbol FDE 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
+DISP_Set_Hours_Operation@tt 3F 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+start_initialization 26 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+__size_of_Disp_Update 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+_SW_GetState FB6 0 CODE 0 text29 dist/default/production\Digital_Clock.production.o
+SSD_Set_Symbol@index 47 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+clear_ram0 1F78 0 CODE 0 clrtext dist/default/production\Digital_Clock.production.o
+__pcstackBANK0 3C 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
 _TMR0IE 5D 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _TMR0IF 5A 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-_SSD_Init 112 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
+__size_of_DISP_Set_Hours_Operation 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+_SSD_Init 90A 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
 __size_of_SW_Init 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\engmo\AppData\Local\Temp\slv0.o
-__end_of_SSD_Init 1C6 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\engmo\AppData\Local\Temp\sitk.o
+__end_of_SSD_Init 9C2 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
+DISP_Set_Minutes_Operation@tt 3F 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
-__Hcinit 56 0 CODE 0 cinit -
+__Hcinit 5A 0 CODE 0 cinit -
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
+__size_of_SSD_Toggle_Second_Dot 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Hmaintext 0 0 ABS 0 maintext -
-__end_of_SSD_Set_Symbol 4AE 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
-_GPIO_Init_Port 1C6 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
+__end_of_SSD_Set_Symbol FF6 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
+SSD_Enable@s 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__size_of_DISP_Set_Minutes_Operation 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+_GPIO_Init_Port 842 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4010 0 CONFIG 0 config -
+_SW_UpdateState 5A 0 CODE 0 text12 dist/default/production\Digital_Clock.production.o
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
 __Lbank3 0 0 ABS 0 bank3 -
-__Lcinit 1E 0 CODE 0 cinit -
+__Lcinit 26 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
-_Second_Dot_State 30 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+_Second_Dot_State 35 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
 __Lstack 0 0 STACK 2 stack -
 __Linittext 0 0 ABS 0 inittext -
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
-__Hinit 18 0 CODE 0 init -
+__Hinit 20 0 CODE 0 init -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Hsfr2 0 0 ABS 0 sfr2 -
@@ -324,93 +614,151 @@ __Hsfr3 0 0 ABS 0 sfr3 -
 __Htext 0 0 ABS 0 text -
 __Labs1 0 0 ABS 0 abs1 -
 __Lcode 0 0 ABS 0 code -
-__Linit 18 0 CODE 0 init -
+__Linit 20 0 CODE 0 init -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
+_SSD_Enable CF4 0 CODE 0 text14 dist/default/production\Digital_Clock.production.o
+___bmul F8C 0 CODE 0 text30 dist/default/production\Digital_Clock.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__end_of_TMR_Start 49A 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
+__end_of_TMR_Start 1FC4 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
 __size_of_GPIO_Init_Pin 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _GIE 5F 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _PS0 408 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _PS1 409 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _PS2 40A 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __S0 2008 0 ABS 0 - -
-__S1 7B 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __size_of_TMR0_ISR 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __size_of_TMR_Start 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __size_of_TMR_Init 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-GPIO_Init_Port@DirRegAddress 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__size_of_SSD_Data_write 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+GPIO_Init_Port@DirRegAddress 47 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+__end_of_SSD_Disable E28 0 CODE 0 text15 dist/default/production\Digital_Clock.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-_TMR_Start 484 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
-__end_of_GPIO_Init_Port 266 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
+_DISP_Set_Minutes_Operation 38A 0 CODE 0 text18 dist/default/production\Digital_Clock.production.o
+_TMR_Start 1FAE 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
+__end_of_DISP_Normal_Operation 5C6 0 CODE 0 text20 dist/default/production\Digital_Clock.production.o
+__end_of_GPIO_Init_Port 90A 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
+__end_of_DISP_Set_Hours_Operation 38A 0 CODE 0 text19 dist/default/production\Digital_Clock.production.o
+i1SSD_Set_Symbol@index 79 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_SW_UpdateState 24C 0 CODE 0 text12 dist/default/production\Digital_Clock.production.o
 __Lintentry 8 0 CODE 0 intentry -
-__end_of_GPIO_Init_Pin 112 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\engmo\AppData\Local\Temp\slv0.o
-__end_of_SW_Init 374 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
-__pdataBANK0 36 0 BANK0 1 dataBANK0 dist/default/production\Digital_Clock.production.o
+Disp_Update@DISP_Time_Counter 2F 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+__end_of_GPIO_Init_Pin 6AA 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\engmo\AppData\Local\Temp\sitk.o
+__end_of_SW_Init C16 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
+__pdataBANK0 52 0 BANK0 1 dataBANK0 dist/default/production\Digital_Clock.production.o
+__size_of___bmul 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
-_TMR0_ISR 3D0 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
-__ptext10 3D0 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
-__pmaintext 266 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
-_TMR_Init 450 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
+___awmod@counter 75 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+_DISP_Normal_Operation 4BA 0 CODE 0 text20 dist/default/production\Digital_Clock.production.o
+set_mode_process@var 79 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_SSD_Enable D5E 0 CODE 0 text14 dist/default/production\Digital_Clock.production.o
+_CLOCK_Update 778 0 CODE 0 text27 dist/default/production\Digital_Clock.production.o
+_TMR0_ISR ECE 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
+__ptext10 ECE 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
+__ptext11 B0E 0 CODE 0 text11 dist/default/production\Digital_Clock.production.o
+__ptext12 5A 0 CODE 0 text12 dist/default/production\Digital_Clock.production.o
+__ptext13 E28 0 CODE 0 text13 dist/default/production\Digital_Clock.production.o
+__ptext14 CF4 0 CODE 0 text14 dist/default/production\Digital_Clock.production.o
+__ptext15 DC6 0 CODE 0 text15 dist/default/production\Digital_Clock.production.o
+__ptext16 F52 0 CODE 0 text16 dist/default/production\Digital_Clock.production.o
+__ptext17 C16 0 CODE 0 text17 dist/default/production\Digital_Clock.production.o
+__ptext18 38A 0 CODE 0 text18 dist/default/production\Digital_Clock.production.o
+__ptext19 24C 0 CODE 0 text19 dist/default/production\Digital_Clock.production.o
+__ptext20 4BA 0 CODE 0 text20 dist/default/production\Digital_Clock.production.o
+__ptext21 1F9A 0 CODE 0 text21 dist/default/production\Digital_Clock.production.o
+__ptext22 9C2 0 CODE 0 text22 dist/default/production\Digital_Clock.production.o
+__ptext23 6AA 0 CODE 0 text23 dist/default/production\Digital_Clock.production.o
+__ptext24 1F5C 0 CODE 0 text24 dist/default/production\Digital_Clock.production.o
+__ptext25 F12 0 CODE 0 text25 dist/default/production\Digital_Clock.production.o
+__ptext26 FF6 0 CODE 0 text26 dist/default/production\Digital_Clock.production.o
+__ptext27 778 0 CODE 0 text27 dist/default/production\Digital_Clock.production.o
+__ptext28 E86 0 CODE 0 text28 dist/default/production\Digital_Clock.production.o
+__ptext29 FB6 0 CODE 0 text29 dist/default/production\Digital_Clock.production.o
+__ptext30 F8C 0 CODE 0 text30 dist/default/production\Digital_Clock.production.o
+__ptext31 C88 0 CODE 0 text31 dist/default/production\Digital_Clock.production.o
+_SSD_Update E28 0 CODE 0 text13 dist/default/production\Digital_Clock.production.o
+___awdiv 6AA 0 CODE 0 text23 dist/default/production\Digital_Clock.production.o
+___awmod 9C2 0 CODE 0 text22 dist/default/production\Digital_Clock.production.o
+__pmaintext A74 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
+_TMR_Init 1F6A 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-__end_of_TMR0_ISR 42A 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
+__end_of_TMR0_ISR F12 0 CODE 0 text10 dist/default/production\Digital_Clock.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Hinittext 0 0 ABS 0 inittext -
-_currentSSD 7A 0 COMMON 1 bssCOMMON dist/default/production\Digital_Clock.production.o
-__end_of_TMR_Init 46E 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
-GPIO_Init_Pin@DirRegAddress 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-_tempCounter 2D 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+_currentSSD 36 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+__end_of_TMR_Init 1F78 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
+_Disp_Update C16 0 CODE 0 text17 dist/default/production\Digital_Clock.production.o
+_CLOCK_GetMode FF6 0 CODE 0 text26 dist/default/production\Digital_Clock.production.o
+_CLOCK_GetTime F12 0 CODE 0 text25 dist/default/production\Digital_Clock.production.o
+GPIO_Init_Pin@DirRegAddress 47 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__size_of_CLOCK_Update 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__pbssCOMMON 79 0 COMMON 1 bssCOMMON dist/default/production\Digital_Clock.production.o
-init_fetch0 42A 0 CODE 0 inittext dist/default/production\Digital_Clock.production.o
+init_fetch0 1FDA 0 CODE 0 inittext dist/default/production\Digital_Clock.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__Lend_init 18 0 CODE 0 end_init -
+__Lend_init 20 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-GPIO_Init_Pin@dir 75 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-end_of_initialization 4E 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
-__Hintentry 18 0 CODE 0 intentry -
+__end_of_SW_GetState FDE 0 CODE 0 text29 dist/default/production\Digital_Clock.production.o
+GPIO_Init_Pin@dir 4A 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+end_of_initialization 52 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+CLOCK_Update@CLOCK_Time_Counter 31 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+__Hintentry 20 0 CODE 0 intentry -
+i1_SSD_Set_Symbol 1F9A 0 CODE 0 text21 dist/default/production\Digital_Clock.production.o
 __Lstrings 0 0 ABS 0 strings -
-_CurrentMode 2F 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
-_CurrentTime 31 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+___awdiv@quotient 77 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+?___awdiv 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+?___awmod 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+_CurrentMode 32 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
+__end_of_SSD_Update E86 0 CODE 0 text13 dist/default/production\Digital_Clock.production.o
+_CurrentTime 37 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-__ptext1 484 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
-__ptext2 450 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
-__ptext3 2F8 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
-__ptext4 374 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
-__ptext5 49A 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
-__ptext6 112 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
-__ptext7 1C6 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
-__ptext8 56 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
-__ptext9 4AE 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
+___awmod@dividend 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_CLOCK_Update 842 0 CODE 0 text27 dist/default/production\Digital_Clock.production.o
+__ptext1 1FAE 0 CODE 0 text1 dist/default/production\Digital_Clock.production.o
+__ptext2 1F6A 0 CODE 0 text2 dist/default/production\Digital_Clock.production.o
+__ptext3 B96 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
+__ptext4 D5E 0 CODE 0 text4 dist/default/production\Digital_Clock.production.o
+__ptext5 FDE 0 CODE 0 text5 dist/default/production\Digital_Clock.production.o
+__ptext6 90A 0 CODE 0 text6 dist/default/production\Digital_Clock.production.o
+__ptext7 842 0 CODE 0 text7 dist/default/production\Digital_Clock.production.o
+__ptext8 5C6 0 CODE 0 text8 dist/default/production\Digital_Clock.production.o
+__ptext9 1F88 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
+__size_of_SSD_Disable 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+_set_mode_process E86 0 CODE 0 text28 dist/default/production\Digital_Clock.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_CLOCK_Init 4AE 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
+_CLOCK_Init 1F88 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-__end_of__initialization 4E 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+__end_of__initialization 52 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+___awmod@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-GPIO_Init_Port@dir 74 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-__pidataBANK0 46E 0 CODE 0 idataBANK0 dist/default/production\Digital_Clock.production.o
+GPIO_Init_Port@dir 49 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
+__pidataBANK0 1FC4 0 CODE 0 idataBANK0 dist/default/production\Digital_Clock.production.o
+__size_of_CLOCK_GetMode 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__size_of_CLOCK_GetTime 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __size_of_SSD_Set_Symbol 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
-__Hend_init 1E 0 CODE 0 end_init -
-init_ram0 432 0 CODE 0 inittext dist/default/production\Digital_Clock.production.o
-__end_of_main 2F8 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
+__Hend_init 26 0 CODE 0 end_init -
+init_ram0 1FE2 0 CODE 0 inittext dist/default/production\Digital_Clock.production.o
+__end_of_main B0E 0 CODE 0 maintext dist/default/production\Digital_Clock.production.o
+__size_of_SSD_Enable 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__end_ofi1_SSD_Set_Symbol 1FAE 0 CODE 0 text21 dist/default/production\Digital_Clock.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _TRISA 85 0 ABS 0 - dist/default/production\Digital_Clock.production.o
@@ -420,20 +768,32 @@ _TRISD 88 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 _TRISE 89 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
+__end_of_CLOCK_Increment CF4 0 CODE 0 text31 dist/default/production\Digital_Clock.production.o
 interrupt_function 8 0 CODE 0 intentry dist/default/production\Digital_Clock.production.o
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__end_of_CLOCK_GetMode FFE 0 CODE 0 text26 dist/default/production\Digital_Clock.production.o
+__end_of_CLOCK_GetTime F52 0 CODE 0 text25 dist/default/production\Digital_Clock.production.o
 _SW_DATA 20 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
-_SW_Init 2F8 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
-_Disp_Blink_counter 79 0 COMMON 1 bssCOMMON dist/default/production\Digital_Clock.production.o
+_SW_Init B96 0 CODE 0 text3 dist/default/production\Digital_Clock.production.o
+_Disp_Blink_counter 30 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Digital_Clock.production.o
+__size_ofi1_SSD_Set_Symbol 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
-__end_of_CLOCK_Init 4C0 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
-__initialization 1E 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+__end_of_CLOCK_Init 1F9A 0 CODE 0 text9 dist/default/production\Digital_Clock.production.o
+__end_of_SSD_Toggle_Second_Dot 1F6A 0 CODE 0 text24 dist/default/production\Digital_Clock.production.o
+__initialization 26 0 CODE 0 cinit dist/default/production\Digital_Clock.production.o
+___bmul@product 72 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+_SSD_Data_write F52 0 CODE 0 text16 dist/default/production\Digital_Clock.production.o
 __pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\Digital_Clock.production.o
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
-GPIO_Init_Pin@pin_number 74 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__end_of_set_mode_process ECE 0 CODE 0 text28 dist/default/production\Digital_Clock.production.o
+GPIO_Init_Pin@pin_number 49 0 BANK0 1 cstackBANK0 dist/default/production\Digital_Clock.production.o
 __size_of_GPIO_Init_Port 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__size_of_SW_UpdateState 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+CLOCK_GetTime@t 71 0 COMMON 1 cstackCOMMON dist/default/production\Digital_Clock.production.o
+__size_of_set_mode_process 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
+__size_of_SW_GetState 0 0 ABS 0 - dist/default/production\Digital_Clock.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -459,10 +819,18 @@ __size_of_GPIO_Init_Port 0 0 ABS 0 - dist/default/production\Digital_Clock.produ
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackCOMMON 1 70 70 B 1
-intentry 0 4 8 264 2
+text1 0 FD7 1FAE B 2
+text2 0 FB5 1F6A 7 2
+text9 0 FC4 1F88 9 2
+text21 0 FCD 1F9A A 2
+text24 0 FAE 1F5C 7 2
+cstackCOMMON 1 70 70 E 1
+inittext 0 FED 1FDA 13 2
+intentry 0 4 8 7FB 2
 reset_vec 0 0 0 3 2
-bssBANK0 1 20 20 24 1
+bssBANK0 1 20 20 3D 1
+idataBANK0 0 FE2 1FC4 B 2
+clrtext 0 FBC 1F78 8 2
 config 0 2007 400E 1 2
 # OTES Section
 # This section contains data of all the note-psects.  The beginning of the section

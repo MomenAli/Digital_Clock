@@ -8,6 +8,7 @@
 #include "GPIO.h"
 #include "Port.h"
 #include "SW.h"
+#include "Timer.h"
 
 
 /*
@@ -43,6 +44,8 @@ typedef struct
  * Create array of structs to hold data
  */
  static SW_DATA_t SW_DATA[SW_NUM];
+ 
+
 
 void SW_Init(void)
 {
@@ -73,11 +76,21 @@ u8_t SW_GetState(SW_t sw)
     
     return ret;
 }
-void SW_Update(void)
+// <editor-fold defaultstate="collapsed" desc="comment">
+void SW_Update(void)// </editor-fold>
+
 {
+    /*
+     * create static variable to hold time
+     */
+    static u8_t SW_Time_Counter = 0; 
+    SW_Time_Counter += OS_TICK;
     //check if it's my tick 
-    /*NOT DONE*/
-    
+    if(SW_Time_Counter != SW_UPDATE_TICK)
+    {
+       // return;
+    }
+    SW_Time_Counter = 0;
     // update samples of plus switch
     SW_DATA[SW_PLUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
     SW_DATA[SW_PLUS].samples[1] = GPIO_Read_Pin(SW_P_PORT,SW_P_PIN);

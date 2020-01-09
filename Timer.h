@@ -38,8 +38,8 @@
  */
 #define TMR_LOAD_REGISTER(TIME)		(TMR_REG = 256 - ((TIME) * 8))
 
-
-#define OS_TICK (1)
+/* assume it's 5 ms till we make dynamic design*/
+#define OS_TICK (5)
 
 
 void TMR_Init(void);

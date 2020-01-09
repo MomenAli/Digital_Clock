@@ -1754,7 +1754,7 @@ u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 7 "SSD.c" 2
 
 # 1 "./SSD.h" 1
-# 49 "./SSD.h"
+# 30 "./SSD.h"
 typedef enum
 {
     SSD_0 = 0,
@@ -1796,7 +1796,15 @@ void SSD_Update(void);
 void SSD_Toggle_Second_Dot(void);
 void SSD_Set_PM_Dot(tSSD_State s);
 # 8 "SSD.c" 2
-# 24 "SSD.c"
+
+# 1 "./Timer.h" 1
+# 46 "./Timer.h"
+void TMR_Init(void);
+void TMR_Start(void);
+void TMR_Stop(void);
+u8_t TMR_CheckOverflow(void);
+# 9 "SSD.c" 2
+# 25 "SSD.c"
 void SSD_Disable(SSD_t s);
 void SSD_Enable(SSD_t s);
 void SSD_Data_write(void);
@@ -1869,6 +1877,15 @@ void SSD_Update(void)
 
 
 
+    static u8_t SSD_Time_Counter = 0;
+    SSD_Time_Counter += (5);
+
+    if(SSD_Time_Counter != (5))
+    {
+        return;
+    }
+    SSD_Time_Counter = 0;
+
 
     SSD_Disable(currentSSD);
 
@@ -1933,7 +1950,7 @@ void SSD_Data_write(void)
     {
         (((PORTD))=((PORTD) & ~(1<<(7)))|(Second_Dot_State<<(7)));
     }
-# 168 "SSD.c"
+# 178 "SSD.c"
 }
 
 

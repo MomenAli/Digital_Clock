@@ -1732,7 +1732,7 @@ extern __bank0 __bit __timeout;
 
 
 # 1 "./SSD.h" 1
-# 49 "./SSD.h"
+# 30 "./SSD.h"
 typedef enum
 {
     SSD_0 = 0,
@@ -1836,6 +1836,14 @@ void CLOCK_GetTime(Time_t * t);
 void CLOCK_Update(void);
 # 12 "Disp.c" 2
 
+# 1 "./Timer.h" 1
+# 46 "./Timer.h"
+void TMR_Init(void);
+void TMR_Start(void);
+void TMR_Stop(void);
+u8_t TMR_CheckOverflow(void);
+# 13 "Disp.c" 2
+
 
 
 
@@ -1861,7 +1869,7 @@ void DISP_Set_Minutes_Operation(void);
 
 
 void Blink_Minutes_Unit_Dot(void);
-# 48 "Disp.c"
+# 49 "Disp.c"
 void Disp_Init(void)
 {
 
@@ -1877,6 +1885,16 @@ void Disp_Init(void)
 void Disp_Update(void)
 {
 
+
+
+    static u8_t DISP_Time_Counter = 0;
+    DISP_Time_Counter += (5);
+
+    if(DISP_Time_Counter != (20))
+    {
+        return;
+    }
+    DISP_Time_Counter = 0;
 
     switch(CLOCK_GetMode())
     {

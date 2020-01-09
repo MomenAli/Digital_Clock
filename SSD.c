@@ -6,6 +6,7 @@
  */
 #include"Port.h"
 #include"SSD.h"
+#include"Timer.h"
 
 /*
  * define number of ticks need to update
@@ -16,7 +17,7 @@
  * MIN TIME = MIN TIME PER SSD / NUMBER OF SSD = 20/4 = 5 ms
  * 10 ms 
  */
-#define SSD_UPDATE_TICK (10)
+#define SSD_UPDATE_TICK (5)
 /*
  * Buffer for the current displayed values
  */
@@ -90,8 +91,17 @@ void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index)
 }
 void SSD_Update(void)
 {
-    //check if my tick comes
-    /*NOT DONE*/
+    /*
+     * create static variable to hold time
+     */
+    static u8_t SSD_Time_Counter = 0; 
+    SSD_Time_Counter += OS_TICK;
+    //check if it's my tick 
+    if(SSD_Time_Counter != SSD_UPDATE_TICK)
+    {
+        return;
+    }
+    SSD_Time_Counter = 0;
     
     // disable previous SSD
     SSD_Disable(currentSSD);

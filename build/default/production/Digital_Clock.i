@@ -1756,7 +1756,7 @@ u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 
 
 # 1 "./SSD.h" 1
-# 49 "./SSD.h"
+# 30 "./SSD.h"
 typedef enum
 {
     SSD_0 = 0,
@@ -1882,7 +1882,7 @@ void Disp_Update(void);
 # 15 "Digital_Clock.c" 2
 
 # 1 "./Timer.h" 1
-# 45 "./Timer.h"
+# 46 "./Timer.h"
 void TMR_Init(void);
 void TMR_Start(void);
 void TMR_Stop(void);
@@ -1911,11 +1911,6 @@ void main(void) {
 
     while(1)
     {
-
-
-
-
-
     }
 
 }

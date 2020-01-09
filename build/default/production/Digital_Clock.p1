@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"84 ./SSD.h
-[; ;./SSD.h: 84: void SSD_Init(void);
+"65 ./SSD.h
+[; ;./SSD.h: 65: void SSD_Init(void);
 [v _SSD_Init `(v ~T0 @X0 0 ef ]
 "60 ./SW.h
 [; ;./SW.h: 60: void SW_Init(void);
@@ -15,17 +15,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E859 . SSD_0 SSD_1 SSD_2 SSD_3 SSD_4 SSD_5 SSD_6 SSD_7 SSD_8 SSD_9 SSD_NULL  ]
 [c E872 0 1 2 3 .. ]
 [n E872 . SSD_MINUTES_UNITS SSD_MINUTES_TENS SSD_HOURS_UNITS SSD_HOURS_TENS  ]
-"85 ./SSD.h
-[; ;./SSD.h: 85: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
+"66 ./SSD.h
+[; ;./SSD.h: 66: void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 [v _SSD_Set_Symbol `(v ~T0 @X0 0 ef2`E859`E872 ]
 "44 ./Clock.h
 [; ;./Clock.h: 44: void CLOCK_Init(void);
 [v _CLOCK_Init `(v ~T0 @X0 0 ef ]
-"45 ./Timer.h
-[; ;./Timer.h: 45: void TMR_Init(void);
+"46 ./Timer.h
+[; ;./Timer.h: 46: void TMR_Init(void);
 [v _TMR_Init `(v ~T0 @X0 0 ef ]
-"46
-[; ;./Timer.h: 46: void TMR_Start(void);
+"47
+[; ;./Timer.h: 47: void TMR_Start(void);
 [v _TMR_Start `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
@@ -270,13 +270,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;Digital_Clock.c: 38:     {
 {
-"44
-[; ;Digital_Clock.c: 44:     }
+"39
+[; ;Digital_Clock.c: 39:     }
 }
 [e :U 97 ]
 [e $U 98  ]
 [e :U 99 ]
-"46
-[; ;Digital_Clock.c: 46: }
+"41
+[; ;Digital_Clock.c: 41: }
 [e :UE 96 ]
 }
