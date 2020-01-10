@@ -11,6 +11,8 @@
 #include "Clock.h"
 #include "SW.h"
 #include"Timer.h"
+#include "GPIO.h"
+#include "Port.h"
 
 /*lets assume it 20 till we make dynamic design*/
 #define CLOCK_UPDATE_TICK (20)
@@ -24,7 +26,7 @@ void CLOCK_Increment(void);
 /*
  * send pointer to min or hours and check if plus or minus was pressed
  */
-void set_mode_process(u8_t * var);
+void set_mode_process(u8_t * var, u8_t limit);
 
 /*
  * Create static object of the struct to hold the current time
@@ -54,6 +56,11 @@ void CLOCK_Init(void)
     CurrentMode = CL_NORMAL;
     //start the timer
     /*NOT DONE*/
+    /*test code*/
+    GPIO_Set_Dir_Pin(LED_4_DIR,LED_4_PIN,GPIO_OUT);
+    GPIO_Write_Pin(LED_4_PORT,LED_4_PIN,1);
+    /*end of test code*/
+    
 }
 /*
  * Return the current mode
@@ -82,7 +89,16 @@ void CLOCK_Increment(void)
     // add the tick value to the mSeconds
     CurrentTime.mSeconds+=CLOCK_UPDATE_TICK;
     //check if mSeconds bigger than or equal 1000 
-    if(CurrentTime.mSeconds >= 1000)
+    /* 
+     * our calculation is every 8 timer tick 1 ms 
+     * clock tick = 5 * 1 = 5 ms 
+     * 200 * 5 ms = 1 s
+     * we have error 8 * 128us = 1024 us
+     * tick = 5 * 1024 = 5120 us
+     * 200 * 5120 us = 1024 ms  error 24+ in the second
+     * 196 * 5120 us = 1003 ms
+     */
+    if(CurrentTime.mSeconds >= 980 /* 1000  changed to correct the error */)
     {
         //false return
         //true mSeconds = 0 Second++
@@ -121,7 +137,7 @@ void CLOCK_Update(void)
      /*
      * create static variable to hold time
      */
-    static u8_t CLOCK_Time_Counter = 0; 
+    static u8_t CLOCK_Time_Counter = 10; 
     CLOCK_Time_Counter += OS_TICK;
     //check if it's my tick 
     if(CLOCK_Time_Counter != CLOCK_UPDATE_TICK)
@@ -131,8 +147,9 @@ void CLOCK_Update(void)
     CLOCK_Time_Counter = 0;
     
     //check if set button is pressed
-    if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
+    if(SW_GetState(SW_SET) == SW_PRE_PRESSED)
     {
+        
         // change the mode if true
         switch(CurrentMode)
         {
@@ -162,11 +179,11 @@ void CLOCK_Update(void)
 
             case CL_SET_HOURS:
                 // set hours
-                set_mode_process(&CurrentTime.hours);
+                set_mode_process(&CurrentTime.hours , 24);
                 break;
             case CL_SET_MINUTES:
                 //set minutes
-                set_mode_process(&CurrentTime.minuts);
+                set_mode_process(&CurrentTime.minuts , 60);
                 break;
             default:
                 break;
@@ -175,18 +192,20 @@ void CLOCK_Update(void)
 }
 
 
-void set_mode_process(u8_t * var)
+void set_mode_process(u8_t * var , u8_t limit)
 {
     if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
     {
         // check if plus is pressed 
         //increment the var if true
-        *var += 1;  
+        *var += 1;
+        if(*var == limit)*var = 0;
     }
     if(SW_GetState(SW_MINUS) == SW_PRE_PRESSED)
     {
         // check if minus is pressed 
         //decrement the var if true
+        if(*var == 0)*var = limit;
         *var -= 1;
     }
     

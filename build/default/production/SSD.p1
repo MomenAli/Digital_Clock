@@ -7,14 +7,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SSD.c: 38: static tSSD_State Second_Dot_State;
 [c E878 0 1 .. ]
 [n E878 . SSD_OFF SSD_ON  ]
-"61 ./GPIO.h
-[; ;./GPIO.h: 61: u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
+"62 ./GPIO.h
+[; ;./GPIO.h: 62: u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
 [v _GPIO_Init_Port `(uc ~T0 @X0 0 ef2`*uc`uc ]
 "1499 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"62 ./GPIO.h
-[; ;./GPIO.h: 62: u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
+"63 ./GPIO.h
+[; ;./GPIO.h: 63: u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 [v _GPIO_Init_Pin `(uc ~T0 @X0 0 ef3`*uc`uc`uc ]
 "1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
@@ -337,16 +337,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "97
 [; ;SSD.c: 97:     static u8_t SSD_Time_Counter = 0;
-[v F908 `uc ~T0 @X0 1 s SSD_Time_Counter ]
-[i F908
+[v F910 `uc ~T0 @X0 1 s SSD_Time_Counter ]
+[i F910
 -> -> 0 `i `uc
 ]
 "98
 [; ;SSD.c: 98:     SSD_Time_Counter += (5);
-[e =+ F908 -> -> 5 `i `uc ]
+[e =+ F910 -> -> 5 `i `uc ]
 "100
 [; ;SSD.c: 100:     if(SSD_Time_Counter != (5))
-[e $ ! != -> F908 `i -> 5 `i 98  ]
+[e $ ! != -> F910 `i -> 5 `i 98  ]
 "101
 [; ;SSD.c: 101:     {
 {
@@ -359,7 +359,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 98 ]
 "104
 [; ;SSD.c: 104:     SSD_Time_Counter = 0;
-[e = F908 -> -> 0 `i `uc ]
+[e = F910 -> -> 0 `i `uc ]
 "107
 [; ;SSD.c: 107:     SSD_Disable(currentSSD);
 [e ( _SSD_Disable (1 -> _currentSSD `E872 ]
@@ -569,4 +569,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "184
 [; ;SSD.c: 184: }
 [e :UE 118 ]
+}
+"185
+[; ;SSD.c: 185: void SSD_Set_Second_Dot(tSSD_State s)
+[v _SSD_Set_Second_Dot `(v ~T0 @X0 1 ef1`E878 ]
+"186
+[; ;SSD.c: 186: {
+{
+[e :U _SSD_Set_Second_Dot ]
+"185
+[; ;SSD.c: 185: void SSD_Set_Second_Dot(tSSD_State s)
+[v _s `E878 ~T0 @X0 1 r1 ]
+"186
+[; ;SSD.c: 186: {
+[f ]
+"187
+[; ;SSD.c: 187:     Second_Dot_State = s;
+[e = _Second_Dot_State _s ]
+"188
+[; ;SSD.c: 188: }
+[e :UE 119 ]
 }

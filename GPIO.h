@@ -54,6 +54,7 @@
 /* GPIO pin operations */
 #define GPIO_Set_Dir_Pin(DIRECTION_REG ,PIN, DIRECTION)     ((DIRECTION_REG)=(DIRECTION_REG & ~(1<<PIN))|(DIRECTION<<PIN))
 #define GPIO_Write_Pin(DATA_REG ,PIN, DATA)                 ((DATA_REG)=(DATA_REG & ~(1<<PIN))|(DATA<<PIN))
+#define GPIO_Toggle_Pin(DATA_REG ,PIN)                      ((DATA_REG)=(DATA_REG ^(1<<PIN)))
 #define GPIO_Read_Pin(DATA_REG ,PIN)                        ((DATA_REG >> PIN)& 1)
 
 

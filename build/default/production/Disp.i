@@ -1772,6 +1772,7 @@ void SSD_Init(void);
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 void SSD_Update(void);
 void SSD_Toggle_Second_Dot(void);
+void SSD_Set_Second_Dot(tSSD_State s);
 void SSD_Set_PM_Dot(tSSD_State s);
 # 11 "Disp.c" 2
 
@@ -1837,7 +1838,7 @@ void CLOCK_Update(void);
 # 12 "Disp.c" 2
 
 # 1 "./Timer.h" 1
-# 46 "./Timer.h"
+# 45 "./Timer.h"
 void TMR_Init(void);
 void TMR_Start(void);
 void TMR_Stop(void);
@@ -1887,7 +1888,7 @@ void Disp_Update(void)
 
 
 
-    static u8_t DISP_Time_Counter = 0;
+    static u8_t DISP_Time_Counter = 10;
     DISP_Time_Counter += (5);
 
     if(DISP_Time_Counter != (20))
@@ -1957,6 +1958,11 @@ void DISP_Set_Hours_Operation(void)
 
     SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
     SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+
+
+
+    SSD_Set_Second_Dot(SSD_OFF);
+
     if(Disp_Blink_counter < 25)
     {
 
@@ -1969,11 +1975,12 @@ void DISP_Set_Hours_Operation(void)
         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
     }
-    if(Disp_Blink_counter>=50)
+    if(Disp_Blink_counter>50)
     {
 
         Disp_Blink_counter = 0;
     }
+    Disp_Blink_counter++;
 }
 
 
@@ -1995,6 +2002,7 @@ void DISP_Set_Minutes_Operation(void)
 
 
 
+    SSD_Set_Second_Dot(SSD_OFF);
     if(Disp_Blink_counter < 25)
     {
 
@@ -2007,9 +2015,10 @@ void DISP_Set_Minutes_Operation(void)
         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
     }
-    if(Disp_Blink_counter>=50)
+    if(Disp_Blink_counter>50)
     {
 
         Disp_Blink_counter = 0;
     }
+    Disp_Blink_counter++;
 }

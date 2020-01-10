@@ -66,6 +66,7 @@ void SSD_Init(void);
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 void SSD_Update(void);
 void SSD_Toggle_Second_Dot(void);
+void SSD_Set_Second_Dot(tSSD_State s);
 void SSD_Set_PM_Dot(tSSD_State s);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

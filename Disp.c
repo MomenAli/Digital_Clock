@@ -63,7 +63,7 @@ void Disp_Update(void)
      /*
      * create static variable to hold time
      */
-    static u8_t DISP_Time_Counter = 0; 
+    static u8_t DISP_Time_Counter = 10; 
     DISP_Time_Counter += OS_TICK;
     //check if it's my tick 
     if(DISP_Time_Counter != DISP_UPDATE_TICK)
@@ -133,6 +133,11 @@ void DISP_Set_Hours_Operation(void)
     //set minutes symbols at buffer
     SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
     SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+#ifdef _12_MODE    
+    SSD_Set_PM_Dot(SSD_OFF);
+#endif
+    SSD_Set_Second_Dot(SSD_OFF);
+    
     if(Disp_Blink_counter < 25)
     {
         //set symbols to buffer
@@ -145,11 +150,12 @@ void DISP_Set_Hours_Operation(void)
         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
     }
-    if(Disp_Blink_counter>=50)
+    if(Disp_Blink_counter>50)
     {
         // reset counter
         Disp_Blink_counter = 0;
     }
+    Disp_Blink_counter++;
 }
 /*
  * operate the clock at set minutes mode  
@@ -171,6 +177,7 @@ void DISP_Set_Minutes_Operation(void)
     if((tt.hours/12)>0)SSD_Set_PM_Dot(SSD_ON);
     else SSD_Set_PM_Dot(SSD_OFF);
 #endif
+    SSD_Set_Second_Dot(SSD_OFF);
     if(Disp_Blink_counter < 25)
     {
         //set symbols to buffer
@@ -183,9 +190,10 @@ void DISP_Set_Minutes_Operation(void)
         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
     }
-    if(Disp_Blink_counter>=50)
+    if(Disp_Blink_counter>50)
     {
         // reset counter
         Disp_Blink_counter = 0;
     }
+    Disp_Blink_counter++;
 }

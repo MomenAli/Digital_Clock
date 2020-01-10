@@ -21,11 +21,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44 ./Clock.h
 [; ;./Clock.h: 44: void CLOCK_Init(void);
 [v _CLOCK_Init `(v ~T0 @X0 0 ef ]
-"46 ./Timer.h
-[; ;./Timer.h: 46: void TMR_Init(void);
+"45 ./Timer.h
+[; ;./Timer.h: 45: void TMR_Init(void);
 [v _TMR_Init `(v ~T0 @X0 0 ef ]
-"47
-[; ;./Timer.h: 47: void TMR_Start(void);
+"46
+[; ;./Timer.h: 46: void TMR_Start(void);
 [v _TMR_Start `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");

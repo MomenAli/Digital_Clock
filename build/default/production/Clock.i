@@ -1826,18 +1826,27 @@ void SW_Update(void);
 # 12 "Clock.c" 2
 
 # 1 "./Timer.h" 1
-# 46 "./Timer.h"
+# 45 "./Timer.h"
 void TMR_Init(void);
 void TMR_Start(void);
 void TMR_Stop(void);
 u8_t TMR_CheckOverflow(void);
 # 13 "Clock.c" 2
-# 23 "Clock.c"
+
+# 1 "./GPIO.h" 1
+# 62 "./GPIO.h"
+u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
+u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
+# 14 "Clock.c" 2
+
+# 1 "./Port.h" 1
+# 15 "Clock.c" 2
+# 25 "Clock.c"
 void CLOCK_Increment(void);
 
 
 
-void set_mode_process(u8_t * var);
+void set_mode_process(u8_t * var, u8_t limit);
 
 
 
@@ -1867,6 +1876,11 @@ void CLOCK_Init(void)
     CurrentMode = CL_NORMAL;
 
 
+
+    (((TRISB))=((TRISB) & ~(1<<(3)))|((0)<<(3)));
+    (((PORTB))=((PORTB) & ~(1<<(3)))|(1<<(3)));
+
+
 }
 
 
@@ -1894,8 +1908,8 @@ void CLOCK_Increment(void)
 {
 
     CurrentTime.mSeconds+=(20);
-
-    if(CurrentTime.mSeconds >= 1000)
+# 101 "Clock.c"
+    if(CurrentTime.mSeconds >= 980 )
     {
 
 
@@ -1934,7 +1948,7 @@ void CLOCK_Update(void)
 
 
 
-    static u8_t CLOCK_Time_Counter = 0;
+    static u8_t CLOCK_Time_Counter = 10;
     CLOCK_Time_Counter += (5);
 
     if(CLOCK_Time_Counter != (20))
@@ -1944,8 +1958,9 @@ void CLOCK_Update(void)
     CLOCK_Time_Counter = 0;
 
 
-    if(SW_GetState(SW_SET)== SW_PRE_PRESSED)
+    if(SW_GetState(SW_SET) == SW_PRE_PRESSED)
     {
+
 
         switch(CurrentMode)
         {
@@ -1975,11 +1990,11 @@ void CLOCK_Update(void)
 
             case CL_SET_HOURS:
 
-                set_mode_process(&CurrentTime.hours);
+                set_mode_process(&CurrentTime.hours , 24);
                 break;
             case CL_SET_MINUTES:
 
-                set_mode_process(&CurrentTime.minuts);
+                set_mode_process(&CurrentTime.minuts , 60);
                 break;
             default:
                 break;
@@ -1988,18 +2003,20 @@ void CLOCK_Update(void)
 }
 
 
-void set_mode_process(u8_t * var)
+void set_mode_process(u8_t * var , u8_t limit)
 {
     if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
     {
 
 
         *var += 1;
+        if(*var == limit)*var = 0;
     }
     if(SW_GetState(SW_MINUS) == SW_PRE_PRESSED)
     {
 
 
+        if(*var == 0)*var = limit;
         *var -= 1;
     }
 

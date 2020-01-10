@@ -11,6 +11,11 @@
 #include "Timer.h"
 
 
+
+/* SW voltage level */
+#define SW_PRESSED_LEVEL        (0)
+#define SW_RELEASED_LEVEL       (1)
+
 /*
  * update the state depend on the previous state the state transition table
  */
@@ -53,18 +58,18 @@ void SW_Init(void)
     // initialize the the plus switch
     GPIO_Init_Pin(&SW_P_DIR,SW_P_PIN,GPIO_IN);
     SW_DATA[SW_PLUS].state = SW_RELEASED;
-    SW_DATA[SW_PLUS].samples[0] = 1;
-    SW_DATA[SW_PLUS].samples[1] = 1;
+    SW_DATA[SW_PLUS].samples[0] = SW_RELEASED_LEVEL;
+    SW_DATA[SW_PLUS].samples[1] = SW_RELEASED_LEVEL;
     // initialize the the Minus switch
     GPIO_Init_Pin(&SW_M_DIR,SW_M_PIN,GPIO_IN);
     SW_DATA[SW_MINUS].state = SW_RELEASED;
-    SW_DATA[SW_MINUS].samples[0] = 1;
-    SW_DATA[SW_MINUS].samples[1] = 1;
+    SW_DATA[SW_MINUS].samples[0] = SW_RELEASED_LEVEL;
+    SW_DATA[SW_MINUS].samples[1] = SW_RELEASED_LEVEL;
     // initialize the the SET switch
     GPIO_Init_Pin(&SW_S_DIR,SW_S_PIN,GPIO_IN);
     SW_DATA[SW_SET].state = SW_RELEASED;
-    SW_DATA[SW_SET].samples[0] = 1;
-    SW_DATA[SW_SET].samples[1] = 1;
+    SW_DATA[SW_SET].samples[0] = SW_RELEASED_LEVEL;
+    SW_DATA[SW_SET].samples[1] = SW_RELEASED_LEVEL;
     
 }
 u8_t SW_GetState(SW_t sw)
@@ -83,12 +88,12 @@ void SW_Update(void)// </editor-fold>
     /*
      * create static variable to hold time
      */
-    static u8_t SW_Time_Counter = 0; 
+    static u8_t SW_Time_Counter = 15; 
     SW_Time_Counter += OS_TICK;
     //check if it's my tick 
     if(SW_Time_Counter != SW_UPDATE_TICK)
     {
-       // return;
+        return;
     }
     SW_Time_Counter = 0;
     // update samples of plus switch
@@ -97,16 +102,18 @@ void SW_Update(void)// </editor-fold>
     // update state of plus switch
     SW_UpdateState(SW_PLUS);
     // update samples of minus switch
-    SW_DATA[SW_MINUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_MINUS].samples[0] = SW_DATA[SW_MINUS].samples[1];
     SW_DATA[SW_MINUS].samples[1] = GPIO_Read_Pin(SW_M_PORT,SW_M_PIN);
     // update state of MINUS switch
     SW_UpdateState(SW_MINUS);
     
     // update samples of set switch
-    SW_DATA[SW_SET].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_SET].samples[0] = SW_DATA[SW_SET].samples[1];
     SW_DATA[SW_SET].samples[1] = GPIO_Read_Pin(SW_S_PORT,SW_S_PIN);
     // update state of SET switch
     SW_UpdateState(SW_SET);
+    if(SW_DATA[SW_SET].state == SW_PRE_PRESSED )
+        GPIO_Toggle_Pin(LED_4_PORT,LED_4_PIN);
 }
 
 void SW_UpdateState(SW_t sw)
@@ -130,19 +137,19 @@ void SW_UpdateState(SW_t sw)
     {
         
         case SW_PRE_RELEASED:
-            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+            if(SW_DATA[sw].samples[0] == SW_RELEASED_LEVEL && SW_DATA[sw].samples[1] == SW_RELEASED_LEVEL)
                 SW_DATA[sw].state = SW_RELEASED;
             break;
         case SW_RELEASED:
-            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+            if(SW_DATA[sw].samples[0] == SW_PRESSED_LEVEL && SW_DATA[sw].samples[1] == SW_PRESSED_LEVEL)
                 SW_DATA[sw].state = SW_PRE_PRESSED;
             break;
         case SW_PRE_PRESSED:
-            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+            if(SW_DATA[sw].samples[0] == SW_PRESSED_LEVEL && SW_DATA[sw].samples[1] == SW_PRESSED_LEVEL)
                 SW_DATA[sw].state = SW_PRESSED;
             break;
         case SW_PRESSED:
-            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+            if(SW_DATA[sw].samples[0] == SW_RELEASED_LEVEL && SW_DATA[sw].samples[1] == SW_RELEASED_LEVEL)
                 SW_DATA[sw].state = SW_PRE_RELEASED;
             break;
         default:

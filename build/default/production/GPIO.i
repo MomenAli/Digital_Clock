@@ -1746,7 +1746,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 34 "./GPIO.h" 2
-# 61 "./GPIO.h"
+# 62 "./GPIO.h"
 u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
 u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 10 "GPIO.c" 2

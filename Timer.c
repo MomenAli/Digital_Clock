@@ -37,10 +37,10 @@ void __interrupt() TMR0_ISR()
     TMR_LOAD_REGISTER(OS_TICK);
     // call tasks
     
+    SSD_Update();
     SW_Update();
     CLOCK_Update();
     Disp_Update();
-    SSD_Update();
 }
 void TMR_Start(void)
 {

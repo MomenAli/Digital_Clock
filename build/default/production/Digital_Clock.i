@@ -1748,7 +1748,7 @@ typedef unsigned int u16_t;
 # 36 "./Port.h" 2
 
 # 1 "./GPIO.h" 1
-# 61 "./GPIO.h"
+# 62 "./GPIO.h"
 u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
 u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 37 "./Port.h" 2
@@ -1796,6 +1796,7 @@ void SSD_Init(void);
 void SSD_Set_Symbol(SSD_Symbol_t symbol,SSD_t index);
 void SSD_Update(void);
 void SSD_Toggle_Second_Dot(void);
+void SSD_Set_Second_Dot(tSSD_State s);
 void SSD_Set_PM_Dot(tSSD_State s);
 # 12 "Digital_Clock.c" 2
 
@@ -1882,7 +1883,7 @@ void Disp_Update(void);
 # 15 "Digital_Clock.c" 2
 
 # 1 "./Timer.h" 1
-# 46 "./Timer.h"
+# 45 "./Timer.h"
 void TMR_Init(void);
 void TMR_Start(void);
 void TMR_Stop(void);

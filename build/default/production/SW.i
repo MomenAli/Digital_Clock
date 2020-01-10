@@ -1747,7 +1747,7 @@ extern __bank0 __bit __timeout;
 typedef unsigned char u8_t;
 typedef unsigned int u16_t;
 # 37 "./GPIO.h" 2
-# 61 "./GPIO.h"
+# 62 "./GPIO.h"
 u8_t GPIO_Init_Port(u8_t * DirRegAddress ,u8_t dir );
 u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 8 "SW.c" 2
@@ -1789,20 +1789,15 @@ void SW_Update(void);
 # 10 "SW.c" 2
 
 # 1 "./Timer.h" 1
-# 46 "./Timer.h"
+# 45 "./Timer.h"
 void TMR_Init(void);
 void TMR_Start(void);
 void TMR_Stop(void);
 u8_t TMR_CheckOverflow(void);
 # 11 "SW.c" 2
-
-
-
-
-
-
+# 22 "SW.c"
 void SW_UpdateState(SW_t sw);
-# 37 "SW.c"
+# 42 "SW.c"
 typedef struct
 {
     u8_t samples[2];
@@ -1822,18 +1817,18 @@ void SW_Init(void)
 
     GPIO_Init_Pin(&(TRISB),(0),(1));
     SW_DATA[SW_PLUS].state = SW_RELEASED;
-    SW_DATA[SW_PLUS].samples[0] = 1;
-    SW_DATA[SW_PLUS].samples[1] = 1;
+    SW_DATA[SW_PLUS].samples[0] = (1);
+    SW_DATA[SW_PLUS].samples[1] = (1);
 
     GPIO_Init_Pin(&(TRISB),(1),(1));
     SW_DATA[SW_MINUS].state = SW_RELEASED;
-    SW_DATA[SW_MINUS].samples[0] = 1;
-    SW_DATA[SW_MINUS].samples[1] = 1;
+    SW_DATA[SW_MINUS].samples[0] = (1);
+    SW_DATA[SW_MINUS].samples[1] = (1);
 
     GPIO_Init_Pin(&(TRISB),(2),(1));
     SW_DATA[SW_SET].state = SW_RELEASED;
-    SW_DATA[SW_SET].samples[0] = 1;
-    SW_DATA[SW_SET].samples[1] = 1;
+    SW_DATA[SW_SET].samples[0] = (1);
+    SW_DATA[SW_SET].samples[1] = (1);
 
 }
 u8_t SW_GetState(SW_t sw)
@@ -1852,12 +1847,12 @@ void SW_Update(void)
 
 
 
-    static u8_t SW_Time_Counter = 0;
+    static u8_t SW_Time_Counter = 15;
     SW_Time_Counter += (5);
 
     if(SW_Time_Counter != (20))
     {
-
+        return;
     }
     SW_Time_Counter = 0;
 
@@ -1866,38 +1861,40 @@ void SW_Update(void)
 
     SW_UpdateState(SW_PLUS);
 
-    SW_DATA[SW_MINUS].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_MINUS].samples[0] = SW_DATA[SW_MINUS].samples[1];
     SW_DATA[SW_MINUS].samples[1] = (((PORTB) >> (1))& 1);
 
     SW_UpdateState(SW_MINUS);
 
 
-    SW_DATA[SW_SET].samples[0] = SW_DATA[SW_PLUS].samples[1];
+    SW_DATA[SW_SET].samples[0] = SW_DATA[SW_SET].samples[1];
     SW_DATA[SW_SET].samples[1] = (((PORTB) >> (2))& 1);
 
     SW_UpdateState(SW_SET);
+    if(SW_DATA[SW_SET].state == SW_PRE_PRESSED )
+        (((PORTB))=((PORTB) ^(1<<(3))));
 }
 
 void SW_UpdateState(SW_t sw)
 {
-# 129 "SW.c"
+# 136 "SW.c"
     switch(SW_DATA[sw].state)
     {
 
         case SW_PRE_RELEASED:
-            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+            if(SW_DATA[sw].samples[0] == (1) && SW_DATA[sw].samples[1] == (1))
                 SW_DATA[sw].state = SW_RELEASED;
             break;
         case SW_RELEASED:
-            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+            if(SW_DATA[sw].samples[0] == (0) && SW_DATA[sw].samples[1] == (0))
                 SW_DATA[sw].state = SW_PRE_PRESSED;
             break;
         case SW_PRE_PRESSED:
-            if(SW_DATA[sw].samples[0] == 0 && SW_DATA[sw].samples[1] == 0)
+            if(SW_DATA[sw].samples[0] == (0) && SW_DATA[sw].samples[1] == (0))
                 SW_DATA[sw].state = SW_PRESSED;
             break;
         case SW_PRESSED:
-            if(SW_DATA[sw].samples[0] == 1 && SW_DATA[sw].samples[1] == 1)
+            if(SW_DATA[sw].samples[0] == (1) && SW_DATA[sw].samples[1] == (1))
                 SW_DATA[sw].state = SW_PRE_RELEASED;
             break;
         default:

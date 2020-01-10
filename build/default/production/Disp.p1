@@ -22,11 +22,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _DISP_Set_Minutes_Operation `(v ~T0 @X0 0 ef ]
 "89
 [; ;Disp.c: 89:     }
-[c E889 0 1 2 .. ]
-[n E889 . CL_NORMAL CL_SET_HOURS CL_SET_MINUTES  ]
+[c E891 0 1 2 .. ]
+[n E891 . CL_NORMAL CL_SET_HOURS CL_SET_MINUTES  ]
 "48 ./Clock.h
 [; ;./Clock.h: 48: Mode_t CLOCK_GetMode(void);
-[v _CLOCK_GetMode `(E889 ~T0 @X0 0 ef ]
+[v _CLOCK_GetMode `(E891 ~T0 @X0 0 ef ]
 "21
 [; ;./Clock.h: 21: {
 [s S95 `uc 1 `uc 1 `uc 1 `ui 1 ]
@@ -37,6 +37,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "68 ./SSD.h
 [; ;./SSD.h: 68: void SSD_Toggle_Second_Dot(void);
 [v _SSD_Toggle_Second_Dot `(v ~T0 @X0 0 ef ]
+"139 Disp.c
+[; ;Disp.c: 139:     SSD_Set_Second_Dot(SSD_OFF);
+[c E869 0 1 .. ]
+[n E869 . SSD_OFF SSD_ON  ]
+"69 ./SSD.h
+[; ;./SSD.h: 69: void SSD_Set_Second_Dot(tSSD_State s);
+[v _SSD_Set_Second_Dot `(v ~T0 @X0 0 ef1`E869 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -275,17 +282,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Disp_Update ]
 [f ]
 "66
-[; ;Disp.c: 66:     static u8_t DISP_Time_Counter = 0;
-[v F910 `uc ~T0 @X0 1 s DISP_Time_Counter ]
-[i F910
--> -> 0 `i `uc
+[; ;Disp.c: 66:     static u8_t DISP_Time_Counter = 10;
+[v F912 `uc ~T0 @X0 1 s DISP_Time_Counter ]
+[i F912
+-> -> 10 `i `uc
 ]
 "67
 [; ;Disp.c: 67:     DISP_Time_Counter += (5);
-[e =+ F910 -> -> 5 `i `uc ]
+[e =+ F912 -> -> 5 `i `uc ]
 "69
 [; ;Disp.c: 69:     if(DISP_Time_Counter != (20))
-[e $ ! != -> F910 `i -> 20 `i 98  ]
+[e $ ! != -> F912 `i -> 20 `i 98  ]
 "70
 [; ;Disp.c: 70:     {
 {
@@ -298,7 +305,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 98 ]
 "73
 [; ;Disp.c: 73:     DISP_Time_Counter = 0;
-[e = F910 -> -> 0 `i `uc ]
+[e = F912 -> -> 0 `i `uc ]
 "75
 [; ;Disp.c: 75:     switch(CLOCK_GetMode())
 [e $U 100  ]
@@ -337,9 +344,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 99  ]
 [e :U 100 ]
-[e [\ -> ( _CLOCK_GetMode ..  `ui , $ -> . `E889 0 `ui 101
- , $ -> . `E889 1 `ui 102
- , $ -> . `E889 2 `ui 103
+[e [\ -> ( _CLOCK_GetMode ..  `ui , $ -> . `E891 0 `ui 101
+ , $ -> . `E891 1 `ui 102
+ , $ -> . `E891 2 `ui 103
  99 ]
 [e :U 99 ]
 "90
@@ -415,121 +422,133 @@ Version 4.0 HI-TECH Software Intermediate Code
 "135
 [; ;Disp.c: 135:     SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
 [e ( _SSD_Set_Symbol (2 , -> % -> . _tt 1 `i -> 10 `i `E850 . `E863 0 ]
-"136
-[; ;Disp.c: 136:     if(Disp_Blink_counter < 25)
-[e $ ! < -> _Disp_Blink_counter `i -> 25 `i 107  ]
-"137
-[; ;Disp.c: 137:     {
-{
 "139
-[; ;Disp.c: 139:         SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
-[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
-"140
-[; ;Disp.c: 140:         SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
-[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
+[; ;Disp.c: 139:     SSD_Set_Second_Dot(SSD_OFF);
+[e ( _SSD_Set_Second_Dot (1 . `E869 0 ]
 "141
-[; ;Disp.c: 141:     }
+[; ;Disp.c: 141:     if(Disp_Blink_counter < 25)
+[e $ ! < -> _Disp_Blink_counter `i -> 25 `i 107  ]
+"142
+[; ;Disp.c: 142:     {
+{
+"144
+[; ;Disp.c: 144:         SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
+"145
+[; ;Disp.c: 145:         SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
+"146
+[; ;Disp.c: 146:     }
 }
 [e :U 107 ]
-"142
-[; ;Disp.c: 142:     if(Disp_Blink_counter>25)
-[e $ ! > -> _Disp_Blink_counter `i -> 25 `i 108  ]
-"143
-[; ;Disp.c: 143:     {
-{
-"145
-[; ;Disp.c: 145:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
-[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 3 ]
-"146
-[; ;Disp.c: 146:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
-[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 2 ]
 "147
-[; ;Disp.c: 147:     }
-}
-[e :U 108 ]
+[; ;Disp.c: 147:     if(Disp_Blink_counter>25)
+[e $ ! > -> _Disp_Blink_counter `i -> 25 `i 108  ]
 "148
-[; ;Disp.c: 148:     if(Disp_Blink_counter>=50)
-[e $ ! >= -> _Disp_Blink_counter `i -> 50 `i 109  ]
-"149
-[; ;Disp.c: 149:     {
+[; ;Disp.c: 148:     {
 {
+"150
+[; ;Disp.c: 150:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_TENS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 3 ]
 "151
-[; ;Disp.c: 151:         Disp_Blink_counter = 0;
-[e = _Disp_Blink_counter -> -> 0 `i `uc ]
+[; ;Disp.c: 151:         SSD_Set_Symbol(SSD_NULL,SSD_HOURS_UNITS);
+[e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 2 ]
 "152
 [; ;Disp.c: 152:     }
 }
-[e :U 109 ]
+[e :U 108 ]
 "153
-[; ;Disp.c: 153: }
+[; ;Disp.c: 153:     if(Disp_Blink_counter>50)
+[e $ ! > -> _Disp_Blink_counter `i -> 50 `i 109  ]
+"154
+[; ;Disp.c: 154:     {
+{
+"156
+[; ;Disp.c: 156:         Disp_Blink_counter = 0;
+[e = _Disp_Blink_counter -> -> 0 `i `uc ]
+"157
+[; ;Disp.c: 157:     }
+}
+[e :U 109 ]
+"158
+[; ;Disp.c: 158:     Disp_Blink_counter++;
+[e ++ _Disp_Blink_counter -> -> 1 `i `uc ]
+"159
+[; ;Disp.c: 159: }
 [e :UE 106 ]
 }
-"157
-[; ;Disp.c: 157: void DISP_Set_Minutes_Operation(void)
+"163
+[; ;Disp.c: 163: void DISP_Set_Minutes_Operation(void)
 [v _DISP_Set_Minutes_Operation `(v ~T0 @X0 1 ef ]
-"158
-[; ;Disp.c: 158: {
+"164
+[; ;Disp.c: 164: {
 {
 [e :U _DISP_Set_Minutes_Operation ]
 [f ]
-"161
-[; ;Disp.c: 161:     Time_t tt;
+"167
+[; ;Disp.c: 167:     Time_t tt;
 [v _tt `S95 ~T0 @X0 1 a ]
-"162
-[; ;Disp.c: 162:     CLOCK_GetTime(&tt);
+"168
+[; ;Disp.c: 168:     CLOCK_GetTime(&tt);
 [e ( _CLOCK_GetTime (1 &U _tt ]
-"165
-[; ;Disp.c: 165:     SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
+"171
+[; ;Disp.c: 171:     SSD_Set_Symbol(tt.hours/10,SSD_HOURS_TENS);
 [e ( _SSD_Set_Symbol (2 , -> / -> . _tt 0 `i -> 10 `i `E850 . `E863 3 ]
-"166
-[; ;Disp.c: 166:     SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
+"172
+[; ;Disp.c: 172:     SSD_Set_Symbol(tt.hours%10,SSD_HOURS_UNITS);
 [e ( _SSD_Set_Symbol (2 , -> % -> . _tt 0 `i -> 10 `i `E850 . `E863 2 ]
-"174
-[; ;Disp.c: 174:     if(Disp_Blink_counter < 25)
+"180
+[; ;Disp.c: 180:     SSD_Set_Second_Dot(SSD_OFF);
+[e ( _SSD_Set_Second_Dot (1 . `E869 0 ]
+"181
+[; ;Disp.c: 181:     if(Disp_Blink_counter < 25)
 [e $ ! < -> _Disp_Blink_counter `i -> 25 `i 111  ]
-"175
-[; ;Disp.c: 175:     {
+"182
+[; ;Disp.c: 182:     {
 {
-"177
-[; ;Disp.c: 177:         SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
+"184
+[; ;Disp.c: 184:         SSD_Set_Symbol(tt.minuts/10,SSD_MINUTES_TENS);
 [e ( _SSD_Set_Symbol (2 , -> / -> . _tt 1 `i -> 10 `i `E850 . `E863 1 ]
-"178
-[; ;Disp.c: 178:         SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
+"185
+[; ;Disp.c: 185:         SSD_Set_Symbol(tt.minuts%10,SSD_MINUTES_UNITS);
 [e ( _SSD_Set_Symbol (2 , -> % -> . _tt 1 `i -> 10 `i `E850 . `E863 0 ]
-"179
-[; ;Disp.c: 179:     }
+"186
+[; ;Disp.c: 186:     }
 }
 [e :U 111 ]
-"180
-[; ;Disp.c: 180:     if(Disp_Blink_counter>25)
+"187
+[; ;Disp.c: 187:     if(Disp_Blink_counter>25)
 [e $ ! > -> _Disp_Blink_counter `i -> 25 `i 112  ]
-"181
-[; ;Disp.c: 181:     {
+"188
+[; ;Disp.c: 188:     {
 {
-"183
-[; ;Disp.c: 183:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
+"190
+[; ;Disp.c: 190:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_TENS);
 [e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 1 ]
-"184
-[; ;Disp.c: 184:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
+"191
+[; ;Disp.c: 191:         SSD_Set_Symbol(SSD_NULL,SSD_MINUTES_UNITS);
 [e ( _SSD_Set_Symbol (2 , . `E850 10 . `E863 0 ]
-"185
-[; ;Disp.c: 185:     }
+"192
+[; ;Disp.c: 192:     }
 }
 [e :U 112 ]
-"186
-[; ;Disp.c: 186:     if(Disp_Blink_counter>=50)
-[e $ ! >= -> _Disp_Blink_counter `i -> 50 `i 113  ]
-"187
-[; ;Disp.c: 187:     {
+"193
+[; ;Disp.c: 193:     if(Disp_Blink_counter>50)
+[e $ ! > -> _Disp_Blink_counter `i -> 50 `i 113  ]
+"194
+[; ;Disp.c: 194:     {
 {
-"189
-[; ;Disp.c: 189:         Disp_Blink_counter = 0;
+"196
+[; ;Disp.c: 196:         Disp_Blink_counter = 0;
 [e = _Disp_Blink_counter -> -> 0 `i `uc ]
-"190
-[; ;Disp.c: 190:     }
+"197
+[; ;Disp.c: 197:     }
 }
 [e :U 113 ]
-"191
-[; ;Disp.c: 191: }
+"198
+[; ;Disp.c: 198:     Disp_Blink_counter++;
+[e ++ _Disp_Blink_counter -> -> 1 `i `uc ]
+"199
+[; ;Disp.c: 199: }
 [e :UE 110 ]
 }

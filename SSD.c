@@ -182,6 +182,10 @@ void SSD_Toggle_Second_Dot(void)
 {
     Second_Dot_State ^= 1;
 }
+void SSD_Set_Second_Dot(tSSD_State s)
+{
+    Second_Dot_State = s;
+}
 #ifdef _12_MODE
 void SSD_Set_PM_Dot(tSSD_State s)
 {
